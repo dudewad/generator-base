@@ -1,0 +1,142 @@
+@import "./style/generated/overrides/overrides";
+@import './style/bootstrap-custom/bootstrap';
+@import './style/variables';
+@import "./style/generated/font-imports";
+@import './style/common/all';
+
+html,
+body{
+	margin: 0;
+	font-size: 14px;
+	height: 100%;
+	font-family: $body-font-family;
+}
+
+app-main {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $titling-font-family;
+	letter-spacing: .07em;
+	margin: 0;
+}
+
+h1 {
+	font-size: 2.5em;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+
+p,
+li {
+	font-size: 1.2rem;
+}
+
+p {
+	line-height: 1.4;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+li {
+	margin: 0 0 1em 1.5em;
+	position: relative;
+}
+
+a {
+	color: map-get($colors, anchor-color);
+
+	&:visited {
+		color: map-get($colors, anchor-visited-color);
+	}
+
+	&:hover {
+		color: map-get($colors, anchor-hover-color);
+	}
+
+	&:active {
+		color: map-get($colors, anchor-active-color);
+	}
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.site-content-wrapper {
+	flex: 1;
+}
+
+.accent {
+	color: map-get($colors, copy-accent-color);
+}
+
+.disp-table {
+	display: table;
+}
+
+.v-center {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.centered-list {
+	ul {
+		text-align: left;
+		margin: 2em auto 0 auto;
+	}
+}
+
+@media screen and (min-width: $screen-xs-min) {
+}
+
+@media screen and (min-width: $screen-sm-min) {
+	.centered-list {
+		ul {
+			width: 85%;
+		}
+	}
+}
+
+@media screen and (min-width: $screen-md-min) {
+	.centered-list {
+		ul {
+			width: 75%;
+		}
+	}
+}
+
+@media screen and (min-width: $screen-lg-min) {
+	p,
+	li {
+		font-size: 1.4rem;
+	}
+
+	.centered-list {
+		ul {
+			width: 50%;
+		}
+	}
+}

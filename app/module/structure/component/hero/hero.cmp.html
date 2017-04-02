@@ -1,0 +1,14 @@
+<div class="hero" [ngClass]="config.class" [ngStyle]="config.style">
+	<div class="structure-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h1 [innerHtml]="getSanHtml(content.title)"></h1>
+					<h2 *ngIf="content.subtitle" [innerHtml]="getSanHtml(content.subtitle)"></h2>
+					<p *ngIf="content.body" [innerHtml]="getSanHtml(content.body)"></p>
+					<a class="button" *ngIf="content?.cta?.text && content?.cta?.href" [innerHtml]="getSanHtml(content.cta.text)" [routerLink]="content.cta.href"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,69 @@
+@import '../../../../style/bootstrap-custom/bootstrap-no-output';
+@import '../../../../style/variables';
+
+$imageRoot: $urlContentRoot + $urlImageRelativePath;
+
+footer {
+	position:relative;
+	z-index: 1;
+	margin-top: -66px;
+	color: map-get($colors, footer-color);
+
+	h3 {
+		margin-bottom: 1.5em;
+	}
+
+	li {
+		margin: 0 0 .5em 0;
+
+		&:before {
+			display:none;
+			content: none;
+		}
+	}
+
+	.footer-section {
+		&:first-child {
+			h3{
+				margin-top: 0;
+			}
+		}
+
+		h3 {
+			margin-top: 1em;
+		}
+	}
+
+	.content {
+
+		.row {
+			margin-top: 5em;
+			margin-bottom: 5em;
+		}
+
+		.social {
+			li {
+				display: inline;
+			}
+
+			i {
+				margin-right: .5em;
+				font-size: 2em;
+			}
+		}
+	}
+
+	.sub-footer {
+		padding: 1em 0;
+		border-top: 1px solid map-get($colors, footer-subfooter-border);
+		background: map-get($colors, footer-subfooter-bg);
+	}
+
+	@media screen and (min-width: $screen-md-min){
+		.footer-section {
+			h3 {
+				margin-top: 0;
+			}
+		}
+	}
+}

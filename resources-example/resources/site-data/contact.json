@@ -1,0 +1,94 @@
+{
+	"config": {
+		"header": true,
+		"footer": true,
+		"mainMenu": true
+	},
+	"component": [
+		{
+			"type": "Hero",
+			"config": {
+				"class": [
+					"compensate-header"
+				],
+				"background": {
+					"style": "image",
+					"value": "/structure-bg-dogs-couch-1.jpg",
+					"responsive": true
+				}
+			},
+			"content": {
+				"title": "Contact Us"
+			}
+		},
+		{
+			"type": "Copy",
+			"config": {
+				"class": [
+					"theme-brand-secondary"
+				]
+			},
+			"content": {
+				"title": "Come Say Hi!",
+				"body": "501 Harris Avenue,<br>Bellingham, WA 98225<br>360-733-PAWS<br>(360-733-7297)<br><br>We are a Stones Throw away from <a target='_blank' href='https://www.google.com/maps/place/Fairhaven+Stones+Throw+Brewery/@48.7193839,-122.5079416,17.32z/data=!4m5!3m4!1s0x0:0x6bce2c02f914d9a4!8m2!3d48.7187496!4d-122.5039233'>Stones Throw Brewery</a>, in a building just in front of the Amtrak/Greyhound station near the Alaska Ferry. Our convenient location means you won't have to go far to come give your dog a great place to hang out while you enjoy a delicious, local beverage!"
+			}
+		},
+		{
+			"type": "DataTable",
+			"config": {
+				"class": [
+				]
+			},
+			"content": {
+				"title": "Hours of Operation",
+				"rows": [
+					[
+						"Sunday",
+						"11:00 am - 9:00 pm"
+					],
+					[
+						"Mon - Thurs",
+						"12:00 pm - 9:00 pm"
+					],
+					[
+						"Fri - Sun",
+						"11:00 am - 9:00 pm"
+					]
+				]
+			}
+		},
+		{
+			"type": "Ribbon",
+			"config": {
+				"class": [
+					"contact-ribbon"
+				]
+			},
+			"content": {
+				"title": "Paws for a Beer",
+				"body": "501 Harris Avenue<br>Bellingham, WA 98225<br>360-733-PAWS",
+				"map": {
+					"type": "map",
+					"placeId": "ChIJG0wMvSKihVQRpndcABnnMLw",
+					"marker": "/paws-marker.svg"
+				}
+			}
+		},
+		{
+			"type": "Ribbon",
+			"config": {
+				"class": [
+					"no-top-padding",
+					"compensate-footer"
+				]
+			},
+			"content": {
+				"title": "Tour the shop!",
+				"map": {
+					"type": "streetview",
+					"placeId": "ChIJG0wMvSKihVQRpndcABnnMLw"
+				}
+			}
+		}
+	]
+}

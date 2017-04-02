@@ -1,0 +1,70 @@
+@import '../../../../style/bootstrap-custom/bootstrap-no-output';
+
+.tile-set {
+	h2 {
+		margin-top: 1em;
+	}
+
+	.structure-content {
+		margin: 2em auto;
+	}
+
+	.tile-content {
+		text-align: center;
+	}
+
+	.tile-container {
+		&:first-child {
+			.image-wrapper{
+				margin-top: 0;
+			}
+		}
+	}
+
+	.image-wrapper {
+		height: 250px;
+		margin-top: 2em;
+		overflow: hidden;
+	}
+
+	img {
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+		height: 100%;
+	}
+
+	@media screen and (min-width: $screen-sm-min) {
+		.tile-container {
+			&:first-child {
+				.image-wrapper {
+					margin-top: 2em;
+				}
+			}
+		}
+
+		.tile {
+			padding: 0 1em;
+		}
+
+		.image-wrapper {
+			height: 200px;
+		}
+	}
+
+	@media screen and (min-width: $screen-md-min) {
+		.image-wrapper {
+			height: 250px;
+		}
+	}
+
+	@media screen and (min-width: $screen-lg-min) {
+		h2 {
+			font-size: 1.75em;
+		}
+
+		.image-wrapper {
+			height: 350px;
+		}
+	}
+}

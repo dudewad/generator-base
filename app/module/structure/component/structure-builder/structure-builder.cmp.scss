@@ -1,0 +1,17 @@
+@import '../../../../style/bootstrap-custom/bootstrap-no-output';
+
+.structure {
+	.compensate-header {
+		padding-top: 75px;
+	}
+
+	.compensate-footer {
+		margin-bottom: 125px;
+	}
+
+	@media screen and (min-width: $screen-sm-min) {
+		.compensate-header {
+			padding-top: 100px;
+		}
+	}
+}

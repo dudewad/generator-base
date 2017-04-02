@@ -1,0 +1,68 @@
+{
+	"config": {
+		"header": true,
+		"footer": true,
+		"mainMenu": true
+	},
+	"component": [
+		{
+			"type": "Hero",
+			"config": {
+				"class": [
+					"compensate-header",
+					"compact"
+				],
+				"background": {
+					"style": "image",
+					"value": "/structure-bg-dog-outside-1.jpg",
+					"responsive": true
+				}
+			},
+			"content": {
+				"title": "Dog Membership Guide",
+				"subtitle": "Want to know what dog memberships are available? Look no further"
+			}
+		},
+		{
+			"type": "Copy",
+			"config": {
+				"class": [
+					"text-left"
+				]
+			},
+			"content": {
+				"subtitle": "Dog Membership Fees Help Us Help You",
+				"body": "Our dog membership fees go towards many benefits to you and your dog. They include monthly dog training workshops (topic chosen by members), complimentary treats to aid in motivating positive behaviors, new toys to play with during your visit, upgrades to our big play area (such as landscaping and agility equipment), and funding the comfortable indoor bathrooms.<br><br>Plus, the best part about getting your dog a membership is that you can pop in anytime, using our space as your own private and safe \"dog park\" so that you can stay warm and cozy while your dog socializes and gets the exercise they need."
+			}
+		},
+		{
+			"type": "Copy",
+			"config": {
+				"class": [
+					"text-left",
+					"theme-brand-secondary"
+				]
+			},
+			"content": {
+				"subtitle": "<i class='pawsIcon pawsIcon-question'></i> Do I need a membership if I don't have a dog?",
+				"body": "No, you don't need a membership if you don't have a dog. Our dog memberships are for <em>dogs</em> and not <em>people</em>."
+			}
+		},
+		{
+			"type": "DataTable",
+			"config": {
+				"class": [
+					"compensate-footer"
+				]
+			},
+			"content": {
+				"title": "Membership Options",
+				"rows": [
+					["", "1 Day", "1 Month", "1 Year"],
+					["1 Dog", "$5.00", "$20.00", "$100.00"],
+					["2 Dogs", "$8.00", "$30.00", "$165.00"]
+				]
+			}
+		}
+	]
+}

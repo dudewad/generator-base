@@ -1,0 +1,37 @@
+<footer>
+	<div class="grass"></div>
+	<div class="content theme-brand-secondary">
+		<div class="container">
+			<div class="row">
+				<div *ngFor="let section of content.sections" class="footer-section col-xs-12 col-md-3 col-lg-2">
+					<h3>{{section.title}}</h3>
+					<ul>
+						<li *ngFor="let item of section.items">
+							<a *ngIf="item.routerLink" [routerLink]="item.routerLink" [innerHtml]="getSanHtml(item.copy)"></a>
+							<a *ngIf="item.href" [href]="item.href" [innerHtml]="getSanHtml(item.copy)" target="_blank"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="social row">
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+					<h3>{{content?.social?.title}}</h3>
+					<ul>
+						<li *ngFor="let item of content?.social?.items">
+							<a [href]="item.href" target="_blank"><i class="siteIcon siteIcon-{{item.type}}"></i></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sub-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					&copy;{{getDate()}} {{content?.copyright?.copy}}
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

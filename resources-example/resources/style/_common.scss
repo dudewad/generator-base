@@ -1,0 +1,9 @@
+li {
+	&:before {
+		font-family: "siteIcon";
+		display: block;
+		content: "\f101";
+		position: absolute;
+		left: -1.5em;
+	}
+}

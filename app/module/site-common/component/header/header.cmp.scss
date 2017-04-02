@@ -1,0 +1,53 @@
+@import '../../../../style/bootstrap-custom/bootstrap';
+@import '../../../../style/variables';
+
+header {
+	@include clearfix();
+	position: absolute;
+	width: 100%;
+	padding: 2em;
+	/* Background gradient -- full support back to IE6 */
+	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+	background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=0);
+
+	.logo {
+		color: map-get($colors, header-color);
+		text-decoration: none;
+		display: inline-block;
+		cursor: pointer;
+
+		&:visited {
+			color: map-get($colors, header-color);
+		}
+
+		.siteIcon {
+			font-size: 3em;
+		}
+	}
+
+	.controls {
+		float: left;
+		color: map-get($colors, header-color);
+
+		.menu-toggle {
+			font-size: 2em;
+			cursor:pointer;
+			margin-right: .5em;
+		}
+	}
+
+	.actions {
+		float: right;
+	}
+
+	@media screen and (min-width: $screen-sm-min) {
+
+		.logo {
+			.siteIcon {
+				font-size: 5em;
+			}
+		}
+	}
+}

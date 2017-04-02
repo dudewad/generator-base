@@ -1,0 +1,16 @@
+<div class="ribbon" [ngClass]="config.class" [ngStyle]="config.style">
+	<div class="structure-content">
+		<div class="container">
+			<div class="row">
+				<div class="ribbon-container col-xs-12">
+					<div class="ribbon-content">
+						<h2 *ngIf="content?.title" [innerHtml]="getSanHtml(content.title)"></h2>
+						<p *ngIf="content?.body" [innerHtml]="getSanHtml(content.body)"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<iframe *ngIf="hasIframe" [src]="iframeSrc"></iframe>
+	<div class="map" *ngIf="hasMap" #mapEl></div>
+</div>

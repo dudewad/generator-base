@@ -1,0 +1,59 @@
+@import '../../../../style/bootstrap-custom/bootstrap-no-output';
+@import '../../../../style/variables';
+
+.hero {
+	text-align: center;
+	color: map-get($colors, header-color);
+
+	&.compact {
+		.structure-content {
+			padding: 1.5em 0;
+		}
+	}
+
+	.structure-content {
+		padding: 4em 0;
+	}
+
+	h2 {
+		font-size: 1.25em;
+	}
+
+	p {
+		max-width: 600px;
+		margin: 2em auto 0 auto;
+		font-size: 1.2rem;
+	}
+
+	.button {
+		margin: 2em auto 0 auto;
+	}
+
+	@media screen and (min-width: $screen-xs-min) {
+		font-size: 1.25em;
+	}
+
+	@media screen and (min-width: $screen-sm-min) {
+		font-size: 2em;
+
+		h2 {
+			font-size: 1em;
+		}
+
+		p {
+			font-size: 1.4rem;
+		}
+	}
+
+	@media screen and (min-width: $screen-md-min) {
+		font-size: 2.25em;
+	}
+
+	@media screen and (min-width: $screen-lg-min) {
+		font-size: 3.2em;
+
+		p {
+			font-size: 1.5rem;
+		}
+	}
+}

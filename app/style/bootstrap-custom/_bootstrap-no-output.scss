@@ -1,0 +1,8 @@
+/**
+ * This is bootstrap stuff that won't output anything.
+ * Good for webpack imports for things like vars so we don't import bootstrap's grid a million times.
+ */
+
+// Core variables and mixins
+@import "bootstrap/mixins";
+@import "bootstrap/variables";

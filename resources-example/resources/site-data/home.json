@@ -1,0 +1,99 @@
+{
+	"config": {
+		"header": true,
+		"footer": true,
+		"mainMenu": true
+	},
+	"component": [
+		{
+			"type": "Hero",
+			"config": {
+				"class": [
+					"compensate-header"
+				],
+				"background": {
+					"style": "image",
+					"value": "/structure-bg-white-dog-1.jpg",
+					"responsive": true
+				}
+			},
+			"content": {
+				"title": "The Subdued Dog Bar",
+				"cta": {
+					"text": "Join Us",
+					"href": "/membership"
+				}
+			}
+		},
+		{
+			"type": "Copy",
+			"config": {
+				"class": ["text-center"]
+			},
+			"content": {
+				"title": "What is Paws?",
+				"body": "Paws For a Beer is Bellingham's first and only dog-friendly tavern. Here, dogs with memberships are able to roam freely off-leash inside and outside the premises while their owners and the general 21+ public sip on refreshing beverages. We are dedicated to improving the dog-based community by offering free training courses to our members, networking with local dog rescue agencies to bring deserving dogs to deserving owners, and serve PNW beers, ciders, kombucha and wine. At Paws For a Beer, whether the dogs are on the couches or cruising around behind the bar, it's all good. Because this is all for them.",
+				"cta": {
+					"text": "Hours and Location",
+					"href": "/contact"
+				}
+			}
+		},
+		{
+			"type": "Ribbon",
+			"config": {
+				"class": [
+					"contact-ribbon"
+				]
+			},
+			"content": {
+				"title": "Come Visit",
+				"body": "501 Harris Avenue<br>Bellingham, WA 98225<br>360-733-7297",
+				"map": {
+					"type": "map",
+					"placeId": "ChIJG0wMvSKihVQRpndcABnnMLw",
+					"marker": "/paws-marker.svg"
+				}
+			}
+		},
+		{
+			"type": "TileSet",
+			"config": {
+				"class": [
+					"compensate-footer"
+				]
+			},
+			"content": {
+				"tiles": [
+					{
+						"title": "Dog Bar Rules",
+						"body": "Do's and Dont's in the tavern",
+						"image": "/crosby-1.jpg",
+						"cta": {
+							"text": "Rules &amp; Guidelines",
+							"href": "/rules"
+						}
+					},
+					{
+						"title": "Dog Membership",
+						"body": "How to sign up your furry friend",
+						"image": "/tables-1.jpg",
+						"cta": {
+							"text": "Membership",
+							"href": "/membership"
+						}
+					},
+					{
+						"title": "Hours &amp; Info",
+						"body": "How and when to show up",
+						"image": "/dog-jump.jpg",
+						"cta": {
+							"text": "Hours &amp; Info",
+							"href": "/contact"
+						}
+					}
+				]
+			}
+		}
+	]
+}

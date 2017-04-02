@@ -1,0 +1,16 @@
+{
+	"globalConfig": "global.json",
+	"routes": {
+		"default": "home.json",
+		"/": "home.json",
+		"/about": "about.json",
+		"/contact": "contact.json",
+		"/membership": "membership.json",
+		"/rules": "rules.json"
+	},
+	"vendor": {
+		"googleMaps":{
+			"apiKey": "AIzaSyAw7X6OqbKGKCTznZOaujyJUvfuRmYEAb8"
+		}
+	}
+}

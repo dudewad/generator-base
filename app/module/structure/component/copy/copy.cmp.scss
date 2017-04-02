@@ -1,0 +1,26 @@
+@import '../../../../style/bootstrap-custom/bootstrap-no-output';
+@import '../../../../style/variables';
+
+.copy {
+	&.no-top-padding{
+		.structure-content {
+			padding-top: 0;
+		}
+	}
+
+	.structure-content {
+		padding: 2em 0;
+	}
+
+	@media screen and (min-width: $screen-sm-min) {
+		font-size: 1.5em;
+	}
+
+	@media screen and (min-width: $screen-md-min) {
+		font-size: 1.75em;
+	}
+
+	@media screen and (min-width: $screen-lg-min) {
+		font-size: 2em;
+	}
+}

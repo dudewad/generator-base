@@ -1,0 +1,32 @@
+@import '../variables';
+
+.theme-gray {
+	background: map-get($colors, theme-gray-bg);
+	color: map-get($colors, theme-gray-color);
+}
+
+.theme-brand-primary {
+	background: map-get($colors, theme-brand-primary-bg);
+	color: map-get($colors, theme-brand-primary-color);
+}
+
+.theme-brand-secondary {
+	background: map-get($colors, theme-brand-secondary-bg);
+	color: map-get($colors, theme-brand-secondary-color);
+
+	a {
+		color: map-get($colors, anchor-alt-color);
+
+		&:visited {
+			color: map-get($colors, anchor-alt-visited-color);
+		}
+
+		&:hover {
+			color: map-get($colors, anchor-alt-hover-color);
+		}
+
+		&:active {
+			color: map-get($colors, anchor-alt-active-color);
+		}
+	}
+}

@@ -1,0 +1,133 @@
+{
+	"config": {
+		"header": true,
+		"footer": true,
+		"mainMenu": true
+	},
+	"component": [
+		{
+			"type": "Hero",
+			"config": {
+				"class": [
+					"compensate-header",
+					"compact"
+				],
+				"background": {
+					"style": "image",
+					"value": "/structure-bg-dog-outside-1.jpg",
+					"responsive": true
+				}
+			},
+			"content": {
+				"title": "Dog Rules",
+				"subtitle": "Non-negotiable Guidelines to keep everyone happy"
+			}
+		},
+		{
+			"type": "Copy",
+			"config": {
+				"class": [
+					"text-center",
+					"centered-list",
+					"theme-brand-secondary"
+				]
+			},
+			"content": {
+				"title": "Dog Rules",
+				"subtitle": "Non-Negotiable",
+				"body": "<ul><li>Membership and <a href='http://asset.pawsforabeer.com/docs/paws-for-a-beer-waiver-of-liability.pdf' target='_blank'>signed liability release (click here)</a> required upon entry</li><li>No more than two dogs per person</li><li>Dogs must be surpervised and in voice control at all times</li><li>Dogs may never be left unattended</li><li>Dogs must be spayed/neutered</li><li>Dogs must be healthy and current on their vaccines</li><li>Dogs must be at least 6 months old</li><li>Dogs that exhibit aggressive behavior are not allowed</li><li>Owner MUST clean up after their dog</li></ul>"
+			}
+		},
+		{
+			"type": "Copy",
+			"config": {
+				"class": [
+					"text-left"
+				]
+			},
+			"content": {
+				"subtitle": "Dog Tact",
+				"body": "Having dogs play together is great fun, but also comes with important responsibilities. Reviewing our guidelines on dog-bar conduct helps make sure customers and their little buddies remain a-ok."
+			}
+		},
+		{
+			"type": "TextImage",
+			"config": {
+				"class": [
+					"content-right"
+				]
+			},
+			"content": {
+				"title": "Spayed/Neutered",
+				"body": "All dogs who enter our front door must first be either spayed or neutered (absolutely no exceptions), up to date on the core vaccinations <strong>(canine parvovirus, distemper, canine hepatitis and rabies)</strong>, and above all must be able to get along with many new dogs in a new setting. This can be quite difficult for some dogs, so we ask that you strongly consider your dog's personality when considering bringing them into the subdued dog bar. If it is your dog's first visit to the bar, please bring proof of these vaccines to make your sign-up more efficient.",
+				"image": "/dog-jump.jpg"
+			}
+		},
+		{
+			"type": "TextImage",
+			"config": {
+				"class": [
+					"content-left"
+				]
+			},
+			"content": {
+				"title": "Males Must Mark Immediately",
+				"body": "If your dog is a male we have a policy asking that you <strong>immediately</strong> escort your dog to our back yard area so they can \"mark\", and if possible, do so off-leash (this typically reduces most aggression-relates issues). When this process gets delayed we inevitably have accidents inside since the males immediately want to claim their presence in a new place. To maintain the health and cleanliness of the facility, all owners of male dogs must abide by this policy.<br>It's a guy thing.",
+				"image": "/bar-paw.jpg"
+			}
+		},
+		{
+			"type": "TextImage",
+			"config": {
+				"class": [
+					"content-right"
+				]
+			},
+			"content": {
+				"title": "Sign Liability Release",
+				"body": "When you return back inside, you will look over our liability release, sign it digitally, and choose your membership package to purchase. <click here to see membership fees> These membership fees go towards many benefits to you and your dog. See our membership benefits page for more.",
+				"image": "/bella-1.jpg"
+			}
+		},
+		{
+			"type": "Copy",
+			"config": {
+				"class": [
+					"text-left",
+					"theme-brand-secondary"
+				]
+			},
+			"content": {
+				"subtitle": "No Aggression Policy",
+				"body": "All owners must keep their eyes on their dog during their entire visit. That means if your dog is outside in the big field, you are in the big field. If you prefer to be inside sitting at the main bar, yet your dog gets anxious in small spaces, you may need to meet their needs and spend the majority of your visit out where they have more ground to move about on. Any aggressive behavior will not be tolerated and will either result in a warning from our staff or a request to leave.<br><br>This isn't your ordinary tavern, nor is it your typical dog park. It's a new concept that both you and your dog will need to ease into, and hopefully have a relaxing, dog-gone good time! It is the responsibility of the owner to de-escalate and improve and building tensions between your dog and others. If you notice that your dog has tense body language, and the \"whale eye\" peeking over his side at another dog, it's time to get up,and get excited about moving outside to play ball! If you're out in our big play area and your dog is feeling overwhelmed with their tail between their legs and the energetic invitations to play from other dogs are resulting in bared teeth, it may be time to head indoors for some R&R beside our leather couches.<br><br>No matter what, remember that while you enjoy your stay it's your job to help your dog shine in this exciting and subdued atmosphere. Our staff are happy to be additional eyes as well to aid in letting the dogs outside when any noticeable tension begins to build indoors. Please feel free to ask any questions related to basic dog behavior and dog psychology as we have many resources to refer you to! We love dogs and hope to create a place celebrating how awesome they are!"
+			}
+		},
+		{
+			"type": "TextImage",
+			"config": {
+				"class": [
+					"content-right"
+				]
+			},
+			"content": {
+				"title": "He who smelt it...",
+				"body": "Please clean up after your dog while they are here. We have many poop bag centers located all around the property to make this easier for you.",
+				"image": "/bar-paw-2.jpg"
+			}
+		},
+		{
+			"type": "TextImage",
+			"config": {
+				"class": [
+					"content-left",
+					"compensate-footer"
+				]
+			},
+			"content": {
+				"title": "Enjoy!",
+				"body": "Mostly, we want everyone to have a great time! It's typical for us to see smiling faces and wagging tails during our days at Paws For a Beer, and we strive to keep it that way. Cheers!",
+				"image": "/dog-at-door.jpg"
+			}
+		}
+	]
+}

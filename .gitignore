@@ -1,0 +1,10 @@
+/.idea/*
+/node_modules/
+!/.idea/runConfigurations/
+
+# Don't remove these rules!
+# They're for generated files. These items shouldn't exist when you pull the repo, but might later when scripts run.
+/dist/
+npm-debug.log
+/app/style/generated/
+/.tmp/

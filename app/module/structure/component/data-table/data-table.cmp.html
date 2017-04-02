@@ -1,0 +1,16 @@
+<div class="data-table" [ngClass]="config.class">
+	<div class="structure-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h1 *ngIf="content.title" [innerHtml]="getSanHtml(content.title)"></h1>
+					<table>
+						<tr *ngFor="let row of content.rows">
+							<td *ngFor="let cell of row" [innerHtml]="getSanHtml(cell)"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

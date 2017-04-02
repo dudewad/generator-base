@@ -1,0 +1,39 @@
+@import '../_variables.scss';
+
+button,
+.button {
+	display: inline-block;
+	padding: .75em 1.5em;
+	background: map-get($colors, button-bg);
+	color: map-get($colors, button-color);
+	border: none;
+	border-radius: 5px;
+	font-family: $titling-font-family;
+	font-size: 1rem;
+	cursor: pointer;
+	outline: none;
+	text-decoration: none;
+
+	&:visited {
+		color: map-get($colors, button-color);
+		background: map-get($colors, button-bg);
+	}
+
+	&:hover {
+		color: map-get($colors, button-color);
+		background: map-get($colors, button-hover-bg);
+	}
+
+	&:active {
+		color: map-get($colors, button-color);
+		background: map-get($colors, button-active-bg);
+	}
+
+	@media screen and(min-width: $screen-md-min) {
+		font-size: 1.1rem;
+	}
+
+	@media screen and(min-width: $screen-lg-min) {
+		font-size: 1.2rem;
+	}
+}

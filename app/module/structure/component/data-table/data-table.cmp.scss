@@ -1,0 +1,20 @@
+@import '../../../../style/bootstrap-custom/bootstrap-no-output';
+@import '../../../../style/variables';
+
+.data-table {
+	table {
+		width: 100%;
+		margin-top: 2em;
+		font-size: 1.5em;
+	}
+
+	td {
+		padding: .5em;
+		background-color: map-get($colors, membership-table-bg);
+		color: map-get($colors, membership-table-color);
+	}
+
+	.structure-content {
+		padding: 2em 0;
+	}
+}

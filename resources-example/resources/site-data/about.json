@@ -1,0 +1,40 @@
+{
+	"config": {
+		"header": true,
+		"footer": true,
+		"mainMenu": true
+	},
+	"component": [
+		{
+			"type": "Hero",
+			"config": {
+				"class": [
+					"compensate-header",
+					"compact"
+				],
+				"background": {
+					"style": "image",
+					"value": "/structure-bg-bar-paw-1.jpg",
+					"responsive": true
+				}
+			},
+			"content": {
+				"title": "Paws for a Beer",
+				"subtitle": "Want to know a little about who we are? You've come to the right place"
+			}
+		},
+		{
+			"type": "Copy",
+			"config": {
+				"class": [
+					"text-left",
+					"compensate-footer"
+				]
+			},
+			"content": {
+				"subtitle": "How We Formed",
+				"body": "Paws For a Beer was a concept that came about when two young Bellingham residents - Amy &amp; Rylan Schoen - decided they were ready to adopt a dog. After a long drive out to the Humane Society of Hermiston, Oregon they settled upon the runt of the litter: Crosby. They were over the moon for this dog when he was just the size of a small shoe.<br><br>Rylan's days of working from home as a freelance photographer and Amy's days of teaching kindergarten often ended with them sipping on a delicious pint of Bellingham craft beer - for a short while anyways. Crosby soon grew bigger, with greater endurance and ideas of his own for what a good evening should entail. Before long, taking Crosby to Kulshan's comfortable and dog friendly patio area was no longer working for him. Being confined to one side of a picnic table and on leash, he became what they call \"The Crozmanian Devil\". So, the two resorted to taking Crosby to Fairhaven's off leash dog park about three times a day just to stay sane. But as a young, energetic Border Collie Black Lab mix, Crosby always needed to go and go.<br><br>Before long, Rylan had crafted a rough business plan for something called Paws For a Beer. Brushing it off as just another silly idea of Rylan's, Amy encouraged his explorations and engaged with him during brain storming sessions. Before they knew it, they were planning their wedding, and simultaneously, Bellingham's first dog bar.<br><br>Full steam ahead! A few months and two \"I do's\" later, the Schoens became the proud owners of a place for dogs to come and play, knowing that the members romping around them are all well-tempered, healthy, and excited to be there!"
+			}
+		}
+	]
+}

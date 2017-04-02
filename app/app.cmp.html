@@ -1,0 +1,5 @@
+<div class="site-content-wrapper">
+	<site-header *ngIf="state.header.enabled"></site-header>
+	<router-outlet></router-outlet>
+</div>
+<site-footer *ngIf="state.footer.enabled"></site-footer>

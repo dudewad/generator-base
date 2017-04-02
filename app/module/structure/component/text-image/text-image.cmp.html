@@ -1,0 +1,21 @@
+<div class="text-image" [ngClass]="config.class" [ngStyle]="config.style">
+	<div class="structure-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="content disp-table">
+						<div class="v-center">
+							<h2 *ngIf="content.title" [innerHtml]="getSanHtml(content.title)"></h2>
+							<p *ngIf="content.body" [innerHtml]="getSanHtml(content.body)"></p>
+							<a class="button" *ngIf="content?.cta?.text && content?.cta?.href"
+							   [innerHtml]="getSanHtml(content.cta.text)" [routerLink]="content.cta.href"></a>
+						</div>
+					</div>
+					<div class="image">
+						<img [src]="getAssetUrl(content.image)"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,61 @@
+@import "./generated/overrides/overrides";
+
+$body-font-family: arial, serif;
+$titling-font-family: 'Times New Roman', sans-serif;
+
+$base-colors:(
+	black:                          #000,
+	brand-primary:                  #990000,
+	brand-secondary:                #009900,
+	gray-darkest:                   #333,
+	gray-dark:                      #666,
+	gray-medium:                    #999,
+	gray-medium-light:              #ADADAD,
+	gray-light:                     #CCC,
+	gray-lightest:                  #F4F4F4,
+	white:                          #FFF
+);
+
+//Critical: Imported items from custom settings override here.
+@if (variable-exists(body-font-family-override)) {
+	$body-font-family: $body-font-family-override;
+}
+
+@if (variable-exists(titling-font-family-override)) {
+	$titling-font-family: $titling-font-family-override;
+}
+
+@if(variable-exists(base-colors-overrides)) {
+	$base-colors: map-merge($base-colors, $base-colors-overrides);
+}
+
+$colors: (
+	anchor-color:                   map-get($base-colors, brand-primary),
+	anchor-active-color:            darken(map-get($base-colors, brand-primary), 20%),
+	anchor-hover-color:             darken(map-get($base-colors, brand-primary), 10%),
+	anchor-visited-color:           map-get($base-colors, brand-primary),
+	anchor-alt-color:               map-get($base-colors, gray-lightest),
+	anchor-alt-active-color:        darken(map-get($base-colors, gray-lightest), 20%),
+	anchor-alt-hover-color:         darken(map-get($base-colors, gray-lightest), 10%),
+	anchor-alt-visited-color:       map-get($base-colors, gray-lightest),
+	button-bg:                      map-get($base-colors, brand-primary),
+	button-active-bg:               darken(map-get($base-colors, brand-primary), 10%),
+	button-color:                   map-get($base-colors, white),
+	button-hover-bg:                darken(map-get($base-colors, brand-primary), 5%),
+	copy-accent-color:              map-get($base-colors, brand-primary),
+	footer-bg:                      map-get($base-colors, brand-secondary),
+	footer-color:                   map-get($base-colors, white),
+	footer-subfooter-border:        darken(map-get($base-colors, brand-secondary), 2%),
+	footer-subfooter-bg:            darken(map-get($base-colors, brand-secondary), 5%),
+	header-color:                   map-get($base-colors, white),
+	membership-table-bg:            map-get($base-colors, brand-secondary),
+	membership-table-color:         map-get($base-colors, white),
+	ribbon-bg:                      map-get($base-colors, white),
+	ribbon-color:                   map-get($base-colors, black),
+	theme-brand-primary-bg:         map-get($base-colors, brand-primary),
+	theme-brand-primary-color:      map-get($base-colors, white),
+	theme-brand-secondary-bg:       map-get($base-colors, brand-secondary),
+	theme-brand-secondary-color:    map-get($base-colors, white),
+	theme-gray-bg:                  map-get($base-colors, gray-medium-light),
+	theme-gray-color:               map-get($base-colors, white),
+);

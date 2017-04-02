@@ -1,0 +1,74 @@
+{
+	"component": {
+		"header": {
+			"content": {
+				"cta": "How to Join"
+			}
+		},
+		"footer": {
+			"content": {
+				"copyright": {
+					"copy": "Paws for a Beer"
+				},
+				"sections":[
+					{
+						"title": "Who We Are",
+						"items": [
+							{
+								"routerLink": "/about",
+								"copy": "About Us"
+							},
+							{
+								"routerLink": "/contact",
+								"copy": "Contact Us"
+							}
+						]
+					},
+					{
+						"title": "Resources",
+						"items": [
+							{
+								"routerLink": "/membership",
+								"copy": "Membership"
+							},
+							{
+								"routerLink": "/rules",
+								"copy": "Rules &amp; Guidelines"
+							},
+							{
+								"routerLink": "/contact",
+								"copy": "Hours &amp; Location"
+							}
+						]
+					},
+					{
+						"title": "Things We Like",
+						"items": [
+							{
+								"href": "http://www.humanesociety.org/",
+								"copy": "Humane Society"
+							},
+							{
+								"href": "http://rylanschoen.com/",
+								"copy": "Rylan Schoen Photography"
+							}
+						]
+					}
+				],
+				"social": {
+					"title": "Support Us",
+					"items": [
+						{
+							"type": "facebook",
+							"href": "https://www.facebook.com/pawsforabeer/"
+						},
+						{
+							"type": "instagram",
+							"href": "https://www.instagram.com/paws_forabeer/"
+						}
+					]
+				}
+			}
+		}
+	}
+}
