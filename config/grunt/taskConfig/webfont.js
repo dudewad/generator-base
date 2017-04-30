@@ -73,10 +73,9 @@ module.exports = function(grunt) {
 	let devCfg = baseCfg(baseCfgData);
 	let stagingCfg = baseCfg(baseCfgData);
 	let prodCfg = baseCfg(baseCfgData);
-	devCfg.options.relativeFontPath = `<%= customSettings.url.dev.contentRoot %>${relPathSuffix}`;
+	devCfg.options.relativeFontPath = `${resourcesRoot}<%= customSettings.url.dev.contentRoot %>${relPathSuffix}`;
 	stagingCfg.options.relativeFontPath = `<%= customSettings.url.staging.contentRoot %>${relPathSuffix}`;
 	prodCfg.options.relativeFontPath = `<%= customSettings.url.prod.contentRoot %>${relPathSuffix}`;
-
 
 	return {
 		dev: devCfg,

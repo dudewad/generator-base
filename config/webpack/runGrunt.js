@@ -1,8 +1,8 @@
 const execSync = require('child_process').execSync;
 const cOut = require('../build-utils/customOutput');
 
-module.exports = function(resourcesRoot, settingsFilename) {
-	let execCmd = `grunt build:staging --resourcesRoot=${resourcesRoot} --settings=${settingsFilename}`;
+module.exports = function(env, resourcesRoot, settingsFilename) {
+	let execCmd = `grunt build:${env} --resourcesRoot=${resourcesRoot} --settings=${settingsFilename}`;
 
 	try {
 		execSync(execCmd, {stdio: 'inherit'});

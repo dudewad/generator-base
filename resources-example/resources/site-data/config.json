@@ -1,5 +1,12 @@
 {
 	"globalConfig": "global.json",
+	"localization": {
+		"default": "en_us",
+		"locales": [
+			"en_us",
+			"es_ar"
+		]
+	},
 	"routes": {
 		"default": "home.json",
 		"/": "home.json",

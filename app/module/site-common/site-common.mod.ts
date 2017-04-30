@@ -1,14 +1,13 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
-import {MainMenu_Mod} from '../main-menu';
+import { StorageService } from './opaque-tokens';
+import { StorageService_Fac } from './factory';
+import { MainMenu_Mod } from '../main-menu';
 
-import {
-	Footer_Cmp,
-	Header_Cmp
-} from './component';
-import {Asset_Svc, Config_Svc} from "./service";
+import { Footer_Cmp, Header_Cmp } from './component';
+import { Asset_Svc, Config_Svc, Localization_Svc } from "./service";
 
 @NgModule({
 	declarations: [
@@ -26,7 +25,13 @@ import {Asset_Svc, Config_Svc} from "./service";
 	],
 	providers: [
 		Asset_Svc,
-		Config_Svc
+		Config_Svc,
+		Localization_Svc,
+		{
+			provide: StorageService,
+			useFactory: StorageService_Fac,
+			deps: []
+		},
 	]
 })
 

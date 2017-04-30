@@ -195,7 +195,7 @@ export class GoogleMap_Svc{
 	/**
 	 * This will handle loading the Google Maps API if necessary. If it's already loaded, we're good to go.
 	 *
-	 * @param mapObj
+	 * @param mapObj {GoogleMapsConfig_Mdl}     The google maps config model to use to initialize the map with
 	 */
 	initMap(mapObj:GoogleMapsConfig_Mdl) {
 		this.mapConfigs.push(mapObj);
@@ -223,7 +223,7 @@ export class GoogleMap_Svc{
 		this.mapsApiLoading = false;
 		this.geoCoder = new google.maps.Geocoder();
 
-		for (var i = 0; i < this.mapConfigs.length; i++) {
+		for (let i = 0; i < this.mapConfigs.length; i++) {
 			this.loadObject(this.mapConfigs[i]);
 		}
 	}

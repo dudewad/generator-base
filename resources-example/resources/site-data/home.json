@@ -18,10 +18,19 @@
 				}
 			},
 			"content": {
-				"title": "The Subdued Dog Bar",
-				"cta": {
-					"text": "Join Us",
-					"href": "/membership"
+				"en_us": {
+					"title": "The Subdued Dog Bar",
+					"cta": {
+						"text": "Join Us",
+						"href": "/membership"
+					}
+				},
+				"es_ar": {
+					"title": "El bar de perros",
+					"cta": {
+						"text": "Venite!",
+						"href": "/membership"
+					}
 				}
 			}
 		},
@@ -31,11 +40,21 @@
 				"class": ["text-center"]
 			},
 			"content": {
-				"title": "What is Paws?",
-				"body": "Paws For a Beer is Bellingham's first and only dog-friendly tavern. Here, dogs with memberships are able to roam freely off-leash inside and outside the premises while their owners and the general 21+ public sip on refreshing beverages. We are dedicated to improving the dog-based community by offering free training courses to our members, networking with local dog rescue agencies to bring deserving dogs to deserving owners, and serve PNW beers, ciders, kombucha and wine. At Paws For a Beer, whether the dogs are on the couches or cruising around behind the bar, it's all good. Because this is all for them.",
-				"cta": {
-					"text": "Hours and Location",
-					"href": "/contact"
+				"en_us": {
+					"title": "What is Paws?",
+					"body": "Paws For a Beer is Bellingham's first and only dog-friendly tavern. Here, dogs with memberships are able to roam freely off-leash inside and outside the premises while their owners and the general 21+ public sip on refreshing beverages. We are dedicated to improving the dog-based community by offering free training courses to our members, networking with local dog rescue agencies to bring deserving dogs to deserving owners, and serve PNW beers, ciders, kombucha and wine. At Paws For a Beer, whether the dogs are on the couches or cruising around behind the bar, it's all good. Because this is all for them.",
+					"cta": {
+						"text": "Hours and Location",
+						"href": "/contact"
+					}
+				},
+				"es_ar": {
+					"title": "Que es Paws?",
+					"body": "Paws For a Beer es el primer bar para gente con perros en Bellingham. Aquí, perros socios pueden correr por donde quieran adentro y por fuera mientras sus dueños y la gente de mas de 21 años disfrutan de tragos refrescantes. Estamos dedicados a mejorar la comunidad a travez de ofrecer cursos gratis de entranamiento a nuestros clientes, conectando con agencias de rescate de animales locales para conectar perros con dueños, y serviendo cervezas, cidras, kombucha y vinos del Pacific Northwest. En Paws for a Beer, esta todo bien si los perros estan sentados en los sofas, o jugando atras del bar. Porque todo esto es por ellos.",
+					"cta": {
+						"text": "Horas y Ubicación",
+						"href": "/contact"
+					}
 				}
 			}
 		},
@@ -47,12 +66,23 @@
 				]
 			},
 			"content": {
-				"title": "Come Visit",
-				"body": "501 Harris Avenue<br>Bellingham, WA 98225<br>360-733-7297",
-				"map": {
-					"type": "map",
-					"placeId": "ChIJG0wMvSKihVQRpndcABnnMLw",
-					"marker": "/paws-marker.svg"
+				"en_us": {
+					"title": "Come Visit",
+					"body": "501 Harris Avenue<br>Bellingham, WA 98225<br>360-733-7297",
+					"map": {
+						"type": "map",
+						"placeId": "ChIJG0wMvSKihVQRpndcABnnMLw",
+						"marker": "/paws-marker.svg"
+					}
+				},
+				"es_ar": {
+					"title": "Venga a visitar",
+					"body": "501 Harris Avenue<br>Bellingham, WA 98225<br>360-733-7297",
+					"map": {
+						"type": "map",
+						"placeId": "ChIJG0wMvSKihVQRpndcABnnMLw",
+						"marker": "/paws-marker.svg"
+					}
 				}
 			}
 		},
@@ -64,35 +94,68 @@
 				]
 			},
 			"content": {
-				"tiles": [
-					{
-						"title": "Dog Bar Rules",
-						"body": "Do's and Dont's in the tavern",
-						"image": "/crosby-1.jpg",
-						"cta": {
-							"text": "Rules &amp; Guidelines",
-							"href": "/rules"
+				"en_us": {
+					"tiles": [
+						{
+							"title": "Dog Bar Rules",
+							"body": "Do's and Dont's in the tavern",
+							"image": "/crosby-1.jpg",
+							"cta": {
+								"text": "Rules &amp; Guidelines",
+								"href": "/rules"
+							}
+						},
+						{
+							"title": "Dog Membership",
+							"body": "How to sign up your furry friend",
+							"image": "/tables-1.jpg",
+							"cta": {
+								"text": "Membership",
+								"href": "/membership"
+							}
+						},
+						{
+							"title": "Hours &amp; Info",
+							"body": "How and when to show up",
+							"image": "/dog-jump.jpg",
+							"cta": {
+								"text": "Hours &amp; Info",
+								"href": "/contact"
+							}
 						}
-					},
-					{
-						"title": "Dog Membership",
-						"body": "How to sign up your furry friend",
-						"image": "/tables-1.jpg",
-						"cta": {
-							"text": "Membership",
-							"href": "/membership"
+					]
+				},
+				"es_ar": {
+					"tiles": [
+						{
+							"title": "Reglas del bar",
+							"body": "Qué se puede hacer adentro",
+							"image": "/crosby-1.jpg",
+							"cta": {
+								"text": "Reglas",
+								"href": "/rules"
+							}
+						},
+						{
+							"title": "Afiliacion de perro",
+							"body": "Como hacerse socio",
+							"image": "/tables-1.jpg",
+							"cta": {
+								"text": "Afiliación",
+								"href": "/membership"
+							}
+						},
+						{
+							"title": "Horas y informacion",
+							"body": "Como y cuando llegar",
+							"image": "/dog-jump.jpg",
+							"cta": {
+								"text": "Horas y info",
+								"href": "/contact"
+							}
 						}
-					},
-					{
-						"title": "Hours &amp; Info",
-						"body": "How and when to show up",
-						"image": "/dog-jump.jpg",
-						"cta": {
-							"text": "Hours &amp; Info",
-							"href": "/contact"
-						}
-					}
-				]
+					]
+				}
 			}
 		}
 	]

@@ -1,31 +1,36 @@
-import {Component, Inject, OnDestroy} from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
+import { Component, Inject, OnDestroy } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
-import {App_Const, Asset_Svc, GlobalEvent_Svc} from '../../../site-common/';
+import { App_Const, Asset_Svc, GlobalEvent_Svc, Localization_Svc, LocalizableContent_Mdl } from '../../../site-common/';
 
 @Component({})
 export abstract class StructureBase_Cmp implements OnDestroy {
 	protected config: any = {};
 	protected content: any = {};
+	private localizableContentObj: LocalizableContent_Mdl;
 	private url: any = {};
 	private resizeHandlerId: number;
 	private win: any = window;
 	private bp: any;
 	private currBp: string;
+	private rawConfig: any;
 
 	constructor(protected sanitizer: DomSanitizer,
 	            @Inject(App_Const) protected constants,
 	            //TODO: OpaqueToken-ize the asset service injection so this stays portable
 	            protected assetSvc: Asset_Svc,
 	            //TODO: OpaqueToken-ize the global event service injection so this stays portable
-	            protected globalEventSvc: GlobalEvent_Svc){
+	            protected globalEventSvc: GlobalEvent_Svc,
+				protected localizationSvc: Localization_Svc){
 		this.url = this.constants.url;
 		this.bp = this.constants.breakpoint;
 	}
 
 	public setConfig(config: any) {
-		this.content = config.content;
+		this.rawConfig = config;
 		this.config = config.config;
+		this.localizableContentObj = this.localizationSvc.registerContent(config.content);
+		this.content = this.localizableContentObj.content;
 		this.setBackground();
 	}
 
@@ -41,8 +46,9 @@ export abstract class StructureBase_Cmp implements OnDestroy {
 		let w = this.win.innerWidth;
 		let newBp;
 		let bg = this.config.background.value;
+		let bp;
 
-		for (var bp in this.bp) {
+		for (bp in this.bp) {
 			if(this.bp.hasOwnProperty(bp) && w < this.bp[bp]){
 				newBp = bp;
 				break;
@@ -89,7 +95,7 @@ export abstract class StructureBase_Cmp implements OnDestroy {
 					break;
 				default:
 					let msg = "Unrecognized background type set. Incorrect JSON. Try again.\nPossible options are:";
-					for (var style in styles) {
+					for (let style in styles) {
 						msg += `\n - ${style}`;
 					}
 					console.warn(msg);
@@ -99,6 +105,7 @@ export abstract class StructureBase_Cmp implements OnDestroy {
 	}
 
 	ngOnDestroy() {
+		this.localizableContentObj.unregister();
 		this.globalEventSvc.unregisterResizeHandler(this.resizeHandlerId);
 	}
 }

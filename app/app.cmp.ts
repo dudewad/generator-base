@@ -1,8 +1,9 @@
-import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
-import {Http} from '@angular/http';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Http } from '@angular/http';
 
-import {App_Const} from './module/site-common';
-import {Config_Svc} from './module/site-common';
+import { App_Const } from './module/site-common';
+import { Config_Svc } from './module/site-common';
+import { StorageService } from './module/site-common';
 
 @Component({
 	selector: 'app-main',
@@ -22,7 +23,9 @@ export class App_Cmp implements OnInit{
 
 	constructor(private configSvc:Config_Svc,
 				private http: Http,
-	            @Inject(App_Const) private constants){
+	            @Inject(App_Const) private constants,
+				@Inject(StorageService) private storageService){
+
 	}
 
 	ngOnInit() {

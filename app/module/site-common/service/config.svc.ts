@@ -1,7 +1,10 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class Config_Svc {
+	configUpdatedEvent: Subject<any> = new Subject<any>();
+
 	private configs:any = {};
 	private configUpdateCallbacks:Array<any> = [];
 
@@ -10,6 +13,10 @@ export class Config_Svc {
 		for(let i = 0, len = this.configUpdateCallbacks.length; i < len; i++){
 			(this.configUpdateCallbacks[i].fn)(type, this.configs[type]);
 		}
+		this.configUpdatedEvent.next({
+			type,
+			config: this.configs[type]
+		});
 	}
 
 	getConfig(type):any {

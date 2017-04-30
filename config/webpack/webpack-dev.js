@@ -20,7 +20,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 /**
  * Webpack Constants
  */
-const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+const ENV = process.env.ENV = process.env.NODE_ENV = 'dev';
 
 /**
  * Webpack configuration
@@ -42,7 +42,7 @@ module.exports = function(env) {
 	const resRoot = metadata.resourcesRoot;
 	const style = customSettings.style;
 	integrationTools.importStyleOverrides(path.join(resRoot, style.overridesBaseDir), style.overridesEntryPoint);
-	runGrunt(resRoot, metadata.settingsFilename);
+	runGrunt(ENV, resRoot, metadata.settingsFilename);
 
 	return webpackMerge(commonConfig(env), {
 		devServer: {inline: true},

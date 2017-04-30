@@ -1,7 +1,7 @@
 import {Component, Inject, OnDestroy, ViewChild, ViewContainerRef} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
-import {App_Const, Asset_Svc, GlobalEvent_Svc, GoogleMapsConfig_Mdl, GoogleMap_Svc} from '../../../site-common/';
+import {App_Const, Asset_Svc, GlobalEvent_Svc, GoogleMapsConfig_Mdl, GoogleMap_Svc, Localization_Svc} from '../../../site-common/';
 import {StructureBase_Cmp} from '../../';
 
 @Component({
@@ -20,8 +20,9 @@ export class Ribbon_Cmp extends StructureBase_Cmp implements OnDestroy{
 	            @Inject(App_Const) protected constants,
 	            protected assetSvc: Asset_Svc,
 	            protected globalEventSvc: GlobalEvent_Svc,
-				private googleMapSvc:GoogleMap_Svc) {
-		super(sanitizer, constants, assetSvc, globalEventSvc);
+				private googleMapSvc:GoogleMap_Svc,
+				protected localizationSvc: Localization_Svc) {
+		super(sanitizer, constants, assetSvc, globalEventSvc, localizationSvc);
 	}
 
 	public setConfig(config) {

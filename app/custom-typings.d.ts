@@ -1,11 +1,11 @@
-declare var BREAKPOINT: any;
-declare var ENV: string;
-declare var VERSION: string;
-declare var VERSION_DTM: string;
-declare var CONTENT_ROOT: string;
-declare var DATA_ROOT: string;
-declare var FONT_RELATIVE_PATH: string;
-declare var IMAGE_RELATIVE_PATH: string;
+declare let BREAKPOINT: any;
+declare let ENV: string;
+declare let VERSION: string;
+declare let VERSION_DTM: string;
+declare let CONTENT_ROOT: string;
+declare let DATA_ROOT: string;
+declare let FONT_RELATIVE_PATH: string;
+declare let IMAGE_RELATIVE_PATH: string;
 interface GlobalEnvironment {
 	ENV;
 }

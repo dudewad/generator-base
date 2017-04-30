@@ -53,7 +53,7 @@ module.exports = function (env) {
 	};
 	const style = customSettings.style;
 	integrationTools.importStyleOverrides(path.join(resRoot, style.overridesBaseDir), style.overridesEntryPoint);
-	runGrunt(resRoot, metadata.settingsFilename);
+	runGrunt(ENV, resRoot, metadata.settingsFilename);
 
 	return webpackMerge(commonConfig(env), {
 		module: {
