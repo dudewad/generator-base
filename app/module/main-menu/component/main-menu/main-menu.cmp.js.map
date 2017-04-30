@@ -1,1 +1,0 @@
-{"version":3,"file":"main-menu.cmp.js","sourceRoot":"","sources":["main-menu.cmp.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAAwB,eAAe,CAAC,CAAA;AAOxC;IACC;QACC,OAAO,CAAC,GAAG,CAAC,wBAAwB,CAAC,CAAC;IACvC,CAAC;IARF;QAAC,gBAAS,CAAC;YACV,QAAQ,EAAE,WAAW;YACrB,QAAQ,EAAE,OAAO,CAAC,sBAAsB,CAAC;SACzC,CAAC;;oBAAA;IAMF,mBAAC;AAAD,CAAC,AAJD,IAIC;AAJY,oBAAY,eAIxB,CAAA"}
