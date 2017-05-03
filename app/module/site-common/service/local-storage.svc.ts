@@ -5,24 +5,6 @@ export class LocalStorage_Svc implements StorageService_Int {
 
 	constructor() {
 		console.log('[ LocalStorage found ]');
-		this.set('test a', ';sdflkjc/ \\ .sdlfkj&^*(_#@4');
-		this.set('test b', {
-			test: [
-				1,
-				"two",
-				true,
-				false
-			],
-			a: 'Lookin good!,...;/',
-			c: {
-				test: {
-					testnest: 1234,
-					ok: "yay"
-				}
-			}
-		});
-		console.log(this.get('test a'));
-		console.log(this.get('test b'));
 	}
 
 	get(name: string) {

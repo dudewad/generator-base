@@ -18,14 +18,14 @@
 				}
 			},
 			"content": {
-				"en_us": {
+				"en-us": {
 					"title": "The Subdued Dog Bar",
 					"cta": {
 						"text": "Join Us",
 						"href": "/membership"
 					}
 				},
-				"es_ar": {
+				"es-ar": {
 					"title": "El bar de perros",
 					"cta": {
 						"text": "Venite!",
@@ -40,7 +40,7 @@
 				"class": ["text-center"]
 			},
 			"content": {
-				"en_us": {
+				"en-us": {
 					"title": "What is Paws?",
 					"body": "Paws For a Beer is Bellingham's first and only dog-friendly tavern. Here, dogs with memberships are able to roam freely off-leash inside and outside the premises while their owners and the general 21+ public sip on refreshing beverages. We are dedicated to improving the dog-based community by offering free training courses to our members, networking with local dog rescue agencies to bring deserving dogs to deserving owners, and serve PNW beers, ciders, kombucha and wine. At Paws For a Beer, whether the dogs are on the couches or cruising around behind the bar, it's all good. Because this is all for them.",
 					"cta": {
@@ -48,7 +48,7 @@
 						"href": "/contact"
 					}
 				},
-				"es_ar": {
+				"es-ar": {
 					"title": "Que es Paws?",
 					"body": "Paws For a Beer es el primer bar para gente con perros en Bellingham. Aquí, perros socios pueden correr por donde quieran adentro y por fuera mientras sus dueños y la gente de mas de 21 años disfrutan de tragos refrescantes. Estamos dedicados a mejorar la comunidad a travez de ofrecer cursos gratis de entranamiento a nuestros clientes, conectando con agencias de rescate de animales locales para conectar perros con dueños, y serviendo cervezas, cidras, kombucha y vinos del Pacific Northwest. En Paws for a Beer, esta todo bien si los perros estan sentados en los sofas, o jugando atras del bar. Porque todo esto es por ellos.",
 					"cta": {
@@ -66,7 +66,7 @@
 				]
 			},
 			"content": {
-				"en_us": {
+				"en-us": {
 					"title": "Come Visit",
 					"body": "501 Harris Avenue<br>Bellingham, WA 98225<br>360-733-7297",
 					"map": {
@@ -75,7 +75,7 @@
 						"marker": "/paws-marker.svg"
 					}
 				},
-				"es_ar": {
+				"es-ar": {
 					"title": "Venga a visitar",
 					"body": "501 Harris Avenue<br>Bellingham, WA 98225<br>360-733-7297",
 					"map": {
@@ -94,7 +94,7 @@
 				]
 			},
 			"content": {
-				"en_us": {
+				"en-us": {
 					"tiles": [
 						{
 							"title": "Dog Bar Rules",
@@ -125,7 +125,7 @@
 						}
 					]
 				},
-				"es_ar": {
+				"es-ar": {
 					"tiles": [
 						{
 							"title": "Reglas del bar",

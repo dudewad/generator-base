@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class Config_Svc {
-	configUpdatedEvent: Subject<any> = new Subject<any>();
+	configUpdatedEvent: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
 	private configs:any = {};
 	private configUpdateCallbacks:Array<any> = [];
@@ -21,16 +21,6 @@ export class Config_Svc {
 
 	getConfig(type):any {
 		return this.configs[type];
-	}
-
-	onConfigUpdate(fn) {
-		let that = this;
-		let id = this.configUpdateCallbacks.length;
-
-		this.configUpdateCallbacks.push({fn, id});
-		return function() {
-			that.clearUpdateListener(id);
-		}
 	}
 
 	private clearUpdateListener(id) {

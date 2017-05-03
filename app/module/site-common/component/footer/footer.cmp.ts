@@ -1,7 +1,8 @@
-import {Component, Inject, OnInit, OnDestroy} from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
 
-import {App_Const, Config_Svc} from "../../";
+import { App_Const, Config_Svc } from "../../";
 
 @Component({
 	selector: 'site-footer',
@@ -9,9 +10,9 @@ import {App_Const, Config_Svc} from "../../";
 	styles: [require('./footer.cmp.scss')]
 })
 
-export class Footer_Cmp implements OnInit, OnDestroy{
+export class Footer_Cmp implements OnInit, OnDestroy {
 	private config: any;
-	private configSvcUnsubscriber: any;
+	private configSvcSub: Subscription;
 	private content: any = {};
 
 	constructor(private configSvc: Config_Svc,
@@ -32,14 +33,16 @@ export class Footer_Cmp implements OnInit, OnDestroy{
 
 	ngOnInit() {
 		this.config = this.configSvc.getConfig(this.constants.configTypes.global);
-		this.configSvcUnsubscriber = this.configSvc.onConfigUpdate(this.onConfigChange.bind(this));
+		this.configSvcSub = this.configSvc.configUpdatedEvent.subscribe(data => {
+			this.onConfigChange(data.type, data.config)
+		});
 	}
 
 	ngOnDestroy() {
-		this.configSvcUnsubscriber();
+		this.configSvcSub.unsubscribe();
 	}
 
-	private getDate() {
+	getDate() {
 		return new Date().getFullYear();
 	}
 }

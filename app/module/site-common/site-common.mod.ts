@@ -6,13 +6,14 @@ import { StorageService } from './opaque-tokens';
 import { StorageService_Fac } from './factory';
 import { MainMenu_Mod } from '../main-menu';
 
-import { Footer_Cmp, Header_Cmp } from './component';
+import { Footer_Cmp, Header_Cmp, LocaleSwitcher_Cmp } from './component';
 import { Asset_Svc, Config_Svc, Localization_Svc } from "./service";
 
 @NgModule({
 	declarations: [
 		Footer_Cmp,
-		Header_Cmp
+		Header_Cmp,
+		LocaleSwitcher_Cmp
 	],
 	imports: [
 		CommonModule,

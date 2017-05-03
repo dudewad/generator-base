@@ -1,4 +1,4 @@
-import {Component, Inject, OnDestroy, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, Inject, ViewChild, ViewContainerRef} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 import {App_Const, Asset_Svc, GlobalEvent_Svc, GoogleMapsConfig_Mdl, GoogleMap_Svc, Localization_Svc} from '../../../site-common/';
@@ -9,7 +9,7 @@ import {StructureBase_Cmp} from '../../';
 	template: require('./ribbon.cmp.html'),
 	styles: [require('./ribbon.cmp.scss')]
 })
-export class Ribbon_Cmp extends StructureBase_Cmp implements OnDestroy{
+export class Ribbon_Cmp extends StructureBase_Cmp{
 	private iframeSrc:SafeResourceUrl;
 	private hasMap:boolean = false;
 	private hasIframe:boolean = false;
@@ -42,9 +42,5 @@ export class Ribbon_Cmp extends StructureBase_Cmp implements OnDestroy{
 
 	private setIframeSrc() {
 		this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.content.iframe);
-	}
-
-	ngOnDestroy() {
-
 	}
 }

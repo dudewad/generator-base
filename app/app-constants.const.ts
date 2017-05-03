@@ -1,5 +1,3 @@
-var $ = require("jquery");
-
 let consts = {
 	breakpoint: BREAKPOINT,
 	configTypes:{

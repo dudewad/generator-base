@@ -17,8 +17,8 @@ export class StructureBuilder_Cmp implements OnInit, OnDestroy {
 	//Once loaded, will contain the mapping of site routes/paths to json files
 	private config: any;
 	//Routes called before the routeMap has loaded will be stored here.
-	private currentRoute:any;
-	private configSvcUnsubscriber:any;
+	private currentRoute: any;
+	private configSvcSub: Subscription;
 	private body: any = document.getElementsByTagName("body")[0];
 	//View child contains the rendered content for the structure
 	@ViewChild('structure', {read: ViewContainerRef}) structureContainer: ViewContainerRef;
@@ -32,7 +32,9 @@ export class StructureBuilder_Cmp implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		this.config = this.configSvc.getConfig(this.constants.configTypes.app);
-		this.configSvcUnsubscriber = this.configSvc.onConfigUpdate(this.onConfigChange.bind(this));
+		this.configSvcSub = this.configSvc.configUpdatedEvent.subscribe(data => {
+			this.onConfigChange(data.type, data.config);
+		});
 
 		this.routerEventSub = this.router.events
 			.filter(evt => evt instanceof NavigationEnd)
@@ -124,6 +126,6 @@ export class StructureBuilder_Cmp implements OnInit, OnDestroy {
 
 	ngOnDestroy() {
 		this.routerEventSub.unsubscribe();
-		this.configSvcUnsubscriber();
+		this.configSvcSub.unsubscribe();
 	}
 }

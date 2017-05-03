@@ -66,7 +66,7 @@ module.exports = function (env) {
 		],
 		resolve: {
 			extensions: ['.ts', '.js'],
-			modules: ['node_modules'],
+			modules: [helpers.root('app'), 'node_modules'],
 			alias: {}
 		}
 	}
