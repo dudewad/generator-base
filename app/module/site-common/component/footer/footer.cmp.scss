@@ -22,6 +22,13 @@ footer {
 		}
 	}
 
+	.locale-switcher {
+		ul {
+			bottom: 100%;
+			margin-bottom: 1em;
+		}
+	}
+
 	.footer-section {
 		&:first-child {
 			h3{

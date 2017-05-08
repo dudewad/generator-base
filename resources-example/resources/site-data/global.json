@@ -7,66 +7,131 @@
 		},
 		"footer": {
 			"content": {
-				"copyright": {
-					"copy": "Paws for a Beer"
-				},
-				"sections":[
-					{
-						"title": "Who We Are",
-						"items": [
-							{
-								"routerLink": "/about",
-								"copy": "About Us"
-							},
-							{
-								"routerLink": "/contact",
-								"copy": "Contact Us"
-							}
-						]
+				"en-us": {
+					"copyright": {
+						"copy": "Paws for a Beer"
 					},
-					{
-						"title": "Resources",
+					"sections": [
+						{
+							"title": "Who We Are",
+							"items": [
+								{
+									"routerLink": "/about",
+									"copy": "About Us"
+								},
+								{
+									"routerLink": "/contact",
+									"copy": "Contact Us"
+								}
+							]
+						},
+						{
+							"title": "Resources",
+							"items": [
+								{
+									"routerLink": "/membership",
+									"copy": "Membership"
+								},
+								{
+									"routerLink": "/rules",
+									"copy": "Rules &amp; Guidelines"
+								},
+								{
+									"routerLink": "/contact",
+									"copy": "Hours &amp; Location"
+								}
+							]
+						},
+						{
+							"title": "Things We Like",
+							"items": [
+								{
+									"href": "http://www.humanesociety.org/",
+									"copy": "Humane Society"
+								},
+								{
+									"href": "http://rylanschoen.com/",
+									"copy": "Rylan Schoen Photography"
+								}
+							]
+						}
+					],
+					"social": {
+						"title": "Support Us",
 						"items": [
 							{
-								"routerLink": "/membership",
-								"copy": "Membership"
+								"type": "facebook",
+								"href": "https://www.facebook.com/pawsforabeer/"
 							},
 							{
-								"routerLink": "/rules",
-								"copy": "Rules &amp; Guidelines"
-							},
-							{
-								"routerLink": "/contact",
-								"copy": "Hours &amp; Location"
-							}
-						]
-					},
-					{
-						"title": "Things We Like",
-						"items": [
-							{
-								"href": "http://www.humanesociety.org/",
-								"copy": "Humane Society"
-							},
-							{
-								"href": "http://rylanschoen.com/",
-								"copy": "Rylan Schoen Photography"
+								"type": "instagram",
+								"href": "https://www.instagram.com/paws_forabeer/"
 							}
 						]
 					}
-				],
-				"social": {
-					"title": "Support Us",
-					"items": [
+				},
+				"es-ar": {
+					"copyright": {
+						"copy": "Paws for a Beer"
+					},
+					"sections": [
 						{
-							"type": "facebook",
-							"href": "https://www.facebook.com/pawsforabeer/"
+							"title": "Quienes Somos",
+							"items": [
+								{
+									"routerLink": "/about",
+									"copy": "Sobre"
+								},
+								{
+									"routerLink": "/contact",
+									"copy": "Contáctenos"
+								}
+							]
 						},
 						{
-							"type": "instagram",
-							"href": "https://www.instagram.com/paws_forabeer/"
+							"title": "Resources",
+							"items": [
+								{
+									"routerLink": "/membership",
+									"copy": "Hacerse Socio"
+								},
+								{
+									"routerLink": "/rules",
+									"copy": "Reglas"
+								},
+								{
+									"routerLink": "/contact",
+									"copy": "Horas y Ubicación"
+								}
+							]
+						},
+						{
+							"title": "Cosas que nos gustan",
+							"items": [
+								{
+									"href": "http://www.humanesociety.org/",
+									"copy": "Humane Society"
+								},
+								{
+									"href": "http://rylanschoen.com/",
+									"copy": "Rylan Schoen Fotografía"
+								}
+							]
 						}
-					]
+					],
+					"social": {
+						"title": "Support Us",
+						"items": [
+							{
+								"type": "facebook",
+								"href": "https://www.facebook.com/pawsforabeer/"
+							},
+							{
+								"type": "instagram",
+								"href": "https://www.instagram.com/paws_forabeer/"
+							}
+						]
+					}
 				}
 			}
 		}

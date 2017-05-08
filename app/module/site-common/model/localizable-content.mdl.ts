@@ -5,16 +5,25 @@ export class LocalizableContent_Mdl {
 
 	constructor(private baseContentObj: any,
 	            private locale: string,
-				private unregisterCallback: Function) {
+				private unregisterCallback: Function,
+				private defaultLocale?: string) {
 		this.setLocale(locale);
 	}
 
 	setLocale(locale: string) {
-		let src = this.baseContentObj[locale] ? this.baseContentObj[locale] : this.baseContentObj;
 		let target = this.content;
+		let src;
 
 		if(locale === this.currentLocale) {
 			return;
+		}
+
+		src = this.baseContentObj[locale];
+		if (!src && this.defaultLocale) {
+			src = this.baseContentObj[this.defaultLocale];
+		}
+		if (!src) {
+			src = this.baseContentObj;
 		}
 
 		this.currentLocale = locale;
@@ -29,6 +38,13 @@ export class LocalizableContent_Mdl {
 			if(src.hasOwnProperty(key)) {
 				target[key] = src[key];
 			}
+		}
+	}
+
+	setDefaultLocale(locale: string) {
+		this.defaultLocale = locale;
+		if (!this.locale) {
+			this.setLocale(locale);
 		}
 	}
 

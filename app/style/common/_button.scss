@@ -29,6 +29,26 @@ button,
 		background: map-get($colors, button-active-bg);
 	}
 
+	&.utility {
+		color: map-get($colors, button-utility-color);
+		background: map-get($colors, button-utility-bg);
+
+		&:visited {
+			color: map-get($colors, button-utility-color);
+			background: map-get($colors, button-utility-hover-bg);
+		}
+
+		&:hover {
+			color: map-get($colors, button-utility-color);
+			background: map-get($colors, button-utility-hover-bg);
+		}
+
+		&:active {
+			color: map-get($colors, button-utility-color);
+			background: map-get($colors, button-utility-active-bg);
+		}
+	}
+
 	@media screen and(min-width: $screen-md-min) {
 		font-size: 1.1rem;
 	}

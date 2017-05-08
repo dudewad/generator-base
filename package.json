@@ -72,7 +72,8 @@
   "scripts": {
     "build:prod": "webpack --config config/webpack/webpack-prod.js --profile --colors --display-error-details --display-cached --bail --verbose",
     "build:staging": "webpack --config config/webpack/webpack-staging.js --profile --colors --display-error-details --display-cached --bail --verbose",
-    "start": "node ./config/webpack/server-dev.js"
+    "start": "node ./config/webpack/server-dev.js",
+    "example": "node ./config/webpack/server-dev.js --env.resourcesRoot=./resources-example"
   },
   "repository": {
     "type": "git",

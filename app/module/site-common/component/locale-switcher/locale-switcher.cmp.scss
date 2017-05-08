@@ -1,2 +1,35 @@
+@import '../../../../style/variables';
+
 .locale-switcher {
+	position:relative;
+
+	ul {
+		position: absolute;
+		z-index: 999999;
+		max-height: 300px;
+		max-width: 100%;
+		padding: 1em;
+		overflow:auto;
+		border-radius: 5px;
+		background: map-get($colors, locale-switcher-list-bg);
+
+		li {
+			margin: 0 0 .5em 0;
+
+			&:before {
+				display: none;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		button {
+			padding: .5em;
+			color: map-get($colors, locale-switcher-list-item-color);
+			background-color: map-get($colors, locale-switcher-list-item-bg);
+			font-family: $body-font-family;
+		}
+	}
 }

@@ -1,18 +1,21 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, Inject, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Config_Svc, App_Const } from '../../';
+import {App_Const, Config_Svc, LocalizableContent_Mdl, Localization_Svc } from '../../';
 
 @Component({
 	selector: 'site-header',
 	template: require('./header.cmp.html'),
-	styles: [require('./header.cmp.scss')]
+	styles: [require('./header.cmp.scss')],
+	encapsulation: ViewEncapsulation.None
 })
 
 export class Header_Cmp implements OnDestroy, OnInit{
+	private content:  any = {};
+
+	private localizableContentObj: LocalizableContent_Mdl;
 	private config: any;
 	private configSvcSub: Subscription;
-	private content:  any = {};
 	private state: any = {
 		mainMenu: {
 			enabled: true
@@ -20,13 +23,15 @@ export class Header_Cmp implements OnDestroy, OnInit{
 	};
 
 	constructor(private configSvc: Config_Svc,
+	            private localizationSvc: Localization_Svc,
 	            @Inject(App_Const) private constants) {
 	}
 
 	private onConfigChange(type, config) {
 		if(type === this.constants.configTypes.global) {
 			this.config = config.component.header;
-			this.content = config.component.header.content;
+			this.localizableContentObj = this.localizationSvc.registerContent(this.config.content);
+			this.content = this.localizableContentObj.content;
 		}
 	}
 
@@ -39,5 +44,6 @@ export class Header_Cmp implements OnDestroy, OnInit{
 
 	ngOnDestroy() {
 		this.configSvcSub.unsubscribe();
+		this.localizableContentObj.unregister();
 	}
 }
