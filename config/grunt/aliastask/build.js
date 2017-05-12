@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 		"webfont:staging"
 	]);
 
-	grunt.registerTask("build:prod", [
+	grunt.registerTask("build:production", [
 		"clean",
 		"webfont:prod"
 	]);
