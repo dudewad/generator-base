@@ -39,16 +39,16 @@ module.exports = function (env) {
 		DATA_ROOT: customSettings.url.staging.dataRoot
 	});
 	const resRoot = metadata.resourcesRoot;
-	const outputBase = customSettings.build.outputBase.staging;
+	const outputBase = path.join(helpers.root(env.resourcesRoot, customSettings.build.outputBase.staging));
 	const paths = {
 		input: {
 			contentRoot: path.join(resRoot, customSettings.resources.contentRoot),
 			dataRoot: path.join(resRoot, customSettings.resources.dataRoot)
 		},
 		output: {
-			content: helpers.root(path.join(outputBase, 'asset')),
-			site: helpers.root(path.join(outputBase, 'site')),
-			siteData: helpers.root(path.join(outputBase, 'site', 'site-data'))
+			content: path.join(outputBase, 'asset'),
+			site: path.join(outputBase, 'site'),
+			siteData: path.join(outputBase, 'site', 'site-data')
 		}
 	};
 	const style = customSettings.style;

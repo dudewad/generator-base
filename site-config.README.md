@@ -27,7 +27,7 @@ There is an example file at `resources-example/settings.json`.
 				- `port` - (`3000`) - `Number`
 					- The port to use.
 		- `outputBase` - `Required`
-			- Output locations - this is base directory where compiled output will go.
+			- Output locations - this is base directory where compiled output will go, relative to the location of the settings file itself.
 				- `prod` - `Required` - `String`
 					- The target location for output when building for prod, i.e. `dist/prod`
 				- `staging` - `Required` - `String`
