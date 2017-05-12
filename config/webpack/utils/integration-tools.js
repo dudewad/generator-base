@@ -4,6 +4,7 @@ const ncp = require('ncp');
 const path = require('path');
 const helpers = require('./helpers');
 const pkg = require(helpers.root() + '/package.json');
+const mkdirp = require('mkdirp');
 
 function copyResourcesToTemp(env) {
 	let tempBase = pkg.directories.webpackTempBuildBase;
@@ -47,7 +48,12 @@ function buildSassFontFile(filename, fonts) {
 		}
 	}
 
-	fs.writeFileSync(filename, str);
+	mkdirp(path.parse(filename).base, function(err) {
+		if (err) {
+			throw new Error("Couldn't write font scss file!! Aborting. This is a problem in the generator, and likely a bug.");
+		}
+		fs.writeFileSync(filename, str);
+	});
 }
 
 /**

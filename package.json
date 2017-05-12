@@ -41,6 +41,7 @@
     "grunt-webfont": "^1.6.0",
     "html-webpack-plugin": "^2.22.0",
     "load-grunt-tasks": "^3.5.2",
+    "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
     "node-sass": "^3.10.1",
     "postcss-loader": "^1.3.3",
