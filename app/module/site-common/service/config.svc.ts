@@ -22,14 +22,4 @@ export class Config_Svc {
 	getConfig(type):any {
 		return this.configs[type];
 	}
-
-	private clearUpdateListener(id) {
-		for (let i = 0, len = this.configUpdateCallbacks.length; i < len; i++) {
-			let callback = this.configUpdateCallbacks[i];
-			if(callback.id === id){
-				this.configUpdateCallbacks.splice(i, 1);
-				break;
-			}
-		}
-	}
 }

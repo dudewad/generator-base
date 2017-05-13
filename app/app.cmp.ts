@@ -12,20 +12,21 @@ import { StorageService } from './module/site-common';
 	encapsulation: ViewEncapsulation.None
 })
 export class App_Cmp implements OnInit{
-	private state:any = {
-		header: {
-			enabled: true
-		},
-		footer: {
-			enabled: true
-		}
+	state:any = {
+		header: false,
+		footer: false
 	};
 
 	constructor(private configSvc:Config_Svc,
 				private http: Http,
-	            @Inject(App_Const) private constants,
-				@Inject(StorageService) private storageService){
-
+	            @Inject(App_Const) private constants){
+		this.configSvc.configUpdatedEvent
+			.filter(data => data.type === this.constants.configTypes.page)
+			.subscribe(data => {
+				let cfg = data.config.config;
+				this.state.header = cfg.header;
+				this.state.footer = cfg.footer;
+			});
 	}
 
 	ngOnInit() {

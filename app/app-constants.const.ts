@@ -2,7 +2,8 @@ let consts = {
 	breakpoint: BREAKPOINT,
 	configTypes:{
 		app: 'app',
-		global: 'global'
+		global: 'global',
+		page: 'page'
 	},
 	url: {
 		contentRoot: CONTENT_ROOT,

@@ -1,0 +1,5 @@
+<a [routerLink]="['/']" [ngSwitch]="type" class="logo">
+	<i *ngSwitchCase="icon" class="siteIcon siteIcon-logoTypographic"></i>
+	<img *ngSwitchCase="image" />
+	<span *ngSwitchCase="text">{{title}}</span>
+</a>

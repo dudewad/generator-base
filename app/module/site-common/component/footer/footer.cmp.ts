@@ -34,7 +34,7 @@ export class Footer_Cmp implements OnInit, OnDestroy {
 
 	ngOnDestroy() {
 		this.configSvcSub.unsubscribe();
-		this.localizableContentObj.unregister();
+		this.localizableContentObj && this.localizableContentObj.unregister();
 	}
 
 	getSanHtml(str) {

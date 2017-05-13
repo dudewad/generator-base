@@ -11,16 +11,14 @@ import {App_Const, Config_Svc, LocalizableContent_Mdl, Localization_Svc } from '
 })
 
 export class Header_Cmp implements OnDestroy, OnInit{
-	private content:  any = {};
+	content: any = {};
+	state: any = {
+		mainMenu: true
+	};
 
 	private localizableContentObj: LocalizableContent_Mdl;
 	private config: any;
 	private configSvcSub: Subscription;
-	private state: any = {
-		mainMenu: {
-			enabled: true
-		}
-	};
 
 	constructor(private configSvc: Config_Svc,
 	            private localizationSvc: Localization_Svc,
@@ -37,7 +35,7 @@ export class Header_Cmp implements OnDestroy, OnInit{
 
 	ngOnDestroy() {
 		this.configSvcSub.unsubscribe();
-		this.localizableContentObj.unregister();
+		this.localizableContentObj && this.localizableContentObj.unregister();
 	}
 
 	private onConfigChange(config) {
