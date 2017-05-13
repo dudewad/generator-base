@@ -24,23 +24,12 @@ export class Footer_Cmp implements OnInit, OnDestroy {
 	            @Inject(App_Const) private constants) {
 	}
 
-	public getSanHtml(str) {
-		return this.sanitizer.bypassSecurityTrustHtml(str);
-	}
-
-	private onConfigChange(type, config) {
-		if (type === this.constants.configTypes.global) {
-			this.config = config.component.footer;
-			this.localizableContentObj = this.localizationSvc.registerContent(this.config.content);
-			this.content = this.localizableContentObj.content;
-		}
-	}
-
 	ngOnInit() {
-		this.config = this.configSvc.getConfig(this.constants.configTypes.global);
-		this.configSvcSub = this.configSvc.configUpdatedEvent.subscribe(data => {
-			this.onConfigChange(data.type, data.config)
-		});
+		this.configSvcSub = this.configSvc.configUpdatedEvent
+			.filter(data => data.type === this.constants.configTypes.global)
+			.subscribe(data => {
+				this.onConfigChange(data.config)
+			});
 	}
 
 	ngOnDestroy() {
@@ -48,7 +37,18 @@ export class Footer_Cmp implements OnInit, OnDestroy {
 		this.localizableContentObj.unregister();
 	}
 
+	getSanHtml(str) {
+		return this.sanitizer.bypassSecurityTrustHtml(str);
+	}
+
 	getDate() {
 		return new Date().getFullYear();
+	}
+
+	private onConfigChange(config) {
+		this.config = config.component.footer;
+		this.localizableContentObj && this.localizableContentObj.unregister();
+		this.localizableContentObj = this.localizationSvc.registerContent(this.config.content);
+		this.content = this.localizableContentObj.content;
 	}
 }

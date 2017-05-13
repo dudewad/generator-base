@@ -27,23 +27,23 @@ export class Header_Cmp implements OnDestroy, OnInit{
 	            @Inject(App_Const) private constants) {
 	}
 
-	private onConfigChange(type, config) {
-		if(type === this.constants.configTypes.global) {
-			this.config = config.component.header;
-			this.localizableContentObj = this.localizationSvc.registerContent(this.config.content);
-			this.content = this.localizableContentObj.content;
-		}
-	}
-
 	ngOnInit() {
-		this.config = this.configSvc.getConfig(this.constants.configTypes.global);
-		this.configSvcSub = this.configSvc.configUpdatedEvent.subscribe(data => {
-			this.onConfigChange(data.type, data.config);
-		});
+		this.configSvcSub = this.configSvc.configUpdatedEvent
+			.filter(data => data.type === this.constants.configTypes.global)
+			.subscribe(data => {
+				this.onConfigChange(data.config);
+			});
 	}
 
 	ngOnDestroy() {
 		this.configSvcSub.unsubscribe();
 		this.localizableContentObj.unregister();
+	}
+
+	private onConfigChange(config) {
+		this.config = config.component.header;
+		this.localizableContentObj && this.localizableContentObj.unregister();
+		this.localizableContentObj = this.localizationSvc.registerContent(this.config.content);
+		this.content = this.localizableContentObj.content;
 	}
 }

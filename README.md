@@ -101,7 +101,7 @@ For configuration of fonts, see the `site-config.README.md` file.
 
 ### Overriding codepoints
 
-Codepoints define what glymph is assigned to what numeric value in a font. By creating a `codepoints.js` file and placing it in the `src` directory for the defined font alongside all of the svg vector files, you can override the project defaults and specify your own values for any codepoints that you want. See the `codepoints.js` example in the `siteIcon` font in the `resources-example` directory for more.
+Codepoints define what glyph is assigned to what numeric value in a font. By creating a `codepoints.js` file and placing it in the `src` directory for the defined font alongside all of the svg vector files, you can override the project defaults and specify your own values for any codepoints that you want. See the `codepoints.js.example` file in the `siteIcon` font in the `resources-example` directory for more.
 
 ## .htaccess
 
