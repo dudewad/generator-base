@@ -29,6 +29,7 @@ export abstract class StructureBase_Cmp implements OnDestroy {
 	public setConfig(config: any) {
 		this.rawConfig = config;
 		this.config = config.config;
+		this.localizableContentObj && this.localizableContentObj.unregister();
 		this.localizableContentObj = this.localizationSvc.registerContent(config.content);
 		this.content = this.localizableContentObj.content;
 		this.setBackground();

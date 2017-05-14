@@ -1,6 +1,6 @@
 {
 	"config": {
-		"header": true,
+		"header": false,
 		"footer": true,
 		"mainMenu": true
 	},

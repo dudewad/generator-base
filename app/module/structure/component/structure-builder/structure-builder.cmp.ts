@@ -122,6 +122,7 @@ export class StructureBuilder_Cmp implements OnInit, OnDestroy {
 		this.renderer.clearPage(this.structureContainer);
 		this.renderer.renderPage(conf, this.structureContainer);
 		this.body.scrollTop = 0;
+		this.configSvc.setConfig(this.constants.configTypes.page, config);
 	}
 
 	ngOnDestroy() {

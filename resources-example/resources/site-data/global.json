@@ -1,8 +1,20 @@
 {
 	"component": {
+		"localeSwitcher": {
+			"content": {
+				"en-us": {
+					"title": "Language"
+				},
+				"es-ar": {
+					"title": "Idioma"
+				}
+			}
+		},
 		"header": {
 			"content": {
-				"cta": "How to Join"
+				"logo": {
+					"type": "icon"
+				}
 			}
 		},
 		"footer": {

@@ -1,8 +1,11 @@
 <header>
 	<div class="controls">
 		<!--<i class="siteIcon siteIcon-menu menu-toggle"></i>-->
-		<a [routerLink]="['/']" class="logo">
-			<i class="siteIcon siteIcon-logoTypographic"></i>
+		<a [routerLink]="['/']"
+		   [ngSwitch]="config?.type"
+		   *ngIf="content.logo"
+		   class="logo">
+			<logo [config]="content.logo"></logo>
 		</a>
 	</div>
 	<div class="actions">

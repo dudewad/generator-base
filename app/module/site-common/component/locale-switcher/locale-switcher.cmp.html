@@ -1,7 +1,7 @@
 <div class="locale-switcher">
 	<button (click)="toggle()" class="utility">
 		<i class="siteIcon siteIcon-globe"></i>
-		Locales
+		{{this.content.title}}
 	</button>
 	<ul *ngIf="active">
 		<li *ngFor="let locale of locales"

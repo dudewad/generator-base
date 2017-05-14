@@ -2,7 +2,13 @@ let consts = {
 	breakpoint: BREAKPOINT,
 	configTypes:{
 		app: 'app',
-		global: 'global'
+		global: 'global',
+		page: 'page'
+	},
+	logoTypes:{
+		image: 'image',
+		icon: 'icon',
+		text: 'text'
 	},
 	url: {
 		contentRoot: CONTENT_ROOT,

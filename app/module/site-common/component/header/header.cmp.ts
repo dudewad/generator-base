@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, Inject, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import {App_Const, Config_Svc, LocalizableContent_Mdl, Localization_Svc } from '../../';
@@ -10,40 +10,39 @@ import {App_Const, Config_Svc, LocalizableContent_Mdl, Localization_Svc } from '
 	encapsulation: ViewEncapsulation.None
 })
 
-export class Header_Cmp implements OnDestroy, OnInit{
-	private content:  any = {};
+export class Header_Cmp implements OnDestroy{
+	content: any = {};
+	state: any = {
+		mainMenu: true
+	};
 
 	private localizableContentObj: LocalizableContent_Mdl;
 	private config: any;
 	private configSvcSub: Subscription;
-	private state: any = {
-		mainMenu: {
-			enabled: true
-		}
-	};
 
 	constructor(private configSvc: Config_Svc,
 	            private localizationSvc: Localization_Svc,
 	            @Inject(App_Const) private constants) {
-	}
-
-	private onConfigChange(type, config) {
-		if(type === this.constants.configTypes.global) {
-			this.config = config.component.header;
-			this.localizableContentObj = this.localizationSvc.registerContent(this.config.content);
-			this.content = this.localizableContentObj.content;
-		}
-	}
-
-	ngOnInit() {
-		this.config = this.configSvc.getConfig(this.constants.configTypes.global);
-		this.configSvcSub = this.configSvc.configUpdatedEvent.subscribe(data => {
-			this.onConfigChange(data.type, data.config);
-		});
+		this.onConfigChange(configSvc.getConfig(constants.configTypes.global));
+		this.configSvcSub = this.configSvc.configUpdatedEvent
+			.filter(data => data.type === this.constants.configTypes.global)
+			.subscribe(data => {
+				this.onConfigChange(data.config);
+			});
 	}
 
 	ngOnDestroy() {
 		this.configSvcSub.unsubscribe();
-		this.localizableContentObj.unregister();
+		this.localizableContentObj && this.localizableContentObj.unregister();
+	}
+
+	private onConfigChange(config) {
+		if (!config) {
+			return;
+		}
+		this.config = config.component.header;
+		this.localizableContentObj && this.localizableContentObj.unregister();
+		this.localizableContentObj = this.localizationSvc.registerContent(this.config.content);
+		this.content = this.localizableContentObj.content;
 	}
 }

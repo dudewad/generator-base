@@ -1,0 +1,5 @@
+<span [ngSwitch]="config?.type" class="logo">
+	<i *ngSwitchCase="logoTypes.icon" class="siteIcon siteIcon-logoTypographic"></i>
+	<img *ngSwitchCase="logoTypes.image" [src]="logoSrc" />
+	<span *ngSwitchCase="logoTypes.text">{{config?.content}}</span>
+</span>
