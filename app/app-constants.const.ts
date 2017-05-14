@@ -5,6 +5,11 @@ let consts = {
 		global: 'global',
 		page: 'page'
 	},
+	logoTypes:{
+		image: 'image',
+		icon: 'icon',
+		text: 'text'
+	},
 	url: {
 		contentRoot: CONTENT_ROOT,
 		//Root for site page/component structure data (i.e. site definition JSON files)

@@ -12,7 +12,9 @@
 		},
 		"header": {
 			"content": {
-				"cta": "How to Join"
+				"logo": {
+					"type": "icon"
+				}
 			}
 		},
 		"footer": {

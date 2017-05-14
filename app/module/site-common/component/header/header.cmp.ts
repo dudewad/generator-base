@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, Inject, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import {App_Const, Config_Svc, LocalizableContent_Mdl, Localization_Svc } from '../../';
@@ -10,7 +10,7 @@ import {App_Const, Config_Svc, LocalizableContent_Mdl, Localization_Svc } from '
 	encapsulation: ViewEncapsulation.None
 })
 
-export class Header_Cmp implements OnDestroy, OnInit{
+export class Header_Cmp implements OnDestroy{
 	content: any = {};
 	state: any = {
 		mainMenu: true
@@ -23,9 +23,7 @@ export class Header_Cmp implements OnDestroy, OnInit{
 	constructor(private configSvc: Config_Svc,
 	            private localizationSvc: Localization_Svc,
 	            @Inject(App_Const) private constants) {
-	}
-
-	ngOnInit() {
+		this.onConfigChange(configSvc.getConfig(constants.configTypes.global));
 		this.configSvcSub = this.configSvc.configUpdatedEvent
 			.filter(data => data.type === this.constants.configTypes.global)
 			.subscribe(data => {
@@ -39,6 +37,9 @@ export class Header_Cmp implements OnDestroy, OnInit{
 	}
 
 	private onConfigChange(config) {
+		if (!config) {
+			return;
+		}
 		this.config = config.component.header;
 		this.localizableContentObj && this.localizableContentObj.unregister();
 		this.localizableContentObj = this.localizationSvc.registerContent(this.config.content);
