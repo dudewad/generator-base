@@ -3,6 +3,10 @@
 .locale-switcher {
 	position:relative;
 
+	i {
+		margin-right: .25em;
+	}
+
 	ul {
 		position: absolute;
 		z-index: 999999;

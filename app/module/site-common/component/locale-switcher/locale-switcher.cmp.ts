@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { Config_Svc, App_Const, LocalizableContent_Mdl, Localization_Svc } from "../../";
@@ -8,7 +8,7 @@ import { Config_Svc, App_Const, LocalizableContent_Mdl, Localization_Svc } from 
 	template: require('./locale-switcher.cmp.html'),
 	styles: [require('./locale-switcher.cmp.scss')]
 })
-export class LocaleSwitcher_Cmp implements OnInit {
+export class LocaleSwitcher_Cmp {
 	locale: any;
 	locales: Array<any> = [];
 	active: boolean = false;
@@ -21,16 +21,16 @@ export class LocaleSwitcher_Cmp implements OnInit {
 	constructor(private configSvc: Config_Svc,
 	            private localizationSvc: Localization_Svc,
 	            @Inject(App_Const) protected constants) {
+		let cfgType = constants.configTypes.global;
+
 		this.locale = localizationSvc.getCurrentLocale();
 		this.localizationSvc.localeUpdatedEvent.subscribe(locale => {
 			this.locale = locale;
 			this.locales = this.localizationSvc.getLocales();
 		});
-	}
-
-	ngOnInit() {
+		this.onConfigChange(configSvc.getConfig(cfgType));
 		this.configSvcSub = this.configSvc.configUpdatedEvent
-			.filter(data => data.type === this.constants.configTypes.global)
+			.filter(data => data.type === cfgType)
 			.subscribe(data => {
 				this.onConfigChange(data.config);
 			});
@@ -46,6 +46,9 @@ export class LocaleSwitcher_Cmp implements OnInit {
 	}
 
 	private onConfigChange(config) {
+		if (!config) {
+			return;
+		}
 		this.config = config.component.localeSwitcher;
 		this.localizableContentObj && this.localizableContentObj.unregister();
 		this.localizableContentObj = this.localizationSvc.registerContent(this.config.content);
