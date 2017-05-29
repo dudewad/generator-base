@@ -3,6 +3,13 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { App_Const, Asset_Svc, GlobalEvent_Svc, Localization_Svc, LocalizableContent_Mdl } from '../../../site-common/';
 
+const ComponentConfig: any = {
+	backgroundStyles: {
+		image: 'image',
+		color: 'color'
+	}
+};
+
 @Component({})
 export abstract class StructureBase_Cmp implements OnDestroy {
 	protected config: any = {};
@@ -73,7 +80,7 @@ export abstract class StructureBase_Cmp implements OnDestroy {
 			return;
 		}
 
-		let styles = this.constants.componentConfig.backgroundStyles;
+		let styles = ComponentConfig.backgroundStyles;
 		let bg = this.config.background;
 
 		if(bg.style) {

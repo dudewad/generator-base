@@ -5,3 +5,4 @@ export * from './global-event.svc';
 export * from './google-map.svc';
 export * from './localization.svc';
 export * from './local-storage.svc';
+export * from './metrics.svc';

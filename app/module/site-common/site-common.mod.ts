@@ -7,7 +7,7 @@ import { StorageService_Fac } from './factory';
 import { MainMenu_Mod } from '../main-menu';
 
 import { Footer_Cmp, Header_Cmp, LocaleSwitcher_Cmp, Logo_Cmp } from './component';
-import { Asset_Svc, Config_Svc, Localization_Svc } from "./service";
+import { Asset_Svc, Config_Svc, Localization_Svc, Metrics_Svc } from "./service";
 
 @NgModule({
 	declarations: [
@@ -29,6 +29,7 @@ import { Asset_Svc, Config_Svc, Localization_Svc } from "./service";
 		Asset_Svc,
 		Config_Svc,
 		Localization_Svc,
+		Metrics_Svc,
 		{
 			provide: StorageService,
 			useFactory: StorageService_Fac,

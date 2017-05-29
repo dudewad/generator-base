@@ -2,8 +2,7 @@ import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { Http } from '@angular/http';
 
 import { App_Const } from './module/site-common';
-import { Config_Svc } from './module/site-common';
-import { StorageService } from './module/site-common';
+import { Config_Svc, ConfigTypes, Metrics_Svc } from './module/site-common';
 
 @Component({
 	selector: 'app-main',
@@ -17,11 +16,12 @@ export class App_Cmp implements OnInit{
 		footer: false
 	};
 
-	constructor(private configSvc:Config_Svc,
+	constructor(private configSvc: Config_Svc,
 				private http: Http,
+	            private metricsSvc: Metrics_Svc,
 	            @Inject(App_Const) private constants){
 		this.configSvc.configUpdatedEvent
-			.filter(data => data.type === this.constants.configTypes.page)
+			.filter(data => data.type === ConfigTypes.page)
 			.subscribe(data => {
 				let cfg = data.config.config;
 				this.state.header = cfg.header;
@@ -36,7 +36,10 @@ export class App_Cmp implements OnInit{
 			.map(res => res.json())
 			.subscribe(result => {
 					this.loadGlobalConfig(this.constants.url.dataRoot + result['globalConfig']);
-					this.configSvc.setConfig(this.constants.configTypes.app, result);
+					this.configSvc.setConfig(ConfigTypes.app, result);
+					if (result.vendor.metrics) {
+						this.metricsSvc.init(result.vendor.metrics);
+					}
 				},
 				error => {
 					//TODO: Don't throw an error, catch it and redirect to a 404/"omg its broken" page.
@@ -48,7 +51,7 @@ export class App_Cmp implements OnInit{
 		this.http.get(url)
 			.map(res => res.json())
 			.subscribe(result => {
-				this.configSvc.setConfig(this.constants.configTypes.global, result);
+				this.configSvc.setConfig(ConfigTypes.global, result);
 			},
 			error => {
 

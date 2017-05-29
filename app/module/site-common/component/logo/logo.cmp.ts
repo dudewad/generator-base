@@ -1,6 +1,12 @@
-import { Component, Inject, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
-import { App_Const, Asset_Svc } from '../../';
+import { Asset_Svc } from '../../';
+
+export const LogoTypes: any = {
+	image: 'image',
+	icon: 'icon',
+	text: 'text'
+};
 
 @Component({
 	selector: 'logo',
@@ -15,13 +21,12 @@ export class Logo_Cmp implements OnChanges {
 
 	@Input() config: any;
 
-	constructor(private assetSvc: Asset_Svc,
-				@Inject(App_Const) private constants) {
-		this.logoTypes = constants.logoTypes;
+	constructor(private assetSvc: Asset_Svc) {
+		this.logoTypes = LogoTypes;
 	}
 
 	ngOnChanges() {
-		if (this.config && this.config.type === this.constants.logoTypes.image) {
+		if (this.config && this.config.type === this.logoTypes.image) {
 			this.logoSrc = this.assetSvc.getAssetUrl(this.config.content);
 		}
 	}

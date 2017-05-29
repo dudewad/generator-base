@@ -1,8 +1,8 @@
-import { Component, Inject, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 
-import { App_Const, Config_Svc, LocalizableContent_Mdl, Localization_Svc } from "../../";
+import { Config_Svc, ConfigTypes, LocalizableContent_Mdl, Localization_Svc } from "../../";
 
 @Component({
 	selector: 'site-footer',
@@ -20,11 +20,10 @@ export class Footer_Cmp implements OnDestroy {
 
 	constructor(private configSvc: Config_Svc,
 	            private localizationSvc: Localization_Svc,
-	            private sanitizer: DomSanitizer,
-	            @Inject(App_Const) private constants) {
+	            private sanitizer: DomSanitizer) {
 		this.onConfigChange(configSvc.getConfig('global'));
 		this.configSvcSub = this.configSvc.configUpdatedEvent
-			.filter(data => data.type === this.constants.configTypes.global)
+			.filter(data => data.type === ConfigTypes.global)
 			.subscribe(data => {
 				this.onConfigChange(data.config)
 			});

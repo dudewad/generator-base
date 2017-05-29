@@ -24,6 +24,11 @@
 	"vendor": {
 		"googleMaps":{
 			"apiKey": "AIzaSyAw7X6OqbKGKCTznZOaujyJUvfuRmYEAb8"
+		},
+		"metrics": {
+			"google": {
+				"trackingId": "UA-99898840-1"
+			}
 		}
 	}
 }

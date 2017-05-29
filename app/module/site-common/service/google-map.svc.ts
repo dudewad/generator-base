@@ -1,9 +1,17 @@
-import {Inject, Injectable} from '@angular/core';
-import {App_Const, GoogleMapsConfig_Mdl} from '../';
-import {Config_Svc} from './config.svc';
-import {Asset_Svc} from './asset.svc';
-import {GlobalEvent_Svc} from './global-event.svc';
-import {Router, NavigationStart} from '@angular/router';
+import { Inject, Injectable } from '@angular/core';
+
+import { App_Const, GoogleMapsConfig_Mdl } from '../';
+import { Config_Svc, ConfigTypes } from './config.svc';
+import { Asset_Svc } from './asset.svc';
+import { GlobalEvent_Svc } from './global-event.svc';
+import { Router, NavigationStart } from '@angular/router';
+
+export const MapViewTypes: any = {
+	map: 'map',
+	streetview: 'streetview'
+};
+
+export const GoogleMapsImport: string = 'https://maps.googleapis.com/maps/api/js?key=$$API_KEY$$';
 
 @Injectable()
 export class GoogleMap_Svc{
@@ -178,12 +186,12 @@ export class GoogleMap_Svc{
 	            private router:Router,
 	            private globalEventSvc:GlobalEvent_Svc,
 	            @Inject(App_Const) private constants) {
-		this.apiKey = configSvc.getConfig(this.constants.configTypes.app).vendor.googleMaps.apiKey;
+		this.apiKey = configSvc.getConfig(ConfigTypes.app).vendor.googleMaps.apiKey;
 		this.router.events
 			.filter(evt => evt instanceof NavigationStart)
-			.subscribe(evt => {
-				for (var i = 0; i < this.mapConfigs.length; i++) {
-					var id = this.mapConfigs[i].getResizeHandlerId();
+			.subscribe(() => {
+				for (let i = 0; i < this.mapConfigs.length; i++) {
+					let id = this.mapConfigs[i].getResizeHandlerId();
 					if(id !== null) {
 						this.globalEventSvc.unregisterResizeHandler(id);
 					}
@@ -205,7 +213,7 @@ export class GoogleMap_Svc{
 
 			let s = document.createElement('script');
 
-			s.src = this.constants.url.googleMapsImport.replace('$$API_KEY$$', this.apiKey);
+			s.src = GoogleMapsImport.replace('$$API_KEY$$', this.apiKey);
 			s.onload = this.onMapsLoad.bind(this);
 			document.getElementsByTagName('body')[0].appendChild(s);
 		}
@@ -235,14 +243,13 @@ export class GoogleMap_Svc{
 	 */
 	private loadObject(mapObj:GoogleMapsConfig_Mdl) {
 		let type = mapObj.getConfig().type;
-		let viewTypes = this.constants.vendor.googleMaps.viewType;
 
-		if(viewTypes.hasOwnProperty(type)){
+		if(MapViewTypes.hasOwnProperty(type)){
 			switch(type) {
-				case viewTypes.map:
+				case MapViewTypes.map:
 					this.loadMap(mapObj);
 					break;
-				case viewTypes.streetview:
+				case MapViewTypes.streetview:
 					this.loadStreetview(mapObj);
 					break;
 			}

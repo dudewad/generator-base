@@ -1,10 +1,10 @@
-import {Component, Inject, OnDestroy, OnInit, ViewChild, ViewContainerRef, ViewEncapsulation} from '@angular/core';
-import {Http} from '@angular/http';
-import {NavigationEnd, Router} from '@angular/router';
-import {Subscription} from 'rxjs';
+import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { Http } from '@angular/http';
+import { NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
-import {App_Const, Config_Svc} from '../../../site-common/';
-import {PageConfig_Mdl, Renderer_Svc} from '../../';
+import { App_Const, Config_Svc, ConfigTypes } from '../../../site-common/';
+import { PageConfig_Mdl, Renderer_Svc } from '../../';
 
 @Component({
 	selector: 'structure',
@@ -31,7 +31,7 @@ export class StructureBuilder_Cmp implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
-		this.config = this.configSvc.getConfig(this.constants.configTypes.app);
+		this.config = this.configSvc.getConfig(ConfigTypes.app);
 		this.configSvcSub = this.configSvc.configUpdatedEvent.subscribe(data => {
 			this.onConfigChange(data.type, data.config);
 		});
@@ -106,7 +106,7 @@ export class StructureBuilder_Cmp implements OnInit, OnDestroy {
 	 * @param config
 	 */
 	private onConfigChange(type, config) {
-		if(type === this.constants.configTypes.app) {
+		if(type === ConfigTypes.app) {
 			this.config = config;
 			this.onNavigationEnd(this.currentRoute);
 		}
@@ -122,7 +122,7 @@ export class StructureBuilder_Cmp implements OnInit, OnDestroy {
 		this.renderer.clearPage(this.structureContainer);
 		this.renderer.renderPage(conf, this.structureContainer);
 		this.body.scrollTop = 0;
-		this.configSvc.setConfig(this.constants.configTypes.page, config);
+		this.configSvc.setConfig(ConfigTypes.page, config, this.currentRoute);
 	}
 
 	ngOnDestroy() {
