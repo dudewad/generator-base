@@ -1,6 +1,6 @@
-import {Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {Config_Svc, ConfigTypes} from "./config.svc";
+import { Config_Svc, ConfigTypes } from "./config.svc";
 
 export const MetricTypes: any = {
 	google: 'google'
@@ -19,7 +19,7 @@ export class Metrics_Svc {
 
 	constructor(private configSvc: Config_Svc) {
 		if (ENV !== 'production') {
-			console.log('Disabling metrics; not in production mode.');
+			console.log('Metrics are disabled when not in production mode.');
 			return;
 		}
 

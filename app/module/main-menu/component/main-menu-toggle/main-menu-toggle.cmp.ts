@@ -1,4 +1,6 @@
-import {Component} from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+
+import { MainMenu_Svc } from "../../";
 
 @Component({
 	selector: 'main-menu-toggle',
@@ -6,4 +8,10 @@ import {Component} from '@angular/core';
 	styles: [require('./main-menu-toggle.cmp.scss')]
 })
 export class MainMenuToggle_Cmp {
+	constructor(private mainMenuSvc: MainMenu_Svc) {
+	}
+
+	@HostListener('click', ['$event']) handleClick(event) {
+		this.mainMenuSvc.toggle();
+	}
 }

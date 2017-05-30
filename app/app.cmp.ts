@@ -12,6 +12,7 @@ import { Config_Svc, ConfigTypes, Metrics_Svc } from './module/site-common';
 })
 export class App_Cmp implements OnInit{
 	state:any = {
+		mainMenu: false,
 		header: false,
 		footer: false
 	};
@@ -26,6 +27,7 @@ export class App_Cmp implements OnInit{
 				let cfg = data.config.config;
 				this.state.header = cfg.header;
 				this.state.footer = cfg.footer;
+				this.state.mainMenu = cfg.mainMenu;
 			});
 	}
 

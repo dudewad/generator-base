@@ -46,7 +46,7 @@ export class Localization_Svc {
 		let localeObject = this.getLocaleFromConfig(locale);
 
 		if (!locale || locale === this.currentLocale.name || !localeObject) {
-			if (!localeObject) {
+			if (!localeObject && ENV !== 'production') {
 				console.warn(`Tried to set locale ${locale}, which is not a registered locale in the config. Aborting.`);
 			}
 			return;
