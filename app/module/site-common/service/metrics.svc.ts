@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable } from '@angular/core';
 
-import { Config_Svc, ConfigTypes } from "./config.svc";
+import {Config_Svc, ConfigTypes} from "./config.svc";
 
 export const MetricTypes: any = {
 	google: 'google'
@@ -17,7 +17,12 @@ export class Metrics_Svc {
 	private metricsFired: any;
 	private metricsInstances: any = {};
 
-	constructor(private configSvc: Config_Svc){
+	constructor(private configSvc: Config_Svc) {
+		if (ENV !== 'production') {
+			console.log('Disabling metrics; not in production mode.');
+			return;
+		}
+
 		configSvc.configUpdatedEvent
 			.filter(data => data.type === ConfigTypes.page)
 			.subscribe(data => {
@@ -26,6 +31,10 @@ export class Metrics_Svc {
 	}
 
 	init(metrics) {
+		if (ENV !== 'production') {
+			return;
+		}
+
 		this.metricsConfigs = metrics;
 		this.initMetrics();
 	}
@@ -52,7 +61,7 @@ export class Metrics_Svc {
 		let data = this.currentPageData;
 		this.metricsFired[type] = true;
 
-		switch(type) {
+		switch (type) {
 			case MetricTypes.google:
 				let ga = instances[type];
 				ga('set', 'pageview', data.currentRoute.url);
@@ -67,7 +76,7 @@ export class Metrics_Svc {
 
 		for (let cfg in cfgs) {
 			if (cfgs.hasOwnProperty(cfg) && !instances[cfg]) {
-				switch(cfg) {
+				switch (cfg) {
 					case MetricTypes.google:
 						this.loadGoogleAnalytics();
 						break;
@@ -76,7 +85,7 @@ export class Metrics_Svc {
 		}
 	}
 
-	private loadGoogleAnalytics(){
+	private loadGoogleAnalytics() {
 		let cb = this.onGoogleLoad.bind(this);
 		(function (i, s, o, g, r, a, m) {
 			i['GoogleAnalyticsObject'] = r;

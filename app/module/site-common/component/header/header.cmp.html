@@ -1,6 +1,8 @@
 <header>
 	<div class="controls">
-		<!--<i class="siteIcon siteIcon-menu menu-toggle"></i>-->
+		<main-menu-toggle>
+			<i class="siteIcon siteIcon-menu menu-toggle"></i> Menu
+		</main-menu-toggle>
 		<a [routerLink]="['/']"
 		   [ngSwitch]="config?.type"
 		   *ngIf="content.logo"
