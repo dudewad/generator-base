@@ -2,33 +2,57 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { StorageService } from './opaque-tokens';
-import { StorageService_Fac } from './factory';
-import { MainMenu_Mod } from '../main-menu';
+import {
+	//Components
+	Footer_Cmp,
+	Header_Cmp,
+	LocaleSwitcher_Cmp,
+	Logo_Cmp,
+	MainMenu_Cmp,
+	MainMenuPage_Cmp,
+	MainMenuToggle_Cmp,
 
-import { Footer_Cmp, Header_Cmp, LocaleSwitcher_Cmp, Logo_Cmp } from './component';
-import { Asset_Svc, Config_Svc, Localization_Svc, Metrics_Svc } from "./service";
+	//Services
+	Asset_Svc,
+	Config_Svc,
+	Localization_Svc,
+	MainMenu_Svc,
+	Metrics_Svc,
+
+	//Factories
+	StorageService_Fac,
+
+	//Opaque Tokens
+	StorageService
+} from 'lm/site-common';
 
 @NgModule({
 	declarations: [
 		Footer_Cmp,
 		Header_Cmp,
 		LocaleSwitcher_Cmp,
-		Logo_Cmp
+		Logo_Cmp,
+		MainMenu_Cmp,
+		MainMenuPage_Cmp,
+		MainMenuToggle_Cmp
 	],
 	imports: [
 		CommonModule,
-		MainMenu_Mod,
 		RouterModule
 	],
 	exports: [
 		Footer_Cmp,
-		Header_Cmp
+		Header_Cmp,
+		MainMenu_Cmp,
+		MainMenuToggle_Cmp,
+		LocaleSwitcher_Cmp,
+		Logo_Cmp
 	],
 	providers: [
 		Asset_Svc,
 		Config_Svc,
 		Localization_Svc,
+		MainMenu_Svc,
 		Metrics_Svc,
 		{
 			provide: StorageService,

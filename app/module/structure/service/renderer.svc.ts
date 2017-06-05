@@ -1,7 +1,16 @@
-import {Inject,	Injectable,	ComponentFactoryResolver, ViewContainerRef} from '@angular/core';
+import { Inject, Injectable, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 
-import {App_Const} from '../../site-common/';
-import {Copy_Cmp, DataTable_Cmp, Hero_Cmp, PageConfig_Mdl, StructureBase_Cmp, Ribbon_Cmp, TextImage_Cmp, TileSet_Cmp} from '../';
+import { App_Const } from 'lm/site-common';
+import {
+	Copy_Cmp,
+	DataTable_Cmp,
+	Hero_Cmp,
+	PageConfig_Mdl,
+	Ribbon_Cmp,
+	StructureBase_Cmp,
+	TextImage_Cmp,
+	TileSet_Cmp
+} from 'lm/structure';
 
 @Injectable()
 export class Renderer_Svc {

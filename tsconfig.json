@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"baseUrl": "./app",
 		"target": "es5",
 		"module": "commonjs",
 		"moduleResolution": "node",
@@ -8,6 +9,12 @@
 		"experimentalDecorators": true,
 		"removeComments": false,
 		"noImplicitAny": false,
+		"paths": {
+			"lm/*": [
+				"./module/*",
+				"./module/*/index.ts"
+			]
+		},
 		"lib": [
 			"es5",
 			"es2015",
@@ -19,9 +26,6 @@
 	"include": [
 		"./app/**/*.ts",
 		"./app/custom-typings.d.ts"
-	],
-	"exclude": [
-
 	],
 	"awesomeTypescriptLoaderOptions": {
 		"resolveGlobs": true,

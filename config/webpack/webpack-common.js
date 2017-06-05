@@ -5,6 +5,8 @@ const path = require('path');
 const helpers = require('./utils/helpers');
 const webpack = require('webpack');
 const pkg = require(helpers.root() + '/package.json');
+const TsLoader = require('awesome-typescript-loader');
+const TsConfigPathsPlugin = TsLoader.TsConfigPathsPlugin;
 
 /**
  * Plugins
@@ -67,7 +69,10 @@ module.exports = function (env) {
 		resolve: {
 			extensions: ['.ts', '.js'],
 			modules: [helpers.root('app'), 'node_modules'],
-			alias: {}
+			alias: {},
+			plugins: [
+				new TsConfigPathsPlugin()
+			]
 		}
 	}
 };

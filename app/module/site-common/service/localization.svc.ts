@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
-import { LocalizableContent_Mdl, StorageService } from '../';
-import { Config_Svc, ConfigTypes } from './';
+import { Config_Svc, ConfigTypes } from './config.svc';
+import { LocalizableContent_Mdl, StorageService } from 'lm/site-common';
 
 @Injectable()
 export class Localization_Svc {

@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 
-import {App_Const} from '../';
+import { App_Const } from 'lm/site-common';
 
 @Injectable()
 export class Asset_Svc {

@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
-import { Asset_Svc } from '../../';
+import { Asset_Svc } from 'lm/site-common';
 
 export const LogoTypes: any = {
 	image: 'image',

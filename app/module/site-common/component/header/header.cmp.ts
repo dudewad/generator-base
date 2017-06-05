@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Config_Svc, ConfigTypes, LocalizableContent_Mdl, Localization_Svc } from '../../';
+import { Config_Svc, ConfigTypes, LocalizableContent_Mdl, Localization_Svc } from 'lm/site-common';
 
 @Component({
 	selector: 'site-header',
@@ -12,9 +12,6 @@ import { Config_Svc, ConfigTypes, LocalizableContent_Mdl, Localization_Svc } fro
 
 export class Header_Cmp implements OnDestroy{
 	content: any = {};
-	state: any = {
-		mainMenu: true
-	};
 
 	private localizableContentObj: LocalizableContent_Mdl;
 	private config: any;

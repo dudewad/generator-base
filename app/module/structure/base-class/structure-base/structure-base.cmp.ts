@@ -1,7 +1,7 @@
 import { Component, Inject, OnDestroy } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
-import { App_Const, Asset_Svc, GlobalEvent_Svc, Localization_Svc, LocalizableContent_Mdl } from '../../../site-common/';
+import { App_Const, Asset_Svc, GlobalEvent_Svc, Localization_Svc, LocalizableContent_Mdl } from 'lm/site-common';
 
 const ComponentConfig: any = {
 	backgroundStyles: {

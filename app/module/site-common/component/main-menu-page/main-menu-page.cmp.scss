@@ -1,0 +1,7 @@
+@import '../../../../style/bootstrap-custom/bootstrap-no-output';
+@import '../../../../style/variables';
+
+.main-menu-page {
+	width: 25%;
+	background: map-get($colors, main-menu-page-bg);
+}

@@ -6,9 +6,8 @@ import 'rxjs/add/operator/map';
 import { Routing } from './app.routes';
 import { App_Cmp } from './app.cmp';
 import { Constants } from './app-constants.const';
-import { App_Const, SiteCommon_Mod } from './module/site-common';
-import { MainMenu_Mod } from './module/main-menu';
-import { Structure_Mod } from './module/structure';
+import { App_Const, SiteCommon_Mod } from 'lm/site-common';
+import { Structure_Mod } from 'lm/structure';
 
 @NgModule({
 	declarations: [
@@ -16,13 +15,15 @@ import { Structure_Mod } from './module/structure';
 	],
 	imports: [
 		BrowserModule,
-		MainMenu_Mod,
 		SiteCommon_Mod,
 		Structure_Mod,
 		Routing
 	],
 	providers: [
-		{provide: App_Const, useValue: Constants}
+		{
+			provide: App_Const,
+			useValue: Constants
+		}
 	],
 	bootstrap: [
 		App_Cmp

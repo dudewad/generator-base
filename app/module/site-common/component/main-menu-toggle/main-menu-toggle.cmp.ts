@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 
-import { MainMenu_Svc } from "../../";
+import { MainMenu_Svc } from "lm/site-common";
 
 @Component({
 	selector: 'main-menu-toggle',

@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
+import { Router, NavigationStart } from '@angular/router';
 
-import { App_Const, GoogleMapsConfig_Mdl } from '../';
 import { Config_Svc, ConfigTypes } from './config.svc';
 import { Asset_Svc } from './asset.svc';
 import { GlobalEvent_Svc } from './global-event.svc';
-import { Router, NavigationStart } from '@angular/router';
+import { App_Const, GoogleMapsConfig_Mdl } from 'lm/site-common';
 
 export const MapViewTypes: any = {
 	map: 'map',

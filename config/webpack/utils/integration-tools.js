@@ -48,7 +48,7 @@ function buildSassFontFile(filename, fonts) {
 		}
 	}
 
-	mkdirp(path.parse(filename).base, function(err) {
+	mkdirp(path.dirname(filename), function(err) {
 		if (err) {
 			throw new Error("Couldn't write font scss file!! Aborting. This is a problem in the generator, and likely a bug.");
 		}

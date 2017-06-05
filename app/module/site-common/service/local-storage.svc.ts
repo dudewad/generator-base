@@ -1,4 +1,4 @@
-import { StorageService_Int } from "../interface";
+import { StorageService_Int } from "lm/site-common";
 
 export class LocalStorage_Svc implements StorageService_Int {
 	private storage: any = localStorage;

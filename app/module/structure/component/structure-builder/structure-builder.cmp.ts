@@ -3,8 +3,8 @@ import { Http } from '@angular/http';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { App_Const, Config_Svc, ConfigTypes } from '../../../site-common/';
-import { PageConfig_Mdl, Renderer_Svc } from '../../';
+import { App_Const, Config_Svc, ConfigTypes } from 'lm/site-common';
+import { PageConfig_Mdl, Renderer_Svc } from 'lm/structure';
 
 @Component({
 	selector: 'structure',

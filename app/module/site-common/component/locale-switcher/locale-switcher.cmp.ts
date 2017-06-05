@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Config_Svc, ConfigTypes, LocalizableContent_Mdl, Localization_Svc } from "../../";
+import { Config_Svc, ConfigTypes, LocalizableContent_Mdl, Localization_Svc } from "lm/site-common";
 
 @Component({
 	selector: 'locale-switcher',
