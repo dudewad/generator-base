@@ -5,15 +5,18 @@ import {HttpModule} from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {
+	//Components
 	Copy_Cmp,
 	DataTable_Cmp,
 	Hero_Cmp,
 	StructureBuilder_Cmp,
 	Ribbon_Cmp,
 	TextImage_Cmp,
-	TileSet_Cmp
-} from './component';
-import {Renderer_Svc} from './service';
+	TileSet_Cmp,
+
+	//Services
+	Renderer_Svc
+} from 'lm/structure';
 import {Asset_Svc, GlobalEvent_Svc, GoogleMap_Svc} from "../site-common";
 
 @NgModule({

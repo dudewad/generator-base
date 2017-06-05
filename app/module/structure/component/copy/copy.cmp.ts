@@ -1,8 +1,8 @@
-import {Component, Inject} from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
+import { Component, Inject } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
-import {App_Const, Asset_Svc, GlobalEvent_Svc, Localization_Svc} from '../../../site-common/';
-import {StructureBase_Cmp} from '../../';
+import { App_Const, Asset_Svc, GlobalEvent_Svc, Localization_Svc } from 'lm/site-common';
+import { StructureBase_Cmp } from 'lm/structure';
 
 @Component({
 	selector: 'copy',

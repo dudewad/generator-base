@@ -57,6 +57,8 @@ $colors: (
 	locale-switcher-list-item-color:        map-get($base-colors, white),
 	membership-table-bg:                    map-get($base-colors, brand-secondary),
 	membership-table-color:                 map-get($base-colors, white),
+	main-menu-bg:                           rgba(map-get($base-colors, black), .8),
+	main-menu-page-bg:                      map-get($base-colors, white),
 	ribbon-bg:                              map-get($base-colors, white),
 	ribbon-color:                           map-get($base-colors, black),
 	theme-brand-primary-bg:                 map-get($base-colors, brand-primary),

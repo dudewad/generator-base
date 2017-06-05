@@ -146,6 +146,71 @@
 					}
 				}
 			}
+		},
+		"mainMenu": {
+			"config": {
+
+			},
+			"content": {
+				"en-us": {
+					"pages": [
+						{
+							"text": "Membership",
+							"href": "/membership"
+						},
+						{
+							"text": "Products",
+							"pages": [
+								{
+									"text": "Bicycle",
+									"href": "/about?bicycle=true"
+								},
+								{
+									"text": "Car",
+									"href": "/about?car=true"
+								},
+								{
+									"text": "Monkey Couch",
+									"href": "/about?monkey-couch=true"
+								}
+							]
+						},
+						{
+							"text": "Hours and Location",
+							"href": "/contact"
+						}
+					]
+				},
+				"es-ar": {
+					"pages": [
+						{
+							"text": "Miembrecia",
+							"href": "/membership"
+						},
+						{
+							"text": "Productos",
+							"pages": [
+								{
+									"text": "Bicicleta",
+									"href": "/about?bicicleta=true"
+								},
+								{
+									"text": "Autos",
+									"href": "/about?auto=true"
+								},
+								{
+									"text": "Sofa de Mono",
+									"href": "/about?sofa-mono=true"
+								}
+							]
+						},
+						{
+							"text": "Horas y Ubicación",
+							"href": "/contact"
+						}
+					]
+				}
+			}
 		}
 	}
 }

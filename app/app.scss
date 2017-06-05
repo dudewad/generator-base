@@ -12,6 +12,12 @@ body{
 	font-family: $body-font-family;
 }
 
+body {
+	&.main-menu-active {
+		overflow: hidden;
+	}
+}
+
 app-main {
 	min-height: 100%;
 	display: flex;
@@ -44,6 +50,10 @@ li {
 
 p {
 	line-height: 1.4;
+}
+
+menu {
+	margin: 0;
 }
 
 ul {

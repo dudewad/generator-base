@@ -1,0 +1,22 @@
+@import '../../../../style/bootstrap-custom/bootstrap-no-output';
+@import '../../../../style/variables';
+
+$trTime: .25s;
+
+menu.main-menu {
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+	opacity: 0;
+	background: map-get($colors, main-menu-bg);
+	transition: opacity $trTime, z-index $trTime;
+
+	&.active {
+		opacity: 1;
+		z-index: 1;
+		transition: z-index 0s, opacity $trTime;
+	}
+}

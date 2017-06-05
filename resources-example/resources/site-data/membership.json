@@ -2,7 +2,7 @@
 	"config": {
 		"header": false,
 		"footer": true,
-		"mainMenu": true
+		"mainMenu": false
 	},
 	"component": [
 		{

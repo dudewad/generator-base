@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
-import {App_Const, LocalizableContent_Mdl, StorageService } from '../';
-import { Config_Svc } from './';
+import { Config_Svc, ConfigTypes } from './config.svc';
+import { LocalizableContent_Mdl, StorageService } from 'lm/site-common';
 
 @Injectable()
 export class Localization_Svc {
@@ -17,11 +17,10 @@ export class Localization_Svc {
 	private defaultLocale: string;
 
 	constructor(private configSvc: Config_Svc,
-				@Inject(StorageService) private storageSvc,
-				@Inject(App_Const) private constants){
+				@Inject(StorageService) private storageSvc){
 		let appCfg;
 
-		this.cfgTypeApp = this.constants.configTypes.app;
+		this.cfgTypeApp = ConfigTypes.app;
 		appCfg = this.configSvc.getConfig(this.cfgTypeApp);
 		this.setLocale(this.storageSvc.get(this.storageKey));
 
@@ -47,7 +46,7 @@ export class Localization_Svc {
 		let localeObject = this.getLocaleFromConfig(locale);
 
 		if (!locale || locale === this.currentLocale.name || !localeObject) {
-			if (!localeObject) {
+			if (!localeObject && ENV !== 'production') {
 				console.warn(`Tried to set locale ${locale}, which is not a registered locale in the config. Aborting.`);
 			}
 			return;

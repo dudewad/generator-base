@@ -48,6 +48,7 @@
     "raw-loader": "^0.5.1",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
+    "tsconfig-paths": "^2.2.0",
     "typings": "^2.1.0",
     "url-join": "^1.1.0",
     "webpack": "^2.2.0",

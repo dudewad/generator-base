@@ -1,4 +1,4 @@
-import { LocalStorage_Svc, CookieStorage_Svc } from '../service';
+import { LocalStorage_Svc, CookieStorage_Svc } from 'lm/site-common';
 
 export function StorageService_Fac() {
 	try {

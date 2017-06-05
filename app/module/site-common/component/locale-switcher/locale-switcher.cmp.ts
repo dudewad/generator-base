@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Config_Svc, App_Const, LocalizableContent_Mdl, Localization_Svc } from "../../";
+import { Config_Svc, ConfigTypes, LocalizableContent_Mdl, Localization_Svc } from "lm/site-common";
 
 @Component({
 	selector: 'locale-switcher',
@@ -19,18 +19,15 @@ export class LocaleSwitcher_Cmp {
 	private configSvcSub: Subscription;
 
 	constructor(private configSvc: Config_Svc,
-	            private localizationSvc: Localization_Svc,
-	            @Inject(App_Const) protected constants) {
-		let cfgType = constants.configTypes.global;
-
+	            private localizationSvc: Localization_Svc) {
 		this.locale = localizationSvc.getCurrentLocale();
 		this.localizationSvc.localeUpdatedEvent.subscribe(locale => {
 			this.locale = locale;
 			this.locales = this.localizationSvc.getLocales();
 		});
-		this.onConfigChange(configSvc.getConfig(cfgType));
+		this.onConfigChange(configSvc.getConfig(ConfigTypes.global));
 		this.configSvcSub = this.configSvc.configUpdatedEvent
-			.filter(data => data.type === cfgType)
+			.filter(data => data.type === ConfigTypes.global)
 			.subscribe(data => {
 				this.onConfigChange(data.config);
 			});
