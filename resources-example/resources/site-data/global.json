@@ -12,8 +12,21 @@
 		},
 		"header": {
 			"content": {
-				"logo": {
-					"type": "icon"
+				"en-us": {
+					"mainMenuToggle": {
+						"label": "Menu"
+					},
+					"logo": {
+						"type": "icon"
+					}
+				},
+				"es-ar": {
+					"mainMenuToggle": {
+						"label": "Menio"
+					},
+					"logo": {
+						"type": "icon"
+					}
 				}
 			}
 		},
@@ -153,58 +166,118 @@
 			},
 			"content": {
 				"en-us": {
-					"pages": [
+					"header": {
+						"defaultBackText": "Close"
+					},
+					"items": [
 						{
+							"style": "link",
 							"text": "Membership",
 							"href": "/membership"
 						},
 						{
+							"style": "link",
 							"text": "Products",
-							"pages": [
+							"items": [
 								{
+									"style": "link",
 									"text": "Bicycle",
 									"href": "/about?bicycle=true"
 								},
 								{
+									"style": "button",
 									"text": "Car",
 									"href": "/about?car=true"
 								},
 								{
+									"style": "link",
 									"text": "Monkey Couch",
 									"href": "/about?monkey-couch=true"
+								},
+								{
+									"style": "link",
+									"text": "Menu",
+									"items": [
+										{
+											"style": "link",
+											"text": "Beer",
+											"href": "/about?beer=true"
+										},
+										{
+											"style": "link",
+											"text": "Wine",
+											"href": "/membership?wine=true"
+										},
+										{
+											"style": "button",
+											"text": "Kombucha",
+											"href": "/rules?kombucha=true"
+										}
+									]
 								}
 							]
 						},
 						{
+							"style": "button",
 							"text": "Hours and Location",
 							"href": "/contact"
 						}
 					]
 				},
 				"es-ar": {
-					"pages": [
+					"header": {
+						"defaultBackText": "Cerrar"
+					},
+					"items": [
 						{
+							"style": "link",
 							"text": "Miembrecia",
 							"href": "/membership"
 						},
 						{
+							"style": "link",
 							"text": "Productos",
-							"pages": [
+							"items": [
 								{
+									"style": "link",
 									"text": "Bicicleta",
 									"href": "/about?bicicleta=true"
 								},
 								{
+									"style": "button",
 									"text": "Autos",
 									"href": "/about?auto=true"
 								},
 								{
+									"style": "link",
 									"text": "Sofa de Mono",
 									"href": "/about?sofa-mono=true"
+								},
+								{
+									"style": "link",
+									"text": "Carta",
+									"items": [
+										{
+											"style": "link",
+											"text": "Cerveza",
+											"href": "/about?cerveza=true"
+										},
+										{
+											"style": "link",
+											"text": "Vino",
+											"href": "/membership?vino=true"
+										},
+										{
+											"style": "button",
+											"text": "Kombucha",
+											"href": "/rules?kombucha=true"
+										}
+									]
 								}
 							]
 						},
 						{
+							"style": "button",
 							"text": "Horas y Ubicación",
 							"href": "/contact"
 						}

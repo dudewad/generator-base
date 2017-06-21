@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Config_Svc, ConfigTypes, LocalizableContent_Mdl, Localization_Svc } from 'lm/site-common';
+import { Config_Svc, LocalizableContent_Mdl, Localization_Svc } from 'lm/site-common';
 
 @Component({
 	selector: 'site-header',
@@ -19,9 +19,7 @@ export class Header_Cmp implements OnDestroy{
 
 	constructor(private configSvc: Config_Svc,
 	            private localizationSvc: Localization_Svc) {
-		this.onConfigChange(configSvc.getConfig(ConfigTypes.global));
-		this.configSvcSub = this.configSvc.configUpdatedEvent
-			.filter(data => data.type === ConfigTypes.global)
+		this.configSvcSub = this.configSvc.globalConfigUpdate
 			.subscribe(data => {
 				this.onConfigChange(data.config);
 			});
