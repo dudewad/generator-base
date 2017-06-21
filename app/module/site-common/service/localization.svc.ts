@@ -13,26 +13,14 @@ export class Localization_Svc {
 	private storageKey: string = 'locale';
 	private locConfig: any = {};
 	private configSvcSub: Subscription;
-	private cfgTypeApp: string;
 	private defaultLocale: string;
 
 	constructor(private configSvc: Config_Svc,
 				@Inject(StorageService) private storageSvc){
-		let appCfg;
-
-		this.cfgTypeApp = ConfigTypes.app;
-		appCfg = this.configSvc.getConfig(this.cfgTypeApp);
-		this.setLocale(this.storageSvc.get(this.storageKey));
-
-		this.configSvcSub = this.configSvc.configUpdatedEvent
-			.filter(data => data.type === this.cfgTypeApp)
+		this.configSvcSub = this.configSvc.appConfigUpdate
 			.subscribe(data => {
-			this.handleConfigChange(data.config);
-		});
-
-		if (appCfg) {
-			this.handleConfigChange(appCfg);
-		}
+				this.handleConfigChange(data.config);
+			});
 	}
 
 	/**

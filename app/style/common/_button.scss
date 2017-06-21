@@ -29,6 +29,20 @@ button,
 		background: map-get($colors, button-active-bg);
 	}
 
+	&.style-reset,
+	&.style-reset:visited,
+	&.style-reset:hover,
+	&.style-reset:active {
+		background: transparent;
+		color: initial;
+		padding: 0;
+		margin: 0;
+		text-decoration: none;
+		font-size: 1em;
+		border: none;
+		font-family: $body-font-family;
+	}
+
 	&.utility {
 		color: map-get($colors, button-utility-color);
 		background: map-get($colors, button-utility-bg);
@@ -46,6 +60,23 @@ button,
 		&:active {
 			color: map-get($colors, button-utility-color);
 			background: map-get($colors, button-utility-active-bg);
+		}
+	}
+
+	&.style-link {
+		background: transparent;
+		color: map-get($colors, anchor-color);
+		font-family: $body-font-family;
+		padding: 0;
+		font-size: 1em;
+		text-decoration: underline;
+
+		&:hover {
+			color: map-get($colors, anchor-hover-color);
+		}
+
+		&:active {
+			color: map-get($colors, anchor-active-color);
 		}
 	}
 

@@ -2,6 +2,126 @@
 @import '../../../../style/variables';
 
 .main-menu-page {
-	width: 25%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 95%;
+	height: 100%;
 	background: map-get($colors, main-menu-page-bg);
+
+	ul {
+		padding: 1em 0;
+	}
+
+	li {
+		margin: 0;
+		padding: .5em 1em;
+		cursor: pointer;
+		border-bottom: 1px solid map-get($colors, main-menu-separator-color);
+
+		&:before {
+			content: "";
+			display: none;
+		}
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		&.has-children {
+			position: relative;
+
+			&:after {
+				position: absolute;
+				right: 1em;
+				top: 50%;
+				transform: translateY(-50%);
+				content: '>';
+				color: map-get($colors, main-menu-more-indicator-color);
+			}
+
+			&:hover {
+				&:after {
+					color: map-get($colors, main-menu-more-indicator-hover-color);
+				}
+			}
+		}
+	}
+
+	button,
+	.button {
+		padding: .25em .75em;
+
+		&.style-link {
+			padding: 0;
+		}
+	}
+
+	a,
+	.style-link,
+	button.style-link {
+		display: block;
+		width: 100%;
+		text-decoration: none;
+		text-align: left;
+	}
+
+	a {
+		&.button {
+			display: inline-block;
+			width: auto;
+		}
+	}
+
+	.close {
+		float: right;
+		font-size: 1.25em;
+		padding: .5em;
+	}
+
+	.menu-page-header {
+		position:relative;
+		padding: 1em;
+		background: map-get($colors, main-menu-page-header-bg);
+
+		&:after {
+			display: block;
+			clear: both;
+			height: 0;
+			content: ' ';
+		}
+
+		h2 {
+			display: inline-block;
+			font-size: 1em;
+			font-family: $body-font-family;
+		}
+
+		.title {
+			position: absolute;
+			top: 50%;
+			padding: 0;
+			transform: translateY(-50%);
+		}
+	}
+
+	@media screen and (min-width: $screen-xs-min) {
+		width: 75%;
+	}
+
+	@media screen and (min-width: $screen-sm-min) {
+		width: 50%;
+	}
+
+	@media screen and (min-width: $screen-md-min) {
+		width: 40%;
+	}
+
+	@media screen and (min-width: $screen-lg-min) {
+		width: 33%;
+	}
 }

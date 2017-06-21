@@ -31,9 +31,8 @@ export class StructureBuilder_Cmp implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
-		this.config = this.configSvc.getConfig(ConfigTypes.app);
-		this.configSvcSub = this.configSvc.configUpdatedEvent.subscribe(data => {
-			this.onConfigChange(data.type, data.config);
+		this.configSvcSub = this.configSvc.appConfigUpdate.subscribe(data => {
+			this.onConfigChange(data.config);
 		});
 
 		this.routerEventSub = this.router.events
@@ -101,15 +100,11 @@ export class StructureBuilder_Cmp implements OnInit, OnDestroy {
 	/**
 	 * Handler for when a config loads/is changed
 	 *
-	 * @param type
-	 *
 	 * @param config
 	 */
-	private onConfigChange(type, config) {
-		if(type === ConfigTypes.app) {
-			this.config = config;
-			this.onNavigationEnd(this.currentRoute);
-		}
+	private onConfigChange(config) {
+		this.config = config;
+		this.onNavigationEnd(this.currentRoute);
 	}
 
 	/**

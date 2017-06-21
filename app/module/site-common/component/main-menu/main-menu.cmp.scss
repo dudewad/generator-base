@@ -11,12 +11,21 @@ menu.main-menu {
 	width: 100%;
 	z-index: -1;
 	opacity: 0;
-	background: map-get($colors, main-menu-bg);
 	transition: opacity $trTime, z-index $trTime;
+	padding: 0;
 
 	&.active {
 		opacity: 1;
 		z-index: 1;
 		transition: z-index 0s, opacity $trTime;
+	}
+
+	.backdrop {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: map-get($colors, main-menu-bg);
 	}
 }

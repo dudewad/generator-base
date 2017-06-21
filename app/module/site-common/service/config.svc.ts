@@ -9,7 +9,10 @@ export const ConfigTypes: any = {
 
 @Injectable()
 export class Config_Svc {
-	configUpdatedEvent: BehaviorSubject<any> = new BehaviorSubject<any>({});
+	configUpdate: BehaviorSubject<any> = new BehaviorSubject<any>({});
+	globalConfigUpdate: BehaviorSubject<any> = new BehaviorSubject<any>({});
+	pageConfigUpdate: BehaviorSubject<any> = new BehaviorSubject<any>({});
+	appConfigUpdate: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
 	private configs:any = {};
 
@@ -17,12 +20,26 @@ export class Config_Svc {
 	}
 
 	setConfig(type, config:any, currentRoute?: any) {
-		this.configs[type] = config;
-		this.configUpdatedEvent.next({
+		let eventData = {
 			type,
-			config: this.configs[type],
+			config,
 			currentRoute
-		});
+		};
+
+		this.configs[type] = config;
+		this.configUpdate.next(eventData);
+
+		switch(type) {
+			case ConfigTypes.app:
+				this.appConfigUpdate.next(eventData);
+				break;
+			case ConfigTypes.global:
+				this.globalConfigUpdate.next(eventData);
+				break;
+			case ConfigTypes.page:
+				this.pageConfigUpdate.next(eventData);
+				break;
+		}
 	}
 
 	getConfig(type):any {

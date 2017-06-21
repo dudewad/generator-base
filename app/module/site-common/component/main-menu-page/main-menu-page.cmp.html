@@ -1,2 +1,28 @@
-<section class="main-menu-page">
-</section>
+<div class="main-menu-page">
+	<div class="menu-page-header">
+		<button class="style-reset title">
+			<span><</span>
+			<h2 (click)="popPage()"> {{page?.header?.defaultBackText ? page.header.defaultBackText : page.text}}</h2>
+		</button>
+		<button class="style-reset close utility" (click)="closeMenu()">
+			<i class="siteIcon siteIcon-close"></i>
+		</button>
+	</div>
+
+	<ul>
+		<li *ngFor="let item of page.items" [ngClass]="{'has-children': item.items}">
+			<a *ngIf="item.href"
+			   (click)="handleLinkClick(item)"
+			   [routerLink]="item.href"
+			   [ngClass]="{'button': item.style === itemStyles.button}">
+				{{item.text}}
+			</a>
+			<button
+					*ngIf="item.items"
+					(click)="openMenuPage(item)"
+					[ngClass]="{'style-link': item.style === itemStyles.link}">
+				{{item.text}}
+			</button>
+		</li>
+	</ul>
+</div>

@@ -23,8 +23,7 @@ export class Metrics_Svc {
 			return;
 		}
 
-		configSvc.configUpdatedEvent
-			.filter(data => data.type === ConfigTypes.page)
+		configSvc.pageConfigUpdate
 			.subscribe(data => {
 				this.handlePageLoad(data);
 			});

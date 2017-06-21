@@ -21,9 +21,12 @@ export class App_Cmp implements OnInit{
 				private http: Http,
 	            private metricsSvc: Metrics_Svc,
 	            @Inject(App_Const) private constants){
-		this.configSvc.configUpdatedEvent
-			.filter(data => data.type === ConfigTypes.page)
+		this.configSvc.pageConfigUpdate
 			.subscribe(data => {
+				if (!data.config) {
+					return;
+				}
+
 				let cfg = data.config.config;
 				this.state.header = cfg.header;
 				this.state.footer = cfg.footer;

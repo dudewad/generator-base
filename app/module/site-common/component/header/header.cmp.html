@@ -1,7 +1,7 @@
 <header>
 	<div class="controls">
 		<main-menu-toggle>
-			<i class="siteIcon siteIcon-menu menu-toggle"></i> Menu
+			<i class="siteIcon siteIcon-menu menu-toggle"></i> {{content?.mainMenuToggle?.label ? content.mainMenuToggle.label : ''}}
 		</main-menu-toggle>
 		<a [routerLink]="['/']"
 		   [ngSwitch]="config?.type"
