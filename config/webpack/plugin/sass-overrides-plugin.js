@@ -1,9 +1,9 @@
 const path = require('path');
 const fs = require('fs-extra');
 const glob = require('glob');
-const verboseLog = new (require('@build-utils/verbose-log'))();
+const verboseLog = new (require('@build-utils/verbose-log'))('SassOverridesPlugin');
 
-function SassOverridesPlugin(cfg, verbose) {
+function SassOverridesPlugin(cfg) {
     this.cfg = cfg;
     this.targetSrcDir = path.resolve(
         cfg.path.resrcRoot,
@@ -15,10 +15,7 @@ function SassOverridesPlugin(cfg, verbose) {
     );
     this.skip = false;
 
-    if (verbose) {
-        verboseLog.enable();
-        verboseLog.log('SassOverridesPlugin is running in verbose mode...');
-    }
+    cfg.verbose && verboseLog.enable();
 }
 
 SassOverridesPlugin.prototype = {
@@ -58,6 +55,7 @@ SassOverridesPlugin.prototype = {
     },
 
     copySourceOverrides() {
+        console.log('##################################\n', 'SASS PLUGIN RUNNING', '\n##################################\n');
         return new Promise((resolve, reject) => {
             fs.copy(this.targetSrcDir, this.targetOutputDir, err => {
                 if (err) {
