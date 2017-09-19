@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const glob = require('glob');
 const verboseLog = new (require('@build-utils/verbose-log'))('SassOverridesPlugin');
 
-function SassOverridesPlugin(cfg) {
+function SassOverridesPlugin(cfg, verbose) {
     this.cfg = cfg;
     this.targetSrcDir = path.resolve(
         cfg.path.resrcRoot,
@@ -15,7 +15,7 @@ function SassOverridesPlugin(cfg) {
     );
     this.skip = false;
 
-    cfg.verbose && verboseLog.enable();
+    verbose && verboseLog.enable();
 }
 
 SassOverridesPlugin.prototype = {
