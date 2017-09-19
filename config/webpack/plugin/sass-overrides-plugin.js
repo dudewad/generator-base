@@ -55,7 +55,6 @@ SassOverridesPlugin.prototype = {
     },
 
     copySourceOverrides() {
-        console.log('##################################\n', 'SASS PLUGIN RUNNING', '\n##################################\n');
         return new Promise((resolve, reject) => {
             fs.copy(this.targetSrcDir, this.targetOutputDir, err => {
                 if (err) {
