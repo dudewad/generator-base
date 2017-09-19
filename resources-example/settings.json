@@ -54,7 +54,7 @@
 		}
 	],
 	"style": {
-		"overridesBaseDir": "/resources/style",
+		"overridesBaseDir": "resources/style",
 		"overridesEntryPoint": "custom.scss"
 	},
 	"url": {

@@ -4,12 +4,11 @@ $font-config: $ENV_FONT_CONFIG;
 $url-base: $urlContentRoot + $urlFontRelativePath;
 
 @each $font in $font-config {
-	$fType: map-get($font, type);
-	@if($fType == 'webfont') {
-		@include fontFace($font);
-	}
-	@if($fType == 'import') {
-		@debug $font;
-		@include fontImport($font);
-	}
+    $fType: map-get($font, type);
+    @if ($fType == 'webfont') {
+        @include fontFace($font);
+    }
+    @if ($fType == 'import') {
+        @include fontImport($font);
+    }
 }

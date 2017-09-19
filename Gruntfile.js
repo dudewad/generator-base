@@ -1,7 +1,7 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
-const cOut = require('./config/build-utils/customOutput');
+const cOut = require('./config/build-utils/custom-output');
 
 function filterDefinedTasks(grunt, taskList) {
 	if (Array.isArray(taskList)) {
