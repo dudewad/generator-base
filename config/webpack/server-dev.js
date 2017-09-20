@@ -1,16 +1,18 @@
 "use strict";
-const helpers = require('./utils/helpers');
+
+//Allow Node module aliasing, configured in package.json at _moduleAliases and _moduleDirectories
+require('module-alias/register');
+
+const helpers = require('@webpack-common/helpers');
 let env = helpers.getEnv();
-const resourcesInfo = helpers.getResourcesInfo(helpers.getEnv());
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const config = (require('./webpack-dev.js'))(env);
-const customSettings = require(resourcesInfo.settingsFilepath);
-const HOST = customSettings.build.devServer.host || '0.0.0.0';
-const PORT = customSettings.build.devServer.port || 3000;
+const appSettings = (require('@webpack-common/runtime.cfg'))(env).appSettings;
+const HOST = appSettings.build.devServer.host || '0.0.0.0';
+const PORT = appSettings.build.devServer.port || 3000;
 config.entry.app = [config.entry.app];
 config.entry.app.unshift(`webpack-dev-server/client?http://${HOST}:${PORT}/`, `webpack/hot/dev-server`);
-
 
 /**
  * Webpack Development Server configuration
@@ -32,8 +34,8 @@ const webpackDevServerOptions = {
         cached: true,
         chunks: false
     },
-    contentBase: helpers.root(''),
-    outputPath: helpers.root('prod')
+    contentBase: helpers.joinPathFromRoot(''),
+    outputPath: helpers.joinPathFromRoot('prod')
 };
 
 let app = new WebpackDevServer(webpack(config), webpackDevServerOptions);

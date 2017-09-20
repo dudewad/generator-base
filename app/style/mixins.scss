@@ -2,30 +2,29 @@
  * Fonts
  */
 @mixin fontFace($map) {
-	$family: map-get($map, family);
-	$formats: map-get($map, formats);
-	$numFormats: length($formats);
+    $family: map-get($map, name);
+    $formats: map-get($map, formats);
+    $numFormats: length($formats);
 
-	@font-face {
-		font-family: "#{$family}";
-		font-weight: map-get($map, weight);
-		font-style: map-get($map, style);
+    @font-face {
+        font-family: "#{$family}";
+        font-weight: map-get($map, weight);
+        font-style: map-get($map, style);
 
-		@for $i from 1 through $numFormats {
-			$format: nth($formats, $i);
-			$extension: map-get($format, extension);
-			$name: map-get($format, name);
-			@if ($i == $numFormats) {
-				src: url("#{$url-base}/#{$family}/#{$family}.#{$extension}") format("#{$name}");
-			}
-			@else {
-				src: url("#{$url-base}/#{$family}/#{$family}.#{$extension}") format("#{$name}"),
-			}
-		}
-	}
+        @for $i from 1 through $numFormats {
+            $format: nth($formats, $i);
+            $extension: map-get($format, extension);
+            $name: map-get($format, name);
+            @if ($i == $numFormats) {
+                src: url("#{$url-base}/#{$family}/#{$family}.#{$extension}") format("#{$name}");
+            } @else {
+                src: url("#{$url-base}/#{$family}/#{$family}.#{$extension}") format("#{$name}"),
+            }
+        }
+    }
 }
 
 @mixin fontImport($map) {
-	$font-url: map-get($map, url);
-	@import url('#{$font-url}');
+    $font-url: map-get($map, url);
+    @import url('#{$font-url}');
 }
