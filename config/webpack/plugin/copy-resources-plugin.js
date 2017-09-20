@@ -1,17 +1,14 @@
 const path = require('path');
 const fs = require('fs-extra');
 const chokidar = require('chokidar');
-const verboseLog = new (require('@build-utils/verbose-log'))();
+const verboseLog = new (require('@build-utils/verbose-log'))('CopyResourcesPlugin');
 
 function CopyResourcesPlugin(cfg) {
     this.cfg = cfg;
     this.resolvedSrc = path.resolve(cfg.src);
     this.destFiles = [];
 
-    if (cfg.verbose) {
-        verboseLog.enable();
-        verboseLog.log('CopyResourcesPlugin is running in verbose mode...');
-    }
+    cfg.verbose && verboseLog.enable();
 }
 
 CopyResourcesPlugin.prototype = {

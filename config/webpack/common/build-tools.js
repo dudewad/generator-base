@@ -2,33 +2,20 @@
 const fs = require('fs-extra');
 const ncp = require('ncp');
 const path = require('path');
-const mkdirp = require('mkdirp');
 const helpers = require('@webpack-common/helpers');
 const pkg = require('@root/package.json');
 const urlJoin = require('url-join');
 
 /**
- * This function takes the font list from the consumed settings file, and a target filename where the font import
- * statements will go. It first uses the fonts list to determine which fonts are imported dynamically as webfonts and
- * creates corresponding CSS @import statements and writes them to the target file provided by `targetFilename`
- *
- * Then, it converts the font settings JSON into a SASS map string, which is passed back to the webpack environment and
+ * Converts the font settings JSON into a SASS map as a string, which is passed back to the webpack environment and
  * injected into the SASS environment.
  *
- * @param fonts
- * @param targetFilename
+ * @param fonts             The JSON font definition object from the consumed settings.json See the readme for the
+ *                          appropriate format.
  * @returns {string}
  */
-function parseFontConfigToSass(fonts, targetFilename) {
+function parseFontConfigToSass(fonts) {
     let masterStr = '';
-    let scssFontImportStmts = fonts.reduce((accumulator, font) => font.generated ? `${accumulator}@import "./${font.name}";\n` : accumulator, '');
-
-    mkdirp(path.dirname(targetFilename), function (err) {
-        if (err) {
-            throw new Error(`Couldn't write font scss file! Aborting.\n`, err);
-        }
-        fs.writeFileSync(targetFilename, scssFontImportStmts);
-    });
 
     fonts.forEach(font => {
         switch (font.type) {

@@ -1,20 +1,22 @@
 "use strict";
 
-const webpack = require('webpack');
-const TsLoader = require('awesome-typescript-loader');
-const TsConfigPathsPlugin = TsLoader.TsConfigPathsPlugin;
-const helpers = require('@webpack-common/helpers');
-const runtimeCfg = require('@webpack-common/runtime.cfg');
 const buildTools = require('@webpack-common/build-tools');
+const TsLoader = require('awesome-typescript-loader');
+const helpers = require('@webpack-common/helpers');
+const path = require('path');
+const runtimeCfg = require('@webpack-common/runtime.cfg');
+const webpack = require('webpack');
 
 /**
  * Plugins
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyResourcesPlugin = require('@webpack-plugin/copy-resources-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const SassFontImportsPlugin = require('@webpack-plugin/sass-font-imports-plugin');
 const SassOverridesPlugin = require('@webpack-plugin/sass-overrides-plugin');
+const TsConfigPathsPlugin = TsLoader.TsConfigPathsPlugin;
 const WebfontPlugin = require('webpack-webfont').default;
 
 /**
@@ -23,15 +25,30 @@ const WebfontPlugin = require('webpack-webfont').default;
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function (env) {
+    let plugins;
     let cfg = runtimeCfg(env);
     let wfpCfg = buildTools.getWebfontPluginCfg(cfg);
-    let plugins = [
-        /*new CleanWebpackPlugin(
-            [path.join(pkg.directories.sassGeneratedRoot, "overrides")],
+    let cleanTargets = [
+        path.resolve(cfg.path.pkgJsonDirs.sassGeneratedRoot),
+        path.resolve(cfg.path.pkgJsonDirs.webpackTempBuildBase)
+    ];
+
+    if(cfg.appSettings.build.outputBase[process.env.ENV]) {
+        cleanTargets.push(cfg.appSettings.build.outputBase[process.env.ENV])
+    }
+
+    plugins = [
+        new CleanWebpackPlugin(
+            cleanTargets,
             {
-                root: helpers.joinPathFromRoot()
+                root: process.cwd()
             }
-        ),*/
+        ),
+        new SassFontImportsPlugin({
+            fonts: cfg.appSettings.font,
+            output: path.resolve(cfg.path.pkgJsonDirs.sassGeneratedRoot + cfg.path.pkgJsonResrc.sassFontFileName),
+            verbose: true
+        }),
         new DefinePlugin({
             'BREAKPOINT': cfg.breakpoint,
             'ENV': JSON.stringify(cfg.ENV),

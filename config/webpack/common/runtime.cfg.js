@@ -3,7 +3,6 @@ const cOut = require('@build-utils/custom-output');
 const helpers = require('@webpack-common/helpers');
 const path = require('path');
 const pkg = require('@root/package.json');
-const sassImportFilename = pkg.directories.sassGeneratedRoot + pkg.resources.sassFontFileName;
 const urlJoin = require('url-join');
 
 let runtimeCfg;
@@ -21,7 +20,7 @@ module.exports = function (env) {
         let settingsFilename = (env && env.settings) || "settings.json";
         let settingsFilepath = helpers.joinPathFromRoot(resrcRoot, settingsFilename);
         let appSettings = require(helpers.joinPathFromRoot(resrcSrc, settingsFilename));
-        let sassFontCfg = buildTools.parseFontConfigToSass(appSettings.font, sassImportFilename);
+        let sassFontCfg = buildTools.parseFontConfigToSass(appSettings.font);
         let contentRoot = appSettings.url[nodeEnv].contentRoot;
         let dataRoot = appSettings.url[nodeEnv].dataRoot;
         let isDev = process.env.ENV === 'dev';

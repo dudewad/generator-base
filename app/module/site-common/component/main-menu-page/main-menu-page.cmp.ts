@@ -20,7 +20,6 @@ export class MainMenuPage_Cmp {
 	}
 
 	ngOnInit() {
-		console.log(this.page);
 	}
 
 	handleLinkClick(item: any) {

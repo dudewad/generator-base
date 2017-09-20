@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const glob = require('glob');
-const verboseLog = new (require('@build-utils/verbose-log'))();
+const verboseLog = new (require('@build-utils/verbose-log'))('SassOverridesPlugin');
 
 function SassOverridesPlugin(cfg, verbose) {
     this.cfg = cfg;
@@ -15,10 +15,7 @@ function SassOverridesPlugin(cfg, verbose) {
     );
     this.skip = false;
 
-    if (verbose) {
-        verboseLog.enable();
-        verboseLog.log('SassOverridesPlugin is running in verbose mode...');
-    }
+    verbose && verboseLog.enable();
 }
 
 SassOverridesPlugin.prototype = {
