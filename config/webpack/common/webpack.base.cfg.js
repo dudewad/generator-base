@@ -1,3 +1,8 @@
+/**
+ * This config is merged into all configurations. It contains any plugins and config common to every single other
+ * configuration. If a plugin or setting you want to add doesn't belong everywhere, then it doesn't belong here.
+ */
+
 "use strict";
 
 const buildTools = require('@webpack-common/build-tools');
@@ -10,6 +15,7 @@ const webpack = require('webpack');
 /**
  * Plugins
  */
+const AutoPrefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyResourcesPlugin = require('@webpack-plugin/copy-resources-plugin');
@@ -19,11 +25,6 @@ const SassOverridesPlugin = require('@webpack-plugin/sass-overrides-plugin');
 const TsConfigPathsPlugin = TsLoader.TsConfigPathsPlugin;
 const WebfontPlugin = require('webpack-webfont').default;
 
-/**
- * Webpack configuration
- *
- * See: http://webpack.github.io/docs/configuration.html#cli
- */
 module.exports = function (env) {
     let plugins;
     let cfg = runtimeCfg(env);
@@ -101,6 +102,24 @@ module.exports = function (env) {
                         loader: 'raw-loader'
                     }],
                     exclude: [helpers.joinPathFromRoot('index.html')]
+                }, {
+                    test: /\.scss$/,
+                    use: [{
+                        loader: "raw-loader"
+                    }, {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: [AutoPrefixer()]
+                        }
+                    }, {
+                        loader: "sass-loader",
+                        options: {
+                            data: cfg.sassLoaderBaseData + ';$env: "' + process.env.ENV + '";'
+                            + '$urlContentRoot: "' + cfg.path.contentRoot + '";'
+                            + '$urlFontRelativePath: "' + cfg.appSettings.url.relative.font + '";'
+                            + '$urlImageRelativePath: "' + cfg.appSettings.url.relative.image + '";'
+                        }
+                    }]
                 }
             ]
         },

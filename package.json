@@ -74,8 +74,8 @@
     "sassOverridesEntryPoint": "overrides.scss"
   },
   "scripts": {
-    "build:prod": "webpack --config config/webpack/webpack-prod.js --profile --colors --display-error-details --display-cached --bail --verbose",
-    "build:staging": "webpack --config config/webpack/webpack-staging.js --profile --colors --display-error-details --display-cached --bail --verbose",
+    "build:prod": "webpack --config config/webpack/webpack-prod.js --profile --colors --display-error-details --display-cached --bail --verbose --progress",
+    "build:staging": "webpack --config config/webpack/webpack-staging.js --profile --colors --display-error-details --display-cached --bail --verbose --progress",
     "start": "node ./config/webpack/server-dev.js",
     "example": "node ./config/webpack/server-dev.js -- --env.resrc=./resources-example"
   },
