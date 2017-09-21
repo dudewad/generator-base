@@ -78,7 +78,8 @@
 	"resources": {
 		"contentRoot": "resources/asset",
 		"dataRoot": "resources/site-data",
-		"fontRoot": "resources/asset/font"
+		"fontRoot": "resources/asset/font",
+        "favicon": "resources/favicon.ico"
 	},
 	"server": {
 		"htaccess": "resources/.htaccess"

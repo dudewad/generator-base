@@ -23,6 +23,8 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 module.exports = function (env) {
     let cfg = runtimeCfg(env);
 
+    console.log('##################################\n', cfg.appSettings.resources.favicon, '\n##################################\n');
+
     return webpackMerge(webpackBaseCfg(env), {
         plugins: [
             new UglifyJsPlugin(),
@@ -35,6 +37,14 @@ module.exports = function (env) {
                 {
                     from: path.resolve(cfg.path.resrcRoot, cfg.appSettings.resources.dataRoot),
                     to: cfg.path.outputBaseSiteData
+                },
+                {
+                    from: path.resolve(cfg.path.resrcRoot, cfg.appSettings.resources.favicon),
+                    to: cfg.path.outputBaseSite
+                },
+                {
+                    from: path.resolve(cfg.path.resrcRoot, cfg.appSettings.server.htaccess),
+                    to: cfg.path.outputBaseSite
                 }
             ])
         ],
