@@ -1,6 +1,6 @@
 {
   "name": "lm-generator-base",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Base site generator",
   "main": "index.js",
   "dependencies": {
@@ -56,7 +56,7 @@
     "webpack-dev-server": "^1.16.5",
     "webpack-md5-hash": "0.0.5",
     "webpack-merge": "^0.15.0",
-    "webpack-webfont": "0.0.1-alpha.8"
+    "webpack-webfont": "0.0.1-alpha.10"
   },
   "directories": {
     "app": "app/",
