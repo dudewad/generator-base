@@ -1,14 +1,14 @@
-<div class="locale-switcher">
-	<button (click)="toggle()" class="utility">
-		<i class="siteIcon siteIcon-globe"></i>
-		{{this.content.title}}
-	</button>
-	<ul *ngIf="active">
-		<li *ngFor="let locale of locales"
-			(click)="handleLocaleClick(locale)">
-			<button>
-				{{locale.name}} ({{locale.locale}})
-			</button>
-		</li>
-	</ul>
+<div class="locale-switcher" *ngIf="available">
+    <button (click)="toggle()" class="utility">
+        <i class="siteIcon siteIcon-globe"></i>
+        {{this.content.title}}
+    </button>
+    <ul *ngIf="active">
+        <li *ngFor="let locale of locales"
+            (click)="handleLocaleClick(locale)">
+            <button>
+                {{locale.name}} ({{locale.locale}})
+            </button>
+        </li>
+    </ul>
 </div>

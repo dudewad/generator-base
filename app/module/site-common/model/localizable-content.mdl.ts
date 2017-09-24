@@ -1,54 +1,56 @@
 export class LocalizableContent_Mdl {
-	content: any = {};
+    content: any = {};
 
-	private currentLocale: string;
+    private currentLocale: string;
 
-	constructor(private baseContentObj: any,
-	            private locale: string,
-				private unregisterCallback: Function,
-				private defaultLocale?: string) {
-		this.setLocale(locale);
-	}
+    constructor(private baseContentObj: any,
+                private locale: string,
+                private unregisterCallback: Function,
+                private defaultLocale?: string) {
+        this.setLocale(locale);
+    }
 
-	setLocale(locale: string) {
-		let target = this.content;
-		let src;
+    setLocale(locale: string) {
+        let target = this.content;
+        let src;
 
-		if(locale === this.currentLocale) {
-			return;
-		}
+        if (Object.keys(this.content).length && locale === this.currentLocale) {
+            return;
+        }
 
-		src = this.baseContentObj[locale];
-		if (!src && this.defaultLocale) {
-			src = this.baseContentObj[this.defaultLocale];
-		}
-		if (!src) {
-			src = this.baseContentObj;
-		}
+        if(this.baseContentObj) {
+            src = this.baseContentObj[locale];
+            if (!src && this.defaultLocale) {
+                src = this.baseContentObj[this.defaultLocale];
+            }
+            if (!src) {
+                src = this.baseContentObj;
+            }
+        }
 
-		this.currentLocale = locale;
+        this.currentLocale = locale;
 
-		for(let key in target){
-			if(target.hasOwnProperty(key)) {
-				delete target[key];
-			}
-		}
+        for (let key in target) {
+            if (target.hasOwnProperty(key)) {
+                delete target[key];
+            }
+        }
 
-		for(let key in src) {
-			if(src.hasOwnProperty(key)) {
-				target[key] = src[key];
-			}
-		}
-	}
+        for (let key in src) {
+            if (src.hasOwnProperty(key)) {
+                target[key] = src[key];
+            }
+        }
+    }
 
-	setDefaultLocale(locale: string) {
-		this.defaultLocale = locale;
-		if (!this.locale) {
-			this.setLocale(locale);
-		}
-	}
+    setDefaultLocale(locale: string) {
+        this.defaultLocale = locale;
+        if (!this.locale) {
+            this.setLocale(locale);
+        }
+    }
 
-	unregister() {
-		this.unregisterCallback(this);
-	}
+    unregister() {
+        this.unregisterCallback(this);
+    }
 }

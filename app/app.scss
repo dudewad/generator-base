@@ -119,6 +119,10 @@ a {
     }
 }
 
+.display-none {
+    display: none !important;
+}
+
 @media screen and (min-width: $screen-xs-min) {
 }
 
