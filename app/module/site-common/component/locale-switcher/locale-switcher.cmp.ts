@@ -28,7 +28,7 @@ export class LocaleSwitcher_Cmp {
         this.localizationSvc.localeUpdatedEvent.subscribe(locale => {
             this.locale = locale;
             this.locales = this.localizationSvc.getLocales();
-            this.available = this.locales.length > 1;
+            this.available = this.locales && this.locales.length > 1;
         });
         this.configSvcSub = this.configSvc.globalConfigUpdate
             .subscribe(data => {

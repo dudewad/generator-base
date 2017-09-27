@@ -1,6 +1,6 @@
 <header>
     <div class="controls">
-        <main-menu-toggle>
+        <main-menu-toggle *ngIf="hasMainMenu">
             <i class="siteIcon siteIcon-menu menu-toggle"></i>
             {{content?.mainMenuToggle?.label ? content.mainMenuToggle.label : ''}}
         </main-menu-toggle>
