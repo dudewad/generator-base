@@ -79,7 +79,11 @@
 		"contentRoot": "resources/asset",
 		"dataRoot": "resources/site-data",
 		"fontRoot": "resources/asset/font",
-        "favicon": "resources/favicon.ico"
+        "favicon": {
+            "src": "resources/favicon.png",
+            "background": "#449FC3",
+            "title": "Paws for a Beer"
+        }
 	},
 	"server": {
 		"htaccess": "resources/.htaccess"

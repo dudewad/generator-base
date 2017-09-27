@@ -37,10 +37,6 @@ module.exports = function (env) {
                     to: cfg.path.outputBaseSiteData
                 },
                 {
-                    from: path.resolve(cfg.path.resrcRoot, cfg.appSettings.resources.favicon),
-                    to: cfg.path.outputBaseSite
-                },
-                {
                     from: path.resolve(cfg.path.resrcRoot, cfg.appSettings.server.htaccess),
                     to: cfg.path.outputBaseSite
                 }

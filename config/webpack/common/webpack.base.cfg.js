@@ -20,6 +20,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyResourcesPlugin = require('@webpack-plugin/copy-resources-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const SassFontImportsPlugin = require('@webpack-plugin/sass-font-imports-plugin');
 const SassOverridesPlugin = require('@webpack-plugin/sass-overrides-plugin');
 const TsConfigPathsPlugin = TsLoader.TsConfigPathsPlugin;
@@ -33,9 +34,10 @@ module.exports = function (env) {
         path.resolve(cfg.path.pkgJsonDirs.sassGeneratedRoot),
         path.resolve(cfg.path.pkgJsonDirs.webpackTempBuildBase)
     ];
+    let faviconCfg = cfg.appSettings.resources.favicon;
 
     if(cfg.appSettings.build.outputBase[process.env.ENV]) {
-        cleanTargets.push(cfg.appSettings.build.outputBase[process.env.ENV])
+        cleanTargets.push(path.resolve(cfg.path.resrcSrc, cfg.appSettings.build.outputBase[process.env.ENV]))
     }
 
     plugins = [
@@ -80,6 +82,14 @@ module.exports = function (env) {
 
     if(wfpCfg) {
         plugins.push(new WebfontPlugin(wfpCfg));
+    }
+    if (faviconCfg) {
+        plugins.push(new FaviconsWebpackPlugin({
+            logo: path.resolve(cfg.path.resrcRoot, faviconCfg.src),
+            prefix: 'favicon-[hash]/',
+            background: faviconCfg.background || '#FFF',
+            title: faviconCfg.title || ''
+        }));
     }
 
     return {
