@@ -54,15 +54,15 @@ module.exports = function (env) {
         }),
         new DefinePlugin({
             'BREAKPOINT': cfg.breakpoint,
-            'ENV': JSON.stringify(cfg.ENV),
+            'ENV': JSON.stringify(process.env.ENV),
             'VERSION': JSON.stringify(cfg.version),
             'CONTENT_ROOT': JSON.stringify(cfg.path.contentRoot),
             'DATA_ROOT': JSON.stringify(cfg.path.dataRoot),
             'FONT_RELATIVE_PATH': JSON.stringify(cfg.appSettings.url.relative.font),
             'IMAGE_RELATIVE_PATH': JSON.stringify(cfg.appSettings.url.relative.image),
             'process.env': {
-                'ENV': JSON.stringify(cfg.ENV),
-                'NODE_ENV': JSON.stringify(cfg.ENV)
+                'ENV': JSON.stringify(process.env.ENV),
+                'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
             }
         }),
         new CopyResourcesPlugin

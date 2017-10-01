@@ -82,18 +82,17 @@ export class StructureBuilder_Cmp implements OnInit, OnDestroy {
      * @param route
      */
     private onNavigationEnd(route: any) {
+        this.currentRoute = this.router.routerState.snapshot.url;
         //Without routeMap loaded, we can't match routes to data files. Set it to pending.
         if (!this.config) {
-            this.currentRoute = route;
             return;
         }
-
-        let path: string = route && route.url || '';
+        let path: string = this.currentRoute || '';
         if (path[0] === '/') {
             path = path.substring(1);
+            path = path.split('?')[0];
         }
 
-        this.currentRoute = route;
         this.getPageData(path);
     }
 

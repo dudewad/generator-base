@@ -54,7 +54,8 @@ module.exports = function (env) {
                 resrcSrc,
                 settingsFilename,
                 settingsFilepath
-            }
+            },
+            version: pkg.version
         };
     }
 
