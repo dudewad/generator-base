@@ -1,7 +1,7 @@
 import {Component, ViewChild, ViewContainerRef, ViewEncapsulation, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
 
-import {Config_Svc, ConfigTypes, LocalizableContent_Mdl, Localization_Svc} from 'lm/site-common';
+import {Config_Svc, ConfigUpdate_Mdl, GlobalConfig_Mdl, LocalizableContent_Mdl, Localization_Svc, PageConfig_Mdl} from 'lm/site-common';
 
 @Component({
     selector: 'site-header',
@@ -15,43 +15,38 @@ export class Header_Cmp implements OnDestroy {
     hasMainMenu: boolean = false;
     @ViewChild('localeSwitcher', {read: ViewContainerRef}) localeSwitcher: ViewContainerRef;
 
-    private localizableContentObj: LocalizableContent_Mdl;
+    private locContentObj: LocalizableContent_Mdl;
     private config: any;
     private configSvcSub: Subscription;
 
     constructor(private configSvc: Config_Svc,
-                private localizationSvc: Localization_Svc) {
+                private locSvc: Localization_Svc) {
         this.configSvcSub = this.configSvc.globalConfigUpdate
             .merge(this.configSvc.pageConfigUpdate)
-            .subscribe(data => {
-                switch(data.type) {
-                    case ConfigTypes.global:
-                        this.onGlobalCfgChange(data.config);
-                        break;
-                    case ConfigTypes.page:
-                        this.onPageConfigChange(data.config);
-                        break;
+            .subscribe((data: ConfigUpdate_Mdl) => {
+                if(data.config instanceof PageConfig_Mdl) {
+                    this.onPageCfgChange(<PageConfig_Mdl>data.config);
+                }
+                if(data.config instanceof GlobalConfig_Mdl) {
+                    this.onGlobalCfgChange(<GlobalConfig_Mdl>data.config);
                 }
             });
     }
 
     ngOnDestroy() {
         this.configSvcSub.unsubscribe();
-        this.localizableContentObj && this.localizableContentObj.unregister();
+        this.locContentObj && this.locContentObj.unregister();
     }
 
-    private onPageConfigChange(pageCfg: any) {
+    private onPageCfgChange(pageCfg: PageConfig_Mdl) {
         this.hasMainMenu = !!pageCfg.config.mainMenu;
     }
 
-    private onGlobalCfgChange(config: any) {
-        if (!config) {
-            return;
-        }
+    private onGlobalCfgChange(config: GlobalConfig_Mdl) {
         this.config = config.component.header;
         this.hasMainMenu = !!config.component.mainMenu;
-        this.localizableContentObj && this.localizableContentObj.unregister();
-        this.localizableContentObj = this.localizationSvc.registerContent(this.config.content);
-        this.content = this.localizableContentObj.content;
+        this.locContentObj && this.locContentObj.unregister();
+        this.locContentObj = this.locSvc.registerContent(this.config.content);
+        this.content = this.locContentObj.content;
     }
 }

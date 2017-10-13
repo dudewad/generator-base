@@ -14,7 +14,7 @@ export class TextImage_Cmp extends StructureBase_Cmp {
 	            @Inject(App_Const) protected constants,
 	            protected assetSvc: Asset_Svc,
 	            protected globalEventSvc: GlobalEvent_Svc,
-	            protected localizationSvc: Localization_Svc) {
-		super(sanitizer, constants, assetSvc, globalEventSvc, localizationSvc);
+	            protected locSvc: Localization_Svc) {
+		super(sanitizer, constants, assetSvc, globalEventSvc, locSvc);
 	}
 }
