@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Subscription} from 'rxjs';
 
-import {Config_Svc, LocalizableContent_Mdl, Localization_Svc} from "lm/site-common";
+import {Config_Svc, ConfigUpdate_Mdl, GlobalConfig_Mdl, LocalizableContent_Mdl, Localization_Svc} from "lm/site-common";
 
 @Component({
     selector: 'locale-switcher',
@@ -18,21 +18,23 @@ export class LocaleSwitcher_Cmp {
     locale: any;
     locales: Array<any> = [];
 
-    private localizableContentObj: LocalizableContent_Mdl;
+    private locContentObj: LocalizableContent_Mdl;
     private config: any;
     private configSvcSub: Subscription;
 
     constructor(private configSvc: Config_Svc,
-                private localizationSvc: Localization_Svc) {
-        this.locale = localizationSvc.getCurrentLocale();
-        this.localizationSvc.localeUpdatedEvent.subscribe(locale => {
+                private locSvc: Localization_Svc) {
+        this.locale = locSvc.getCurrentLocale();
+
+        this.locSvc.localeUpdatedEvent.subscribe(locale => {
             this.locale = locale;
-            this.locales = this.localizationSvc.getLocales();
+            this.locales = this.locSvc.getLocales();
             this.available = this.locales && this.locales.length > 1;
         });
+
         this.configSvcSub = this.configSvc.globalConfigUpdate
-            .subscribe(data => {
-                this.onConfigChange(data.config);
+            .subscribe((data: ConfigUpdate_Mdl) => {
+                this.onConfigChange(<GlobalConfig_Mdl>data.config);
             });
     }
 
@@ -41,17 +43,17 @@ export class LocaleSwitcher_Cmp {
     }
 
     handleLocaleClick(locale: any) {
-        this.localizationSvc.setLocale(locale.locale);
+        this.locSvc.setLocale(locale.locale);
         this.toggle();
     }
 
-    private onConfigChange(config) {
-        this.config = config && config.component && config.component.localeSwitcher;
+    private onConfigChange(cfg: GlobalConfig_Mdl) {
+        this.config = cfg.component.localeSwitcher;
         if (!this.config) {
             return;
         }
-        this.localizableContentObj && this.localizableContentObj.unregister();
-        this.localizableContentObj = this.localizationSvc.registerContent(this.config.content);
-        this.content = this.localizableContentObj.content;
+        this.locContentObj && this.locContentObj.unregister();
+        this.locContentObj = this.locSvc.registerContent(this.config.content);
+        this.content = this.locContentObj.content;
     }
 }

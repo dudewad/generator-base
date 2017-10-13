@@ -1,7 +1,10 @@
 import { Component, Inject, OnDestroy } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
-import { App_Const, Asset_Svc, GlobalEvent_Svc, Localization_Svc, LocalizableContent_Mdl } from 'lm/site-common';
+import {
+    App_Const, Asset_Svc, GlobalEvent_Svc, Localization_Svc, LocalizableContent_Mdl,
+    PageCmpCfg_Mdl
+} from 'lm/site-common';
 
 const ComponentConfig: any = {
 	backgroundStyles: {
@@ -14,7 +17,7 @@ const ComponentConfig: any = {
 export abstract class StructureBase_Cmp implements OnDestroy {
 	protected config: any = {};
 	protected content: any = {};
-	private localizableContentObj: LocalizableContent_Mdl;
+	private locContentObj: LocalizableContent_Mdl;
 	private url: any = {};
 	private resizeHandlerId: number;
 	private win: any = window;
@@ -28,17 +31,17 @@ export abstract class StructureBase_Cmp implements OnDestroy {
 	            protected assetSvc: Asset_Svc,
 	            //TODO: OpaqueToken-ize the global event service injection so this stays portable
 	            protected globalEventSvc: GlobalEvent_Svc,
-				protected localizationSvc: Localization_Svc){
+				protected locSvc: Localization_Svc){
 		this.url = this.constants.url;
 		this.bp = this.constants.breakpoint;
 	}
 
-	public setConfig(config: any) {
-		this.rawConfig = config;
-		this.config = config.config;
-		this.localizableContentObj && this.localizableContentObj.unregister();
-		this.localizableContentObj = this.localizationSvc.registerContent(config.content);
-		this.content = this.localizableContentObj.content;
+	public setConfig(cfg: PageCmpCfg_Mdl) {
+		this.rawConfig = cfg;
+		this.config = cfg.config;
+		this.locContentObj && this.locContentObj.unregister();
+		this.locContentObj = this.locSvc.registerContent(cfg.content);
+		this.content = this.locContentObj.content;
 		this.setBackground();
 	}
 
@@ -113,7 +116,7 @@ export abstract class StructureBase_Cmp implements OnDestroy {
 	}
 
 	ngOnDestroy() {
-		this.localizableContentObj.unregister();
+		this.locContentObj.unregister();
 		this.globalEventSvc.unregisterResizeHandler(this.resizeHandlerId);
 	}
 }

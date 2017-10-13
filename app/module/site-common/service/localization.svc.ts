@@ -1,8 +1,8 @@
 import {Inject, Injectable} from '@angular/core';
 import {BehaviorSubject, Subscription} from 'rxjs';
 
-import {Config_Svc, ConfigTypes} from './config.svc';
-import {LocalizableContent_Mdl, StorageService} from 'lm/site-common';
+import {Config_Svc} from './config.svc';
+import {AppConfig_Mdl, ConfigUpdate_Mdl, LocalizableContent_Mdl, StorageService} from 'lm/site-common';
 
 @Injectable()
 export class Localization_Svc {
@@ -18,8 +18,8 @@ export class Localization_Svc {
     constructor(private configSvc: Config_Svc,
                 @Inject(StorageService) private storageSvc) {
         this.configSvcSub = this.configSvc.appConfigUpdate
-            .subscribe(data => {
-                this.handleConfigChange(data.config);
+            .subscribe((data: ConfigUpdate_Mdl) => {
+                this.handleConfigChange(<AppConfig_Mdl>data.config);
             });
     }
 
@@ -90,7 +90,7 @@ export class Localization_Svc {
      * @returns         {null}      Returns null if no locale is found matching the request
      */
     private getLocaleFromConfig(locale: string) {
-        let locales = this.locConfig && this.locConfig.locales;
+        let locales = this.locConfig.locales;
         let foundLocale = null;
 
         if (locales && Array.isArray(locales)) {
@@ -106,11 +106,11 @@ export class Localization_Svc {
      * When config changes happen, both current locale can update (if there wasn't one set, for instance) and default
      * locale can change as well. Need to update the locConfig to match the latest incoming data.
      *
-     * @param config    {object}   The new config object to handle
+     * @param cfg    {object}   The new config object to handle
      */
-    private handleConfigChange(config: any) {
+    private handleConfigChange(cfg: AppConfig_Mdl) {
         let currentDefaultLocale = this.defaultLocale;
-        this.locConfig = config.localization || {};
+        this.locConfig = cfg.localization;
         this.defaultLocale = this.locConfig.default;
         this.setLocale(this.storageSvc.get(this.storageKey) || this.currentLocale && this.currentLocale.locale || this.locConfig.default);
         if (currentDefaultLocale !== this.defaultLocale) {
