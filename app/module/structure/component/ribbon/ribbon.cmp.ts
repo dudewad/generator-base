@@ -21,8 +21,8 @@ export class Ribbon_Cmp extends StructureBase_Cmp{
 	            protected assetSvc: Asset_Svc,
 	            protected globalEventSvc: GlobalEvent_Svc,
 				private googleMapSvc:GoogleMap_Svc,
-				protected localizationSvc: Localization_Svc) {
-		super(sanitizer, constants, assetSvc, globalEventSvc, localizationSvc);
+				protected locSvc: Localization_Svc) {
+		super(sanitizer, constants, assetSvc, globalEventSvc, locSvc);
 	}
 
 	public setConfig(config) {
