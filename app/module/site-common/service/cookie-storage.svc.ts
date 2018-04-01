@@ -1,4 +1,4 @@
-import { StorageService_Int } from "lm/site-common";
+import { StorageService_Int } from 'lm/site-common';
 
 export class CookieStorage_Svc implements StorageService_Int {
 	private encode = (<any>window).encodeURIComponent;

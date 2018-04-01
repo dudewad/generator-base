@@ -1,6 +1,6 @@
 {
   "name": "lm-generator-base",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Base site generator",
   "main": "index.js",
   "dependencies": {
@@ -14,6 +14,7 @@
     "@angular/platform-browser-dynamic": "^4.4.2",
     "@angular/platform-server": "^4.4.2",
     "@angular/router": "^4.4.2",
+    "@types/angular": "^1.6.32",
     "@types/webpack": "^1.12.35",
     "angular-in-memory-web-api": "~0.1.5",
     "bootstrap": "^3.3.7",
@@ -22,6 +23,7 @@
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.4.3",
     "systemjs": "0.19.39",
+    "typescript": "^2.5.3",
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
@@ -45,12 +47,12 @@
     "module-alias": "^2.0.1",
     "ncp": "^2.0.0",
     "node-sass": "^3.10.1",
+    "nunjucks": "^3.0.1",
     "postcss-loader": "^2.0.6",
     "raw-loader": "^0.5.1",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "tsconfig-paths": "^2.2.0",
-    "typings": "^2.1.0",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "url-join": "^1.1.0",
     "webpack": "^2.7.0",
@@ -62,10 +64,8 @@
   "directories": {
     "app": "app/",
     "scssRoot": "app/style/",
-    "grunt": {
-      "aliasTask": "config/grunt/aliasTask/",
-      "taskConfig": "config/grunt/taskConfig/"
-    },
+    "extensionsModuleRoot": "app/module/extensions",
+    "extensionsTemplatesRoot": "config/templates/extensions-module",
     "sassGeneratedRoot": "app/style/generated/",
     "sassOverridesBase": "overrides",
     "webpackTempBuildBase": ".tmp"

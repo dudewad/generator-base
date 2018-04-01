@@ -1,64 +1,61 @@
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs'
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 
-import {LocalizableContent_Mdl, Localization_Svc, MainMenu_Svc} from 'lm/site-common';
+import {
+    LocalizableContent_Mdl,
+    Localization_Svc,
+    MainMenu_Svc
+} from 'lm/site-common';
 
 @Component({
-	selector: 'main-menu',
-	template: require('./main-menu.cmp.html'),
-	styles: [require('./main-menu.cmp.scss')]
+    selector: 'main-menu',
+    template: require('./main-menu.cmp.html'),
+    styles: [require('./main-menu.cmp.scss')]
 })
 
-export class MainMenu_Cmp implements OnDestroy{
-	config: any = {};
-	localizableContentMdl: LocalizableContent_Mdl;
-	state: any = {
-		active: false
-	};
-	pages: Array<any> = [];
-	@ViewChild('menuContent') menuContent: ElementRef;
+export class MainMenu_Cmp implements OnDestroy {
+    public config: any = {};
+    public localizableContentMdl: LocalizableContent_Mdl;
+    public state: any = {
+        active: false
+    };
+    public pages: Array<any> = [];
+    @ViewChild('menuContent')
+    public menuContent: ElementRef;
 
-	private menuConfigUpdate: Subscription;
-	private menuStatusSub: Subscription;
-	private pageAddedSub: Subscription;
-	private pagePoppedSub: Subscription;
+    private destroy$: Subject<void> = new Subject<void>();
 
-	constructor(private locSvc: Localization_Svc,
-	            private mainMenuSvc: MainMenu_Svc) {
-		this.menuStatusSub = mainMenuSvc.menuStatus
-			.subscribe(active => {
-				this.state.active = active;
-			});
+    constructor(private locSvc: Localization_Svc,
+                private mainMenuSvc: MainMenu_Svc) {
+        mainMenuSvc.menuStatus
+            .takeUntil(this.destroy$)
+            .subscribe(active => this.state.active = active);
 
-		this.menuConfigUpdate = this.mainMenuSvc.menuConfigUpdate
-			.subscribe(data => {
-				this.onConfigUpdate(data);
-			});
+        this.mainMenuSvc.menuConfigUpdate
+            .takeUntil(this.destroy$)
+            .subscribe(data => {
+                this.onConfigUpdate(data);
+            });
 
-		this.pagePoppedSub = this.mainMenuSvc.menuPagePopped
-			.subscribe(pagesArr => {
-				this.pages = pagesArr;
-			});
+        this.mainMenuSvc.menuPagePopped
+            .takeUntil(this.destroy$)
+            .merge(this.mainMenuSvc.menuPageAdded)
+            .subscribe(pagesArr => this.pages = pagesArr);
+    }
 
-		this.pageAddedSub = this.mainMenuSvc.menuPageAdded
-			.subscribe(pagesArr => {
-				this.pages = pagesArr;
-			});
-	}
+    ngOnDestroy() {
+        this.destroy$.next();
+    }
 
-	ngOnDestroy() {
-		this.menuConfigUpdate.unsubscribe();
-		this.menuStatusSub.unsubscribe();
-	}
+    onConfigUpdate(cfg: any) {
+        this.config = cfg;
+        this.localizableContentMdl && this.localizableContentMdl.unregister();
+        this.localizableContentMdl = this.locSvc.registerContent(cfg.content);
+        this.mainMenuSvc.addPage(this.localizableContentMdl.content);
+    }
 
-	onConfigUpdate(cfg: any) {
-		this.config = cfg;
-		this.localizableContentMdl && this.localizableContentMdl.unregister();
-		this.localizableContentMdl = this.locSvc.registerContent(cfg.content);
-		this.mainMenuSvc.addPage(this.localizableContentMdl.content);
-	}
-
-	handleBackdropClick() {
-		this.mainMenuSvc.toggle(false);
-	}
+    handleBackdropClick() {
+        this.mainMenuSvc.toggle(false);
+    }
 }

@@ -109,7 +109,25 @@ function getWebfontPluginCfg(cfg) {
     };
 }
 
+/**
+ * Gets a configuration object for the WebAppExtensionsPlugin
+ *
+ * @param cfg
+ */
+function getWebAppExtensionsPluginCfg(cfg) {
+    let settings = cfg.appSettings;
+
+    if (settings && settings.appExtensions) {
+        let exts = settings.appExtensions;
+        exts.templateRoot = helpers.joinPathFromRoot(cfg.path.pkgJsonDirs.extensionsTemplatesRoot);
+        exts.srcRoot = helpers.joinPathFromRoot(cfg.path.resrcRoot, exts.srcRoot);
+        exts.targetRoot = path.resolve(cfg.path.pkgJsonDirs.extensionsModuleRoot);
+        return exts;
+    }
+}
+
 module.exports = {
+    getWebAppExtensionsPluginCfg,
     getWebfontPluginCfg,
     parseFontConfigToSass
 };

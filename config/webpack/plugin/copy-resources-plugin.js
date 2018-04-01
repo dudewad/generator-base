@@ -21,16 +21,7 @@ CopyResourcesPlugin.prototype = {
             try {
                 fs.copySync(this.cfg.src, this.cfg.dest, {
                     filter: (src, dest) => {
-                        let stat;
-
-                        try {
-                            stat = fs.statSync(dest);
-                        }
-                        catch(e) {}
-
-                        if (stat && !stat.isDirectory()) {
-                            this.destFiles.push(path.resolve(dest));
-                        }
+                        this.destFiles.push(path.resolve(dest));
                         return true;
                     }
                 });
@@ -44,12 +35,17 @@ CopyResourcesPlugin.prototype = {
 
         compiler.plugin('after-compile', (compilation, cb) => {
             let newFiles = this.destFiles;
-            let f;
+            let f, stat;
 
             for (let i = 0, len = newFiles.length; i < len; i++) {
                 f = newFiles[i];
 
-                if (compilation.fileDependencies.indexOf(f) === -1) {
+                try {
+                    stat = fs.statSync(f);
+                }
+                catch (e) {}
+
+                if (stat && !stat.isDirectory() && compilation.fileDependencies.indexOf(f) === -1) {
                     compilation.fileDependencies.push(f);
                 }
             }
@@ -61,7 +57,7 @@ CopyResourcesPlugin.prototype = {
     watch: function () {
         this.watcher = chokidar.watch(this.cfg.src, {
             ignoreInitial: true,
-            ignored: /.*___jb.*!/g, //Ignore jetbrains temporary files in case the user is modifying files from the IDE
+            ignored: /.*___jb.*/g, //Ignore jetbrains temporary files in case the user is modifying files from the IDE
             persistent: true
         });
 

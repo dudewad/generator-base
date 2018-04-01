@@ -15,9 +15,20 @@
 
 	li {
 		margin: 0;
-		padding: .5em 1em;
+		padding: 1em;
 		cursor: pointer;
 		border-bottom: 1px solid map-get($colors, main-menu-separator-color);
+
+		a,
+		button.style-link {
+			&:not(.button) {
+				color: map-get($colors, main-menu-item-color);
+
+				&:hover {
+					color: map-get($colors, main-menu-item-hover-color);
+				}
+			}
+		}
 
 		&:before {
 			content: "";
@@ -84,16 +95,12 @@
 	}
 
 	.menu-page-header {
-		position:relative;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
 		padding: 1em;
 		background: map-get($colors, main-menu-page-header-bg);
-
-		&:after {
-			display: block;
-			clear: both;
-			height: 0;
-			content: ' ';
-		}
 
 		h2 {
 			display: inline-block;
@@ -102,10 +109,12 @@
 		}
 
 		.title {
-			position: absolute;
-			top: 50%;
 			padding: 0;
-			transform: translateY(-50%);
+			color: map-get($colors, main-menu-title-color);
+
+			&:hover {
+				color: map-get($colors, main-menu-title-hover-color);
+			}
 		}
 	}
 
@@ -115,6 +124,10 @@
 
 	@media screen and (min-width: $screen-sm-min) {
 		width: 50%;
+
+		li {
+			padding: .5em 1em;
+		}
 	}
 
 	@media screen and (min-width: $screen-md-min) {
