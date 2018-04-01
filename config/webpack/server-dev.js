@@ -34,8 +34,7 @@ const webpackDevServerOptions = {
         cached: true,
         chunks: false
     },
-    contentBase: helpers.joinPathFromRoot(''),
-    outputPath: helpers.joinPathFromRoot('prod')
+    contentBase: helpers.joinPathFromRoot('')
 };
 
 let app = new WebpackDevServer(webpack(config), webpackDevServerOptions);
