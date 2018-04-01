@@ -5,6 +5,19 @@
 		"mainMenu": true
 	},
 	"component": [
+        {
+            "type": "Test",
+            "config": {
+                "class": "test-class",
+                "background": {
+                    "style": "color",
+                    "value": "#000000"
+                }
+            },
+            "content": {
+                "title": "Test My Awesome Component Man"
+            }
+        },
 		{
 			"type": "Hero",
 			"config": {

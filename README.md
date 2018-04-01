@@ -106,3 +106,14 @@ Codepoints define what glyph is assigned to what numeric value in a font. By cre
 ## .htaccess
 
 Presently an `.htaccess` file is required to build the project. Add one to the resources directory and point to it via the config.server.htaccess property as a path relative to the root of the resources directory.
+
+## External script development
+
+If you want to generate your own components to be consumed by the generator so that you can bring in custom 
+functionality, you can do so by writing your own components following the generator's code conventions. Simply include
+your source files in your content directory and point your settings file to them according to the site-config readme.
+
+You'll also need to configure add Typescript support to your project by adding a tsconfig.json file that allows for 
+intellisense completion. This won't actually affect compile-ability of the code because of the fact that the source will
+actually be pulled into the generator's code base but development will be easier.
+//TODO: <update>

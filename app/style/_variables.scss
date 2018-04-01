@@ -59,11 +59,15 @@ $colors: (
 	membership-table-bg:                    map-get($base-colors, brand-secondary),
 	membership-table-color:                 map-get($base-colors, white),
 	main-menu-bg:                           rgba(map-get($base-colors, black), .8),
+	main-menu-item-color:                   map-get($base-colors, brand-primary),
+	main-menu-item-hover-color:             rgba(map-get($base-colors, brand-primary), .8),
 	main-menu-more-indicator-color:         map-get($base-colors, brand-primary),
 	main-menu-more-indicator-hover-color:   darken(map-get($base-colors, brand-primary), 10%),
 	main-menu-page-bg:                      map-get($base-colors, gray-darkest),
 	main-menu-page-header-bg:               map-get($base-colors, gray-dark),
 	main-menu-separator-color:              map-get($base-colors, gray-dark),
+	main-menu-title-color:                  map-get($base-colors, white),
+	main-menu-title-hover-color:            map-get($base-colors, gray-lightest),
 	ribbon-bg:                              map-get($base-colors, white),
 	ribbon-color:                           map-get($base-colors, black),
 	theme-brand-primary-bg:                 map-get($base-colors, brand-primary),
@@ -73,3 +77,7 @@ $colors: (
 	theme-gray-bg:                          map-get($base-colors, gray-medium-light),
 	theme-gray-color:                       map-get($base-colors, white),
 );
+
+@if (variable-exists(colors-overrides)) {
+	$colors: map-merge($colors, $colors-overrides);
+}

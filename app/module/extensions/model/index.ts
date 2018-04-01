@@ -1,0 +1,1 @@
+export const ___mdl_placeholder___ = '___placeholder___';

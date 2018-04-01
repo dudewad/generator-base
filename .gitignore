@@ -2,6 +2,17 @@
 /node_modules/
 !/.idea/runConfigurations/
 
+# No changes to extensions should ever be committed, the current set it the
+# non-generated set and should be king
+app/module/extensions/component/*
+app/module/extensions/injection-token/*
+app/module/extensions/model/*
+app/module/extensions/service/*
+!app/module/extensions/component/index.ts
+!app/module/extensions/injection-token/index.ts
+!app/module/extensions/model/index.ts
+!app/module/extensions/service/index.ts
+
 # Don't remove these rules!
 # They're for generated files. These items shouldn't exist when you pull the repo, but might later when scripts run.
 dist/

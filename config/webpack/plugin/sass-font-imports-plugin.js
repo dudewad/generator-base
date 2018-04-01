@@ -12,6 +12,7 @@ SassFontImportsPlugin.prototype = {
         let cfg = this.cfg;
 
         compiler.plugin(['run', 'watch-run'], (compilation, cb) => {
+            verboseLog.log('RUNNING SASS_FONT_IMPORTS_PLUGIN');
             let imports = cfg.fonts.reduce((accumulator, font) => font.generated ? `${accumulator}@import "./${font.name}";\n` : accumulator, '');
 
             verboseLog.log('Writing SCSS imports file to', cfg.output);

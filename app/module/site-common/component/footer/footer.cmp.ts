@@ -2,7 +2,7 @@ import {Component, OnDestroy, ViewChild, ViewContainerRef, ViewEncapsulation} fr
 import {DomSanitizer} from '@angular/platform-browser';
 import {Subscription} from 'rxjs';
 
-import {Config_Svc, ConfigUpdate_Mdl, GlobalConfig_Mdl, LocalizableContent_Mdl, Localization_Svc} from "lm/site-common";
+import {Config_Svc, ConfigUpdate_Mdl, GlobalConfig_Mdl, LocalizableContent_Mdl, Localization_Svc} from 'lm/site-common';
 
 @Component({
     selector: 'site-footer',
