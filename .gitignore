@@ -4,9 +4,10 @@
 
 # No changes to extensions should ever be committed, the current set it the
 # non-generated set and should be king
-app/module/extensions
-!app/module/extensions/index.ts
-!app/module/extensions/extensions.mod.ts
+app/module/extensions/component/*
+app/module/extensions/injection-token/*
+app/module/extensions/model/*
+app/module/extensions/service/*
 !app/module/extensions/component/index.ts
 !app/module/extensions/injection-token/index.ts
 !app/module/extensions/model/index.ts
