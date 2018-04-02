@@ -1,4 +1,4 @@
-import {PageCmpCfg_Mdl} from "lm/site-common";
+import {PageCmpCfg_Mdl} from 'lm/site-common';
 
 export class PageConfig_Mdl {
     config: any;

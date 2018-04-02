@@ -34,7 +34,7 @@ SassOverridesPlugin.prototype = {
             return;
         }
 
-        compiler.plugin("invalid", function (filename) {
+        compiler.plugin('invalid', function (filename) {
             let outputFiles = glob.sync(path.join(that.targetOutputDir, '**/*')).map(fPath => {
                 return path.normalize(fPath);
             });
@@ -44,6 +44,7 @@ SassOverridesPlugin.prototype = {
             }
         });
         compiler.plugin(['run', 'watch-run'], (compilation, cb) => {
+            verboseLog.log('RUNNING SASS_OVERRIDES_PLUGIN');
             if(that.skip) {
                 that.skip = false;
                 verboseLog.log('Skipping style override update since no files changed.');

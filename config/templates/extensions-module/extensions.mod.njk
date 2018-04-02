@@ -1,0 +1,71 @@
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+
+import {ExtensionsRegistry} from 'lm/extensions';
+
+{% if items.cmps.length %}
+    import {
+        {% for cmp in items.cmps %}
+            {{ cmp.symbol }}
+        {% endfor %}
+    } from 'lm/extensions';
+{% endif %}
+
+{% if items.svcs.length %}
+    import {
+    {% for svc in items.svcs%}
+        {{ svc.symbol }}
+    {% endfor %}
+    } from 'lm/extensions';
+
+    let ExtensionsSvcs = [
+        {% for svc in items.svcs %}
+            {{ svc.symbol }}
+        {% endfor %}
+    ];
+{% endif %}
+
+{% if items.cmps.length %}
+    const ExtensionsCmps = {
+        {% for cmp in items.cmps %}
+            '{{ cmp.name|ucFirst }}': {{ cmp.symbol }}
+        {% endfor %}
+    };
+    const comps = Object.values(ExtensionsCmps);
+{% endif %}
+
+@NgModule({
+    declarations: [
+        {% if items.cmps.length %}
+            ...comps
+        {% endif %}
+    ],
+    exports: [
+        {% if items.cmps.length %}
+            ...comps
+        {% endif %}
+    ],
+    {% if items.cmps.length %}
+        entryComponents: [
+            ...comps
+        ],
+    {% endif %}
+    imports: [
+        CommonModule
+    ],
+    providers: [
+        {% if items.svcs.length %}
+            ...ExtensionsSvcs,
+        {% endif %}
+        {
+            provide: ExtensionsRegistry,
+            {% if items.cmps.length %}
+                useValue: ExtensionsCmps
+            {% else %}
+                useValue: {}
+            {% endif %}
+        }
+    ]
+})
+export class Extensions_Mod {
+}

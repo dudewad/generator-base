@@ -6,7 +6,6 @@ $imageRoot: $urlContentRoot + $urlImageRelativePath;
 footer {
 	position:relative;
 	z-index: 1;
-	margin-top: -66px;
 	color: map-get($colors, footer-color);
 
 	h3 {

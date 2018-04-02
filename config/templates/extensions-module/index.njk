@@ -1,0 +1,7 @@
+{% if items.length %}
+    {% for item in items %}
+export * from './{{ item.name }}/{{ item.name }}.{{ item.type }}';
+    {% endfor %}
+{% else %}
+export const ___lm_gen_dummy_{{ type }}___ = 0;
+{% endif %}

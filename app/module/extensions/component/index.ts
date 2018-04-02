@@ -1,0 +1,1 @@
+export const ___cmp_placeholder___ = '___placeholder___';

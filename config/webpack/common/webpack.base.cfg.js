@@ -24,12 +24,14 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const SassFontImportsPlugin = require('@webpack-plugin/sass-font-imports-plugin');
 const SassOverridesPlugin = require('@webpack-plugin/sass-overrides-plugin');
 const TsConfigPathsPlugin = TsLoader.TsConfigPathsPlugin;
+const WebAppExtensionsPlugin = require('@webpack-plugin/web-app-extensions-plugin');
 const WebfontPlugin = require('webpack-webfont').default;
 
 module.exports = function (env) {
     let plugins;
     let cfg = runtimeCfg(env);
     let wfpCfg = buildTools.getWebfontPluginCfg(cfg);
+    let waepCfg = buildTools.getWebAppExtensionsPluginCfg(cfg);
     let cleanTargets = [
         path.resolve(cfg.path.pkgJsonDirs.sassGeneratedRoot),
         path.resolve(cfg.path.pkgJsonDirs.webpackTempBuildBase)
@@ -69,7 +71,7 @@ module.exports = function (env) {
         ({
             src: cfg.path.resrcSrc,
             dest: cfg.path.resrcRoot,
-            verbose: true
+            verbose: false
         }),
         new SassOverridesPlugin(cfg, true),
         new webpack.HotModuleReplacementPlugin(),
@@ -83,13 +85,17 @@ module.exports = function (env) {
     if(wfpCfg) {
         plugins.push(new WebfontPlugin(wfpCfg));
     }
+    if(waepCfg) {
+        waepCfg.verbose = true;
+        plugins.push(new WebAppExtensionsPlugin(waepCfg));
+    }
     if (faviconCfg) {
-        plugins.push(new FaviconsWebpackPlugin({
+        /*plugins.push(new FaviconsWebpackPlugin({
             logo: path.resolve(cfg.path.resrcRoot, faviconCfg.src),
             prefix: 'favicon-[hash]/',
             background: faviconCfg.background || '#FFF',
             title: faviconCfg.title || ''
-        }));
+        }));*/
     }
 
     return {
@@ -146,7 +152,9 @@ module.exports = function (env) {
             extensions: ['.ts', '.js'],
             modules: [helpers.joinPathFromRoot('app'), 'node_modules'],
             alias: {
-                'test': __dirname
+                'lm/extensions': helpers.joinPathFromRoot('app', 'module', 'extensions'),
+                'lm/site-common': helpers.joinPathFromRoot('app', 'module', 'site-common'),
+                'lm/structure': helpers.joinPathFromRoot('app', 'module', 'structure')
             },
             plugins: [
                 new TsConfigPathsPlugin()
