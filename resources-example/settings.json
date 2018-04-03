@@ -1,91 +1,103 @@
 {
-	"build": {
-		"devServer": {
-			"host": "0.0.0.0",
-			"port": 3000
-		},
-		"outputBase": {
-			"prod": "../dist/prod",
-			"staging": "../dist/staging"
-		}
-	},
-	"font": [
-		{
-			"name": "siteIcon",
-			"generated": true,
-			"type": "webfont",
-			"formats": [
-				{
-					"name": "eot",
-					"extension": "eot"
-				},
-				{
-					"name": "truetype",
-					"extension": "ttf"
-				},
-				{
-					"name": "woff",
-					"extension": "woff"
-				}
-			],
-			"weight": "normal",
-			"style": "normal"
-		},
-		{
-			"name": "bebas",
-			"type": "webfont",
-			"formats": [
-				{
-					"name": "truetype",
-					"extension": "ttf"
-				},
-				{
-					"name": "woff",
-					"extension": "woff"
-				}
-			],
-			"weight": "normal",
-			"style": "normal"
-		},
-		{
-			"name": "alice",
-			"type": "import",
-			"url": "https://fonts.googleapis.com/css?family=Alice"
-		}
-	],
-	"style": {
-		"overridesBaseDir": "resources/style",
-		"overridesEntryPoint": "custom.scss"
-	},
-	"url": {
-		"dev": {
-			"dataRoot": "/resources/site-data/",
-			"contentRoot": "/resources/asset/"
-		},
-		"staging": {
-			"dataRoot": "//www.desmill.com/generator-test/staging/site-data/",
-			"contentRoot": "//www.desmill.com/generator-test/staging/asset/"
-		},
-		"prod": {
-			"dataRoot": "//www.desmill.com/generator-test/prod/site-data/",
-			"contentRoot": "//www.desmill.com/generator-test/prod/asset/"
-		},
-		"relative": {
-			"font": "/font/",
-			"image": "/image/"
-		}
-	},
-	"resources": {
-		"contentRoot": "resources/asset",
-		"dataRoot": "resources/site-data",
-		"fontRoot": "resources/asset/font",
-        "favicon": {
-            "src": "resources/favicon.png",
-            "background": "#449FC3",
-            "title": "Paws for a Beer"
+  "build": {
+    "devServer": {
+      "host": "0.0.0.0",
+      "port": 3000
+    },
+    "outputBase": {
+      "prod": "../dist/prod",
+      "staging": "../dist/staging"
+    }
+  },
+  "appExtensions": {
+    "srcRoot": "/resources/app",
+    "component": [
+      "component/test"
+    ],
+    "service": [
+      "service/test"
+    ],
+    "model": [
+      "model/test"
+    ]
+  },
+  "font": [
+    {
+      "name": "siteIcon",
+      "generated": true,
+      "type": "webfont",
+      "formats": [
+        {
+          "name": "eot",
+          "extension": "eot"
+        },
+        {
+          "name": "truetype",
+          "extension": "ttf"
+        },
+        {
+          "name": "woff",
+          "extension": "woff"
         }
-	},
-	"server": {
-		"htaccess": "resources/.htaccess"
-	}
+      ],
+      "weight": "normal",
+      "style": "normal"
+    },
+    {
+      "name": "bebas",
+      "type": "webfont",
+      "formats": [
+        {
+          "name": "truetype",
+          "extension": "ttf"
+        },
+        {
+          "name": "woff",
+          "extension": "woff"
+        }
+      ],
+      "weight": "normal",
+      "style": "normal"
+    },
+    {
+      "name": "alice",
+      "type": "import",
+      "url": "https://fonts.googleapis.com/css?family=Alice"
+    }
+  ],
+  "style": {
+    "overridesBaseDir": "resources/style",
+    "overridesEntryPoint": "custom.scss"
+  },
+  "url": {
+    "dev": {
+      "dataRoot": "/resources/site-data/",
+      "contentRoot": "/resources/asset/"
+    },
+    "staging": {
+      "dataRoot": "//www.desmill.com/generator-test/staging/site-data/",
+      "contentRoot": "//www.desmill.com/generator-test/staging/asset/"
+    },
+    "prod": {
+      "dataRoot": "//www.desmill.com/generator-test/prod/site-data/",
+      "contentRoot": "//www.desmill.com/generator-test/prod/asset/"
+    },
+    "relative": {
+      "font": "/font/",
+      "image": "/image/"
+    }
+  },
+  "resources": {
+    "contentRoot": "resources/asset",
+    "dataRoot": "resources/site-data",
+    "fontRoot": "resources/asset/font",
+    "favicon": {
+      "src": "resources/favicon.png",
+      "background": "#449FC3",
+      "title": "Paws for a Beer"
+    }
+  },
+  "server": {
+    "htaccess": "resources/.htaccess"
+  }
 }

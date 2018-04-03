@@ -1,15 +1,41 @@
 <div class="lm-form" [ngClass]="config.class" [ngStyle]="config.style">
-    <div class="structure-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <form>
-                        <ng-container *ngFor="">
-
-                        </ng-container>
-                    </form>
-                </div>
-            </div>
+  <div class="structure-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <form [formGroup]="form" novalidate (submit)="onSubmit($event)">
+            <h2 *ngIf="content.title">{{content.title}}</h2>
+            <p *ngIf="content.body">{{content.body}}</p>
+            <ng-container *ngFor="let field of content.fields">
+              <ng-container [ngSwitch]="field.type">
+                <ng-container *ngSwitchCase="fieldTypes.text">
+                  <lm-form-field [label]="field.label">
+                    <input type="text"
+                           [placeholder]="field.placeholder"
+                           [formControlName]="field.name"/>
+                  </lm-form-field>
+                </ng-container>
+                <ng-container *ngSwitchCase="fieldTypes.textarea">
+                  <lm-form-field [label]="field.label">
+                    <textarea [placeholder]="field.placeholder"
+                              [formControlName]="field.name">
+                    </textarea>
+                  </lm-form-field>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+            <button type="submit" [disabled]="!form.valid || sending">
+              {{content.submitLabel}}
+            </button>
+          </form>
+          <p *ngIf="errorMessage" class="error message">
+            {{errorMessage}}
+          </p>
+          <p *ngIf="successMessage" class="success message">
+            {{successMessage}}
+          </p>
         </div>
+      </div>
     </div>
+  </div>
 </div>
