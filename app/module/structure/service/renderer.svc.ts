@@ -4,6 +4,7 @@ import {App_Const} from 'lm/site-common';
 import {
     Copy_Cmp,
     DataTable_Cmp,
+    Form_Cmp,
     Hero_Cmp,
     Ribbon_Cmp,
     StructureBase_Cmp,
@@ -19,6 +20,7 @@ export class Renderer_Svc {
     private componentRegistry: any = {
         'Copy_Cmp': Copy_Cmp,
         'DataTable_Cmp': DataTable_Cmp,
+        'Form_Cmp': Form_Cmp,
         'Hero_Cmp': Hero_Cmp,
         'Ribbon_Cmp': Ribbon_Cmp,
         'TextImage_Cmp': TextImage_Cmp,
