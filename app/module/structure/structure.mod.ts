@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { Extensions_Mod } from 'lm/extensions';
@@ -50,7 +50,7 @@ import { Asset_Svc, GlobalEvent_Svc, GoogleMap_Svc } from 'lm/site-common';
   imports: [
     BrowserModule,
     CommonModule,
-    HttpModule,
+    HttpClientModule,
     ReactiveFormsModule,
     RouterModule,
     Extensions_Mod
@@ -62,6 +62,5 @@ import { Asset_Svc, GlobalEvent_Svc, GoogleMap_Svc } from 'lm/site-common';
     Renderer_Svc
   ]
 })
-
 export class Structure_Mod {
 }

@@ -1,7 +1,9 @@
 import { Component, Inject } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { takeUntil } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+import { catchError, takeUntil } from 'rxjs/operators';
 
 import {
   App_Const,
@@ -10,6 +12,7 @@ import {
   Localization_Svc
 } from 'lm/site-common';
 import { StructureBase_Cmp } from 'lm/structure';
+import { ErrorObservable } from "rxjs/observable/ErrorObservable";
 
 const fieldTypes = {
   text: 'text',
@@ -24,12 +27,16 @@ const fieldTypes = {
 export class Form_Cmp extends StructureBase_Cmp {
   public fieldTypes;
   public form: FormGroup;
+  public sending = false;
+  public successMessage: string;
+  public errorMessage: string;
 
   constructor(protected sanitizer: DomSanitizer,
               @Inject(App_Const) protected constants,
               protected assetSvc: Asset_Svc,
               protected globalEventSvc: GlobalEvent_Svc,
               protected locSvc: Localization_Svc,
+              private http: HttpClient,
               private fb: FormBuilder) {
     super(sanitizer, constants, assetSvc, globalEventSvc, locSvc);
     this.fieldTypes = fieldTypes;
@@ -46,7 +53,25 @@ export class Form_Cmp extends StructureBase_Cmp {
     evt.stopPropagation();
 
     if (this.form.valid) {
+      this.sending = true;
 
+      this.http
+        .post(this.config.formAction, this.form.getRawValue())
+        .pipe(catchError((err: HttpErrorResponse) => {
+          console.log(err);
+          return new ErrorObservable('');
+        }))
+        .subscribe(
+          result => {
+            this.successMessage = this.content.successMessage;
+            Observable.timer(5000).subscribe(() => this.successMessage = null);
+            this.sending = false;
+          },
+          error => {
+            this.errorMessage = this.content.errorMessage;
+            Observable.timer(5000).subscribe(() => this.errorMessage = null);
+            this.sending = false;
+          });
     }
   }
 

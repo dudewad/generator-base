@@ -6,19 +6,6 @@
   },
   "component": [
     {
-      "type": "Test",
-      "config": {
-        "class": "test-class",
-        "background": {
-          "style": "color",
-          "value": "#000000"
-        }
-      },
-      "content": {
-        "title": "Test My Awesome Component Man"
-      }
-    },
-    {
       "type": "Hero",
       "config": {
         "class": [
@@ -50,11 +37,13 @@
     {
       "type": "Form",
       "config": {
-        "action": "/api/v1/contact"
+        "formAction": "/api/v1/contact"
       },
       "content": {
         "title": "Contact Me",
         "body": "Testing some subtitle content to put before the form! Testing some subtitle content to put before the form! Testing some subtitle content to put before the form! Testing some subtitle content to put before the form! Testing some subtitle content to put before the form! ",
+        "successMessage": "Your information was successfully sent. Thank you!",
+        "errorMessage": "There was a problem sending your information. Please try again - we are sorry for the inconvenience!",
         "fields": [
           {
             "type": "text",
@@ -87,6 +76,19 @@
           }
         ],
         "submitLabel": "Send"
+      }
+    },
+    {
+      "type": "Test",
+      "config": {
+        "class": "test-class",
+        "background": {
+          "style": "color",
+          "value": "#000000"
+        }
+      },
+      "content": {
+        "title": "External Component Example"
       }
     },
     {
