@@ -42,9 +42,15 @@
       "content": {
         "title": "Contact Me",
         "body": "Testing some subtitle content to put before the form! Testing some subtitle content to put before the form! Testing some subtitle content to put before the form! Testing some subtitle content to put before the form! Testing some subtitle content to put before the form! ",
-        "successMessage": "Your information was successfully sent. Thank you!",
-        "errorMessage": "There was a problem sending your information. Please try again - we are sorry for the inconvenience!",
-        "fields": [
+        "notification": {
+          "success": {
+            "text": "Your information was successfully sent. Thank you!"
+          },
+          "error": {
+            "text": "There was a problem sending your information. Please try again - we are sorry for the inconvenience!"
+          }
+        },
+        "field": [
           {
             "type": "text",
             "label": "Name",

@@ -59,17 +59,34 @@ export class Form_Cmp extends StructureBase_Cmp {
         .post(this.config.formAction, this.form.getRawValue())
         .pipe(catchError((err: HttpErrorResponse) => {
           console.log(err);
-          return new ErrorObservable('');
+          return new ErrorObservable(err);
         }))
         .subscribe(
           result => {
-            this.successMessage = this.content.successMessage;
-            Observable.timer(5000).subscribe(() => this.successMessage = null);
+            if (this.content.notification
+              && this.content.notification.success
+              && this.content.notification.success.text) {
+              this.successMessage = this.content.notification.success.text;
+
+              if (this.config.notificationDisplayTime) {
+                Observable.timer(this.config.notificationDisplayTime)
+                  .subscribe(() => this.successMessage = null);
+              }
+            }
             this.sending = false;
           },
           error => {
-            this.errorMessage = this.content.errorMessage;
-            Observable.timer(5000).subscribe(() => this.errorMessage = null);
+            console.log(this.content.notification);
+            if (this.content.notification
+              && this.content.notification.error
+              && this.content.notification.error.text) {
+              this.errorMessage = this.content.notification.error.text;
+
+              if (this.config.notificationDisplayTime) {
+                Observable.timer(this.config.notificationDisplayTime)
+                  .subscribe(() => this.errorMessage = null);
+              }
+            }
             this.sending = false;
           });
     }
@@ -77,7 +94,7 @@ export class Form_Cmp extends StructureBase_Cmp {
 
   private buildFormGroup() {
     const formCfg = {};
-    const fields = this.content.fields;
+    const fields = this.content.field;
 
     if (!fields) {
       return;
