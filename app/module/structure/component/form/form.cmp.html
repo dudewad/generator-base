@@ -28,11 +28,13 @@
               {{content.submitLabel}}
             </button>
           </form>
-          <p *ngIf="errorMessage" class="error message">
-            {{errorMessage}}
+          <p *ngIf="errorMessage"
+             class="error message"
+             [innerHtml]="getSanHtml(errorMessage)">
           </p>
-          <p *ngIf="successMessage" class="success message">
-            {{successMessage}}
+          <p *ngIf="successMessage"
+             class="success message"
+             [innerHtml]="getSanHtml(successMessage)">
           </p>
         </div>
       </div>
