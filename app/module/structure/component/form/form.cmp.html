@@ -6,7 +6,7 @@
           <form [formGroup]="form" novalidate (submit)="onSubmit($event)">
             <h2 *ngIf="content.title">{{content.title}}</h2>
             <p *ngIf="content.body">{{content.body}}</p>
-            <ng-container *ngFor="let field of content.fields">
+            <ng-container *ngFor="let field of content.field">
               <ng-container [ngSwitch]="field.type">
                 <ng-container *ngSwitchCase="fieldTypes.text">
                   <lm-form-field [label]="field.label">
