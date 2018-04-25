@@ -1,0 +1,30 @@
+@import '../../../../style/bootstrap-custom/bootstrap-no-output';
+@import '../../../../style/variables';
+
+.toggle-item {
+  display: inline-block;
+  margin-right: 2em;
+  cursor: pointer;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &.active {
+    button {
+      background-color: map-get($colors, content-toggle-active-btn-bg);
+    }
+  }
+
+  button {
+    background-color: map-get($colors, content-toggle-deselected-btn-bg);
+
+    &:hover {
+      background-color: map-get($colors, content-toggle-deselected-btn-hover-bg);
+    }
+
+    &:active {
+      background-color: map-get($colors, content-toggle-deselected-btn-active-bg);
+    }
+  }
+}

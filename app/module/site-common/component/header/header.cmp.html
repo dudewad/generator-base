@@ -2,7 +2,7 @@
     <div class="controls">
         <main-menu-toggle *ngIf="hasMainMenu">
             <i class="siteIcon siteIcon-menu menu-toggle"></i>
-            {{content?.mainMenuToggle?.label ? content.mainMenuToggle.label : ''}}
+            <span class="label">{{content?.mainMenuToggle?.label ? content.mainMenuToggle.label : ''}}</span>
         </main-menu-toggle>
         <a [routerLink]="['/']"
            [ngSwitch]="config?.type"

@@ -1,4 +1,10 @@
-import { Component, Inject, OnDestroy } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  HostBinding,
+  Inject,
+  OnDestroy
+} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subject } from 'rxjs/Subject';
 
@@ -31,6 +37,8 @@ export abstract class StructureBase_Cmp implements OnDestroy {
   private bp: any;
   private currBp: string;
   private rawConfig: any;
+  @HostBinding('id')
+  private id: string;
 
   constructor(protected sanitizer: DomSanitizer,
               @Inject(App_Const) protected constants,
@@ -40,7 +48,8 @@ export abstract class StructureBase_Cmp implements OnDestroy {
               //TODO: OpaqueToken-ize the global event service injection so this
               // stays portable
               protected globalEventSvc: GlobalEvent_Svc,
-              protected locSvc: Localization_Svc) {
+              protected locSvc: Localization_Svc,
+              protected cdr: ChangeDetectorRef) {
     this.url = this.constants.url;
     this.bp = this.constants.breakpoint;
   }
@@ -52,6 +61,7 @@ export abstract class StructureBase_Cmp implements OnDestroy {
     this.locContentObj = this.locSvc.registerContent(cfg.content);
     this.content = this.locContentObj.content;
     this.setBackground();
+    this.id = this.config.id ? this.config.id : undefined;
     this.onConfigChange.next(this.config);
   }
 
@@ -106,7 +116,7 @@ export abstract class StructureBase_Cmp implements OnDestroy {
           };
           if (bg.responsive) {
             this.resizeHandlerId = this.globalEventSvc.registerResizeHandler(
-              this.updateResponsiveBackground.bind(this)
+              this.onResize.bind(this)
             );
             this.updateResponsiveBackground();
           }
@@ -126,6 +136,11 @@ export abstract class StructureBase_Cmp implements OnDestroy {
           break;
       }
     }
+  }
+
+  private onResize() {
+    this.updateResponsiveBackground();
+    this.cdr.detectChanges();
   }
 
   ngOnDestroy() {
