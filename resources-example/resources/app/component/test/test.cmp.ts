@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import {
@@ -23,8 +23,9 @@ export class Test_Cmp extends StructureBase_Cmp {
               @Inject(App_Const) protected constants,
               protected assetSvc: Asset_Svc,
               protected globalEventSvc: GlobalEvent_Svc,
-              protected locSvc: Localization_Svc) {
-    super(sanitizer, constants, assetSvc, globalEventSvc, locSvc);
+              protected locSvc: Localization_Svc,
+              protected cdr: ChangeDetectorRef) {
+    super(sanitizer, constants, assetSvc, globalEventSvc, locSvc, cdr);
     testSvc.doTest();
     let mdl = new Test_Mdl('Hello World!');
     mdl.test();

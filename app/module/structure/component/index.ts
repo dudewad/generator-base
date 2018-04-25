@@ -1,4 +1,5 @@
 export * from './structure-builder/structure-builder.cmp';
+export * from './content-toggle/content-toggle.cmp';
 export * from './copy/copy.cmp';
 export * from './data-table/data-table.cmp';
 export * from './form';

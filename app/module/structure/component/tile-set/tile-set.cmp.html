@@ -1,21 +1,23 @@
 <div class="tile-set" [ngClass]="config.class" [ngStyle]="config.style">
-	<div class="structure-content">
-		<div class="container">
-			<div class="row row-centered">
-				<div *ngFor="let tile of content.tiles;" class="tile-container col-xs-12 col-sm-4 col-centered">
-					<div class="tile">
-						<div class="image-wrapper">
-							<img [src]="getAssetUrl(tile.image)" />
-						</div>
-						<div class="tile-content">
-							<h2 [innerHtml]="getSanHtml(tile.title)"></h2>
-							<p [innerHtml]="getSanHtml(tile.body)"></p>
-							<a class="button" *ngIf="tile?.cta?.text && tile?.cta?.href"
-							   [innerHtml]="getSanHtml(tile.cta.text)" [routerLink]="tile.cta.href"></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="structure-content">
+    <div class="container">
+      <div class="row row-centered">
+        <div *ngFor="let tile of content.tiles;"
+             class="tile-container col-xs-12 col-sm-4 col-centered">
+          <div class="tile">
+            <div class="image-wrapper">
+              <img [src]="getAssetUrl(tile.image)"/>
+            </div>
+            <div class="tile-content">
+              <h2 [innerHtml]="getSanHtml(tile.title)"></h2>
+              <p [innerHtml]="getSanHtml(tile.body)"></p>
+              <a class="button" *ngIf="tile?.cta?.text && tile?.cta?.href"
+                 [innerHtml]="getSanHtml(tile.cta.text)"
+                 [routerLink]="tile.cta.href"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

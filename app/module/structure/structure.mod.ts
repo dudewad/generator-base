@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Extensions_Mod } from 'lm/extensions';
 import {
   //Components
+  ContentToggle_Cmp,
   Copy_Cmp,
   DataTable_Cmp,
   Form_Cmp,
@@ -19,12 +20,14 @@ import {
   TileSet_Cmp,
 
   //Services
-  Renderer_Svc
+  ContentToggle_Svc,
+  Renderer_Svc,
 } from 'lm/structure';
 import { Asset_Svc, GlobalEvent_Svc, GoogleMap_Svc } from 'lm/site-common';
 
 @NgModule({
   declarations: [
+    ContentToggle_Cmp,
     Copy_Cmp,
     DataTable_Cmp,
     FormField_Cmp,
@@ -36,6 +39,7 @@ import { Asset_Svc, GlobalEvent_Svc, GoogleMap_Svc } from 'lm/site-common';
     TileSet_Cmp
   ],
   entryComponents: [
+    ContentToggle_Cmp,
     Copy_Cmp,
     DataTable_Cmp,
     Form_Cmp,
@@ -57,6 +61,7 @@ import { Asset_Svc, GlobalEvent_Svc, GoogleMap_Svc } from 'lm/site-common';
   ],
   providers: [
     Asset_Svc,
+    ContentToggle_Svc,
     GlobalEvent_Svc,
     GoogleMap_Svc,
     Renderer_Svc

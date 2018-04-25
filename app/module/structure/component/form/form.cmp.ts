@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -36,9 +36,10 @@ export class Form_Cmp extends StructureBase_Cmp {
               protected assetSvc: Asset_Svc,
               protected globalEventSvc: GlobalEvent_Svc,
               protected locSvc: Localization_Svc,
+              protected cdr: ChangeDetectorRef,
               private http: HttpClient,
               private fb: FormBuilder) {
-    super(sanitizer, constants, assetSvc, globalEventSvc, locSvc);
+    super(sanitizer, constants, assetSvc, globalEventSvc, locSvc, cdr);
     this.fieldTypes = fieldTypes;
     this.form = fb.group([]);
     this.onConfigChange
@@ -106,7 +107,7 @@ export class Form_Cmp extends StructureBase_Cmp {
 
       for (let key in field.validators) {
         if (field.validators.hasOwnProperty(key)
-            && Validators.hasOwnProperty(key)) {
+          && Validators.hasOwnProperty(key)) {
           if (key === 'required') {
             validators.push(Validators.required);
           }
