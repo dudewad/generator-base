@@ -6,7 +6,7 @@ import {
   OnDestroy
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 import {
   App_Const,

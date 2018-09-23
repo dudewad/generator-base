@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
+import { Subject } from 'rxjs';
+import { merge, takeUntil } from 'rxjs/operators';
 
 import {
     LocalizableContent_Mdl,
@@ -29,18 +29,20 @@ export class MainMenu_Cmp implements OnDestroy {
     constructor(private locSvc: Localization_Svc,
                 private mainMenuSvc: MainMenu_Svc) {
         mainMenuSvc.menuStatus
-            .takeUntil(this.destroy$)
+            .pipe(takeUntil(this.destroy$))
             .subscribe(active => this.state.active = active);
 
         this.mainMenuSvc.menuConfigUpdate
-            .takeUntil(this.destroy$)
+            .pipe(takeUntil(this.destroy$))
             .subscribe(data => {
                 this.onConfigUpdate(data);
             });
 
         this.mainMenuSvc.menuPagePopped
-            .takeUntil(this.destroy$)
-            .merge(this.mainMenuSvc.menuPageAdded)
+            .pipe(
+              takeUntil(this.destroy$),
+              merge(this.mainMenuSvc.menuPageAdded),
+            )
             .subscribe(pagesArr => this.pages = pagesArr);
     }
 

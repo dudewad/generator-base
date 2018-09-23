@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavigationEnd, Router } from '@angular/router';
 import { ReplaySubject, Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import {
   App_Const,
@@ -32,7 +33,7 @@ export class Config_Svc {
               @Inject(App_Const) private constants) {
 
     this.routerEventSub = this.router.events
-      .filter(evt => evt instanceof NavigationEnd)
+      .pipe(filter(evt => evt instanceof NavigationEnd))
       .subscribe(_ => this.loadPageCfg());
   }
 
