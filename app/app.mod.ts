@@ -1,7 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
 
 import {Constants} from './app-constants.const';
 import {Structure_Mod} from 'lm/structure';
