@@ -1,5 +1,6 @@
 import {Component, ViewChild, ViewContainerRef, ViewEncapsulation, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
+import {merge} from 'rxjs/operators';
 
 import {Config_Svc, ConfigUpdate_Mdl, GlobalConfig_Mdl, LocalizableContent_Mdl, Localization_Svc, PageConfig_Mdl} from 'lm/site-common';
 
@@ -22,7 +23,7 @@ export class Header_Cmp implements OnDestroy {
     constructor(private configSvc: Config_Svc,
                 private locSvc: Localization_Svc) {
         this.configSvcSub = this.configSvc.globalConfigUpdate
-            .merge(this.configSvc.pageConfigUpdate)
+            .pipe(merge(this.configSvc.pageConfigUpdate))
             .subscribe((data: ConfigUpdate_Mdl) => {
                 if(data.config instanceof PageConfig_Mdl) {
                     this.onPageCfgChange(<PageConfig_Mdl>data.config);
