@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Observable } from 'rxjs/Observable';
+import { throwError, timer } from 'rxjs';
 import { catchError, takeUntil } from 'rxjs/operators';
 
 import {
@@ -12,7 +12,6 @@ import {
   Localization_Svc
 } from 'lm/site-common';
 import { StructureBase_Cmp } from 'lm/structure';
-import { ErrorObservable } from "rxjs/observable/ErrorObservable";
 
 const fieldTypes = {
   text: 'text',
@@ -60,7 +59,7 @@ export class Form_Cmp extends StructureBase_Cmp {
         .post(this.config.formAction, this.form.getRawValue())
         .pipe(catchError((err: HttpErrorResponse) => {
           console.log(err);
-          return new ErrorObservable(err);
+          return throwError(err);
         }))
         .subscribe(
           result => {
@@ -70,7 +69,7 @@ export class Form_Cmp extends StructureBase_Cmp {
               this.successMessage = this.content.notification.success.text;
 
               if (this.config.notificationDisplayTime) {
-                Observable.timer(this.config.notificationDisplayTime)
+                timer(this.config.notificationDisplayTime)
                   .subscribe(() => this.successMessage = null);
               }
             }
@@ -84,7 +83,7 @@ export class Form_Cmp extends StructureBase_Cmp {
               this.errorMessage = this.content.notification.error.text;
 
               if (this.config.notificationDisplayTime) {
-                Observable.timer(this.config.notificationDisplayTime)
+                timer(this.config.notificationDisplayTime)
                   .subscribe(() => this.errorMessage = null);
               }
             }
