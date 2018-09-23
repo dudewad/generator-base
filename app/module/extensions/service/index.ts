@@ -1,1 +1,4 @@
-export const ___svc_placeholder___ = '___placeholder___';
+
+    
+export * from './test/test.svc';
+    
