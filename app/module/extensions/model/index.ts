@@ -1,1 +1,4 @@
-export const ___mdl_placeholder___ = '___placeholder___';
+
+    
+export * from './test/test.mdl';
+    
