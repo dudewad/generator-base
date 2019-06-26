@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Inject } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -16,6 +16,7 @@ import { StructureBase_Cmp } from 'lm/structure';
 const fieldTypes = {
   text: 'text',
   textarea: 'textarea',
+  select: 'select',
 };
 
 @Component({
@@ -23,7 +24,7 @@ const fieldTypes = {
   template: require('./form.cmp.html'),
   styles: [require('./form.cmp.scss')]
 })
-export class Form_Cmp extends StructureBase_Cmp {
+export class Form_Cmp extends StructureBase_Cmp implements OnInit {
   public fieldTypes;
   public form: FormGroup;
   public sending = false;
@@ -40,11 +41,15 @@ export class Form_Cmp extends StructureBase_Cmp {
               private fb: FormBuilder) {
     super(sanitizer, constants, assetSvc, globalEventSvc, locSvc, cdr);
     this.fieldTypes = fieldTypes;
-    this.form = fb.group([]);
     this.onConfigChange
       .pipe(takeUntil(this.destroy$))
       .subscribe(this.buildFormGroup.bind(this));
+  }
 
+  /**
+   * OnInit Interface Method
+   */
+  public ngOnInit() {
     this.buildFormGroup();
   }
 
@@ -107,16 +112,30 @@ export class Form_Cmp extends StructureBase_Cmp {
       for (let key in field.validators) {
         if (field.validators.hasOwnProperty(key)
           && Validators.hasOwnProperty(key)) {
-          if (key === 'required') {
-            validators.push(Validators.required);
+          // Standard validators
+          if (key === 'required' || key === 'email') {
+            validators.push(Validators[key]);
           }
+          // Factory validators
           else {
             validators.push(Validators[key](field.validators[key]));
           }
         }
       }
 
-      formCfg[field.name] = ['', validators];
+      let value = undefined;
+      let defaultIsDisabled = false;
+
+      if (field.type === fieldTypes.select) {
+        const defaultOption = (field.options || []).find(option => option.default);
+
+        if (defaultOption) {
+          value = defaultOption.value;
+          defaultIsDisabled = defaultOption.disabled;
+        }
+      }
+
+      formCfg[field.name] = [value, validators];
     }
 
     this.form = this.fb.group(formCfg);

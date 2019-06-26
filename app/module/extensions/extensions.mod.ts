@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {ExtensionsRegistry} from 'lm/extensions';
+import {ExtensionsRegistry} from './injection-token';
 
 @NgModule({
     imports: [
