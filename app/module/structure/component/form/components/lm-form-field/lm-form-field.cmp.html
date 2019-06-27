@@ -1,2 +1,2 @@
-<label *ngIf="label">{{label}}</label>
+<label *ngIf="label" [innerHtml]="getSanHtml(label)"></label>
 <ng-content></ng-content>

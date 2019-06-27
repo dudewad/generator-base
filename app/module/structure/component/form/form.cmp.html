@@ -8,18 +8,28 @@
             <p *ngIf="content.body">{{content.body}}</p>
             <ng-container *ngFor="let field of content.field">
               <ng-container [ngSwitch]="field.type">
+
                 <ng-container *ngSwitchCase="fieldTypes.text">
-                  <lm-form-field [label]="field.label">
-                    <input type="text"
-                           [placeholder]="field.placeholder"
-                           [formControlName]="field.name"/>
+                  <lm-form-field [label]="field.label" [className]="field.class">
+                    <input type="text" [placeholder]="field.placeholder" [formControlName]="field.name"/>
                   </lm-form-field>
                 </ng-container>
+
                 <ng-container *ngSwitchCase="fieldTypes.textarea">
-                  <lm-form-field [label]="field.label">
+                  <lm-form-field [label]="field.label" [className]="field.class">
                     <textarea [placeholder]="field.placeholder"
                               [formControlName]="field.name">
                     </textarea>
+                  </lm-form-field>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="fieldTypes.select">
+                  <lm-form-field [label]="field.label" [className]="field.class">
+                    <select [formControlName]="field.name">
+                      <option *ngFor="let option of field.options" [value]="option.value" [disabled]="option.disabled" [hidden]="option.hidden">
+                        {{ option.displayValue }}
+                      </option>
+                    </select>
                   </lm-form-field>
                 </ng-container>
               </ng-container>
