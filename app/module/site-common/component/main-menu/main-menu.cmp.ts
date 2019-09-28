@@ -50,11 +50,13 @@ export class MainMenu_Cmp implements OnDestroy {
         this.destroy$.next();
     }
 
-    onConfigUpdate(cfg: any) {
+    onConfigUpdate(cfg: any = {}) {
         this.config = cfg;
         this.localizableContentMdl && this.localizableContentMdl.unregister();
-        this.localizableContentMdl = this.locSvc.registerContent(cfg.content);
-        this.mainMenuSvc.addPage(this.localizableContentMdl.content);
+        if (cfg) {
+            this.localizableContentMdl = this.locSvc.registerContent(cfg.content);
+            this.mainMenuSvc.addPage(this.localizableContentMdl.content);
+        }
     }
 
     handleBackdropClick() {
