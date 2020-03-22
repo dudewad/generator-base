@@ -25,7 +25,7 @@ module.exports = function (env) {
         let dataRoot = appSettings.url[nodeEnv].dataRoot;
         let isDev = process.env.ENV === 'dev';
         let outputBaseAsset = isDev ? './' : path.resolve(resrcSrc, appSettings.build.outputBase[process.env.ENV], 'asset');
-        let outputBaseSite = isDev ? './' : path.resolve(resrcSrc, appSettings.build.outputBase[process.env.ENV], 'site');
+        let outputBaseSite = isDev ? './' : path.resolve(resrcSrc, appSettings.build.outputBase[process.env.ENV]);
         let outputBaseSiteData = path.join(outputBaseSite, 'site-data');
 
         if (process.env.ENV === 'dev') {
