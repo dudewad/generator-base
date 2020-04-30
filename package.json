@@ -19,7 +19,7 @@
     "angular-in-memory-web-api": "~0.1.5",
     "bootstrap": "^3.3.7",
     "core-js": "^2.5.7",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^6.0.0",
     "systemjs": "0.19.39",
