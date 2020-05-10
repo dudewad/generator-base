@@ -27,8 +27,8 @@ const ComponentConfig: any = {
 @Component({})
 export abstract class StructureBase_Cmp implements OnDestroy {
   public onConfigChange: Subject<any> = new Subject<any>();
-  protected config: any = {};
-  protected content: any = {};
+  public config: any = {};
+  public content: any = {};
   protected destroy$: Subject<void> = new Subject<void>();
   private locContentObj: LocalizableContent_Mdl;
   private url: any = {};
@@ -74,6 +74,10 @@ export abstract class StructureBase_Cmp implements OnDestroy {
   }
 
   public updateResponsiveBackground() {
+    if (!this.config.background.responsive) {
+      return;
+    }
+
     let w = this.win.innerWidth;
     let newBp;
     let bg = this.config.background.value;

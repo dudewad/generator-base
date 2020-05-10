@@ -1,8 +1,7 @@
 import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 
 import {
-    App_Const, AppConfig_Mdl, Config_Svc, ConfigUpdate_Mdl, Metrics_Svc,
-    PageConfig_Mdl
+    App_Const, AppConfig_Mdl, Config_Svc, ConfigUpdate_Mdl, Metrics_Svc, PageConfig_Mdl
 } from './module/site-common';
 
 @Component({

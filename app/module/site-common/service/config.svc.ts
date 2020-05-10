@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavigationEnd, Router } from '@angular/router';
 import { ReplaySubject, Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { filter, pairwise, startWith } from 'rxjs/operators';
 
 import {
   App_Const,
@@ -33,8 +33,14 @@ export class Config_Svc {
               @Inject(App_Const) private constants) {
 
     this.routerEventSub = this.router.events
-      .pipe(filter(evt => evt instanceof NavigationEnd))
-      .subscribe(_ => this.loadPageCfg());
+      .pipe(
+        filter(evt => evt instanceof NavigationEnd),
+        startWith(undefined),
+        pairwise(),
+        filter(([prev, curr]: [NavigationEnd, NavigationEnd]) =>
+          !prev || prev.urlAfterRedirects.split('#')[0] !== curr.urlAfterRedirects.split('#')[0]
+        )
+      ).subscribe(() => this.loadPageCfg());
   }
 
   setConfig(type, config: any) {
@@ -126,6 +132,7 @@ export class Config_Svc {
     let defaultKey = this.constants.routeMap.routeDataDefaultKey;
 
     path = path[0] === '/' ? path : '/' + path;
+    path = path.split('#')[0];
     if (routes.hasOwnProperty(path)) {
       url += routes[path];
     }
